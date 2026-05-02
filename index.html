@@ -5,104 +5,131 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title id="page-title">Achat vs Location — Montréal</title>
 <style>
+:root{
+  --bg:#f9f8f6;--bg2:#fff;--bg3:#f1efe8;--bg4:#f5f4f0;
+  --text:#1a1a1a;--text2:#555;--text3:#888;--text4:#bbb;
+  --border:#e0ddd6;--border2:#e8e6de;
+  --blue:#185FA5;--blue-bg:#e6f1fb;--blue-text:#0C447C;
+  --green:#0F6E56;--green-bg:#E1F5EE;--green-text:#085041;
+  --red:#993C1D;--red-bg:#FAECE7;--red-text:#712B13;
+  --amber:#BA7517;--amber-bg:#faeeda;--amber-text:#633806;
+  --radius:8px;--radius-lg:12px;
+  --be-from:#0d3660;--be-to:#185FA5;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1a1a18;--bg2:#242422;--bg3:#2c2c2a;--bg4:#323230;
+    --text:#e8e6de;--text2:#b4b2a9;--text3:#888780;--text4:#555;
+    --border:#3a3a38;--border2:#333330;
+    --blue:#378ADD;--blue-bg:#0c2a44;--blue-text:#85B7EB;
+    --green:#1D9E75;--green-bg:#04342C;--green-text:#9FE1CB;
+    --red:#D85A30;--red-bg:#2a1008;--red-text:#F0997B;
+    --amber:#EF9F27;--amber-bg:#2a1c04;--amber-text:#FAC775;
+    --be-from:#0e2d52;--be-to:#1a5090;
+  }
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f9f8f6;color:#1a1a1a;padding:1.5rem;font-size:14px}
-h1{font-size:20px;font-weight:500;margin-bottom:4px}
-.subtitle{font-size:13px;color:#888}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:1.5rem;font-size:14px;line-height:1.5}
+h1{font-size:20px;font-weight:500;margin-bottom:4px;color:var(--text)}
+.subtitle{font-size:13px;color:var(--text3)}
 
 /* Language toggle */
 .lang-toggle{display:flex;gap:4px;flex-shrink:0}
-.lang-btn{font-size:12px;font-weight:600;padding:4px 10px;border-radius:6px;border:1.5px solid #d0cdc6;background:#fff;color:#888;cursor:pointer;transition:all .15s}
-.lang-btn.active{background:#185FA5;border-color:#185FA5;color:#fff}
-.lang-btn:hover:not(.active){border-color:#185FA5;color:#185FA5}
+.lang-btn{font-size:12px;font-weight:600;padding:4px 10px;border-radius:6px;border:1.5px solid var(--border);background:var(--bg2);color:var(--text3);cursor:pointer;transition:all .15s}
+.lang-btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.lang-btn:hover:not(.active){border-color:var(--blue);color:var(--blue)}
 
-.ctrl-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#fff;border:0.5px solid #e0ddd6;border-radius:12px;overflow:hidden;margin-bottom:1.5rem}
-.ctrl-wide{grid-column:span 2;border-right:none!important}
-.ctrl-item{padding:11px 15px;border-bottom:0.5px solid #e8e6de;border-right:0.5px solid #e8e6de}
-.ctrl-item:nth-child(even):not(.ctrl-wide){border-right:none}
-.ctrl-item:last-child{border-bottom:none}
+.panel{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:1.25rem}
+.row{display:grid;grid-template-columns:1fr 1fr;border-bottom:0.5px solid var(--border2)}
+.row:last-child{border-bottom:none}
+.cell{padding:11px 15px;border-right:0.5px solid var(--border2)}
+.cell:last-child{border-right:none}
+.cell.full{grid-column:span 2;border-right:none}
 .ctrl-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px}
-.ctrl-label{font-size:13px;font-weight:500;color:#1a1a1a}
-.ctrl-val{font-size:14px;font-weight:500;color:#185FA5}
-.ctrl-desc{font-size:11px;color:#999;margin-bottom:5px;line-height:1.35}
-.ctrl-scenarios{display:flex;gap:5px;margin-bottom:5px;flex-wrap:wrap}
-.sc-pill{font-size:10px;padding:2px 8px;border-radius:10px;border:0.5px solid;cursor:pointer;white-space:nowrap;user-select:none}
-.sc-pill:hover{opacity:.8}
-.sc-pess{background:#FAECE7;border-color:#D85A30;color:#712B13}
-.sc-moy {background:#f1efe8;border-color:#888780;color:#2C2C2A}
-.sc-opt {background:#E1F5EE;border-color:#1D9E75;color:#085041}
-.ctrl-ref{font-size:10px;color:#c0b8ae;margin-top:3px;line-height:1.35}
-input[type=range]{width:100%;accent-color:#185FA5;cursor:pointer}
+.ctrl-label{font-size:13px;font-weight:500;color:var(--text)}
+.ctrl-val{font-size:13px;font-weight:500;color:var(--blue);min-width:80px;text-align:right}
+.ctrl-desc{font-size:11px;color:var(--text3);margin-bottom:5px;line-height:1.35}
+.ctrl-ref{font-size:10px;color:var(--text4);margin-top:3px;line-height:1.35}
+.pills{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:5px}
+.pill{font-size:10px;padding:2px 7px;border-radius:10px;border:0.5px solid;cursor:pointer;user-select:none;transition:opacity .1s}
+.pill:hover{opacity:.75}
+.pp{background:var(--red-bg);border-color:var(--red);color:var(--red-text)}
+.pm{background:var(--bg3);border-color:var(--border);color:var(--text2)}
+.po{background:var(--green-bg);border-color:var(--green);color:var(--green-text)}
+input[type=range]{width:100%;height:4px;-webkit-appearance:none;appearance:none;border-radius:2px;outline:none;cursor:pointer;margin-top:2px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--blue);cursor:pointer;border:2px solid var(--bg2);box-shadow:0 0 0 1px var(--blue)}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--blue);cursor:pointer;border:2px solid var(--bg2);box-shadow:0 0 0 1px var(--blue)}
+input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--blue)}
+.toggle-row{display:flex;align-items:flex-start;gap:12px;padding:11px 15px;background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);margin-bottom:10px}
+.toggle-row label{font-size:13px;font-weight:500;color:var(--text);cursor:pointer;display:block}
+.toggle-desc{font-size:11px;color:var(--text3);margin-top:2px}
+.loyer-manual{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);padding:11px 15px;margin-bottom:10px;display:none}
 
 /* Breakeven hero */
-.be-hero{background:linear-gradient(135deg,#0d3660 0%,#185FA5 100%);color:#fff;border-radius:16px;padding:1.75rem 2rem;margin-bottom:1.5rem;text-align:center;position:relative;overflow:hidden}
+.be-hero{background:linear-gradient(135deg,var(--be-from) 0%,var(--be-to) 100%);color:#fff;border-radius:var(--radius-lg);padding:1.75rem 2rem;margin-bottom:1.25rem;text-align:center;position:relative;overflow:hidden}
 .be-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(255,255,255,0.1),transparent 60%);pointer-events:none}
 .be-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;opacity:0.6;margin-bottom:0.5rem}
-.be-number{font-size:56px;font-weight:600;letter-spacing:-2px;line-height:1;margin:0 0 0.3rem}
+.be-number{font-size:52px;font-weight:600;letter-spacing:-2px;line-height:1;margin:0 0 0.3rem}
 .be-hint{font-size:12px;opacity:0.55;margin-bottom:1.25rem}
 .be-split{display:flex;gap:8px;justify-content:center;padding-top:1.1rem;border-top:1px solid rgba(255,255,255,0.18)}
-.be-col{flex:1;max-width:200px;padding:0.65rem 1rem;border-radius:10px;background:rgba(255,255,255,0.1);text-align:center}
+.be-col{flex:1;max-width:200px;padding:0.65rem 1rem;border-radius:10px;background:rgba(255,255,255,0.12);text-align:center}
 .be-col-arrow{font-size:20px;display:block;margin-bottom:4px}
 .be-col-action{font-size:13px;font-weight:600;display:block;margin-bottom:2px}
 .be-col-cond{font-size:11px;opacity:0.65}
 
-.invest-box{border-radius:12px;padding:1rem 1.4rem;margin-bottom:1.5rem;display:flex;align-items:flex-start;gap:1.5rem;flex-wrap:wrap}
-.invest-box.achat-cher{background:#E6F1FB;border:1.5px solid #185FA5}
-.invest-box.loc-cher{background:#E1F5EE;border:1.5px solid #0F6E56}
-.invest-main{display:flex;flex-direction:column;gap:3px;min-width:180px}
-.invest-label{font-size:11px;font-weight:500}
-.invest-label.blue{color:#185FA5}
-.invest-label.green{color:#0F6E56}
-.invest-val{font-size:28px;font-weight:500}
-.invest-val.blue{color:#185FA5}
-.invest-val.green{color:#0F6E56}
-.invest-sub{font-size:12px}
-.invest-sub.blue{color:#378ADD}
-.invest-sub.green{color:#1D9E75}
-.invest-detail{flex:1;font-size:12px;line-height:1.7;min-width:180px}
-.invest-detail.blue{color:#185FA5}
-.invest-detail.green{color:#0F6E56}
-
-.hero{background:#f1efe8;border-radius:12px;padding:1.1rem 1.4rem;margin-bottom:1.5rem;border:0.5px solid #e0ddd6}
-.hero-label{font-size:12px;color:#888;margin-bottom:8px}
-.hero-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.invest-box{border-radius:var(--radius-lg);padding:1rem 1.25rem;margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:1.25rem;flex-wrap:wrap}
+.invest-box.blue{background:var(--blue-bg);border:1.5px solid var(--blue)}
+.invest-box.green{background:var(--green-bg);border:1.5px solid var(--green)}
+.im{display:flex;flex-direction:column;gap:2px;min-width:160px}
+.ilbl{font-size:11px;font-weight:500}
+.ilbl.b{color:var(--blue-text)}.ilbl.g{color:var(--green-text)}
+.ival{font-size:26px;font-weight:500}
+.ival.b{color:var(--blue)}.ival.g{color:var(--green)}
+.isub{font-size:11px}
+.isub.b{color:var(--blue)}.isub.g{color:var(--green)}
+.idet{flex:1;font-size:12px;line-height:1.7;min-width:160px}
+.idet.b{color:var(--blue-text)}.idet.g{color:var(--green-text)}
+.hero{background:var(--bg3);border-radius:var(--radius-lg);padding:1rem 1.25rem;margin-bottom:1.25rem;border:0.5px solid var(--border)}
+.hero-sub{font-size:12px;color:var(--text3);margin-bottom:8px}
+.hg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .hc{display:flex;flex-direction:column;gap:2px}
-.hl{font-size:11px;color:#666}
-.hv{font-size:20px;font-weight:500}
-.hs{font-size:11px;color:#888}
-.warnbox{font-size:13px;padding:10px 14px;background:#faeeda;border-radius:8px;border-left:3px solid #BA7517;margin-bottom:1rem;color:#633806}
-.sec{font-size:13px;font-weight:500;color:#666;margin:1.5rem 0 7px}
-.card{background:#fff;border:0.5px solid #e0ddd6;border-radius:12px;overflow:hidden;margin-bottom:1rem}
+.hl{font-size:11px;color:var(--text3)}
+.hv{font-size:19px;font-weight:500;color:var(--text)}
+.hv.pos{color:var(--green)}.hv.neg{color:var(--red)}
+.hs{font-size:11px;color:var(--text3)}
+.wbox{font-size:13px;padding:10px 13px;background:var(--amber-bg);border-radius:var(--radius);border-left:3px solid var(--amber);margin-bottom:1rem;color:var(--amber-text)}
+.sec{font-size:13px;font-weight:500;color:var(--text3);margin:1.25rem 0 7px}
+.card{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:1rem}
 .card table{width:100%;border-collapse:collapse;font-size:12px}
-.card th{background:#f1efe8;padding:7px 10px;text-align:right;font-weight:500;color:#666;font-size:11px;white-space:nowrap}
+.card th{background:var(--bg3);padding:6px 10px;text-align:right;font-weight:500;color:var(--text3);font-size:11px;white-space:nowrap}
 .card th.tl{text-align:left}
-.card td{padding:7px 10px;border-top:0.5px solid #e8e6de;text-align:right;white-space:nowrap}
+.card td{padding:6px 10px;border-top:0.5px solid var(--border2);text-align:right;color:var(--text);white-space:nowrap}
 .card td.tl{text-align:left;font-weight:500}
-.card tr.tot td{font-weight:500;background:#f1efe8}
-.card tr.ms td{background:#e6f1fb!important;color:#185FA5;font-weight:500}
+.card tr.tot td{font-weight:500;background:var(--bg3)}
+.card tr.ms td{background:var(--blue-bg)!important;color:var(--blue-text);font-weight:500}
 .tbl{overflow-x:auto}
-.infobox{font-size:13px;color:#555;padding:9px 14px;background:#e6f1fb;border-radius:8px;border-left:3px solid #185FA5;margin-bottom:1rem}
-.tag{display:inline-block;font-size:11px;padding:2px 7px;border-radius:6px;margin-left:5px}
-.tg{background:#E1F5EE;color:#085041}
-.tr2{background:#FAECE7;color:#712B13}
-.det{font-size:12px;color:#888;padding:8px 12px;background:#f5f4f0;border-radius:8px;margin-bottom:1rem;line-height:1.8}
-.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.5rem}
-.mc{background:#f1efe8;border-radius:8px;padding:10px 12px}
-.ml{font-size:11px;color:#666;margin-bottom:3px}
-.mv{font-size:16px;font-weight:500}
-.pos{color:#0F6E56}.neg{color:#993C1D}
-.cw{position:relative;width:100%;height:270px;margin-bottom:1rem;background:#fff;border:0.5px solid #e0ddd6;border-radius:12px;padding:1rem}
-.leg{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:#666;margin-bottom:7px}
+.ibox{font-size:13px;color:var(--text2);padding:9px 13px;background:var(--blue-bg);border-radius:var(--radius);border-left:3px solid var(--blue);margin-bottom:1rem}
+.tag{display:inline-block;font-size:11px;padding:2px 6px;border-radius:5px;margin-left:4px}
+.tg{background:var(--green-bg);color:var(--green-text)}
+.tr2{background:var(--red-bg);color:var(--red-text)}
+.det{font-size:12px;color:var(--text3);padding:7px 11px;background:var(--bg4);border-radius:var(--radius);margin-bottom:1rem;line-height:1.8}
+.mets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:1.25rem}
+.mc{background:var(--bg3);border-radius:var(--radius);padding:10px 12px}
+.ml{font-size:11px;color:var(--text3);margin-bottom:3px}
+.mv{font-size:16px;font-weight:500;color:var(--text)}
+.pos{color:var(--green)}.neg{color:var(--red)}
+.cw{position:relative;width:100%;height:260px;margin-bottom:1rem}
+.leg{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--text3);margin-bottom:7px}
 .ld{width:10px;height:10px;border-radius:2px;flex-shrink:0;display:inline-block}
-.note{font-size:11px;color:#aaa;margin-top:8px;line-height:1.6}
+.note{font-size:11px;color:var(--text4);margin-top:8px;line-height:1.6}
 @media(max-width:600px){
-  .ctrl-grid{grid-template-columns:1fr}
-  .ctrl-wide{grid-column:span 1}
-  .ctrl-item{border-right:none!important}
-  .ctrl-item:not(:last-child){border-bottom:0.5px solid #e8e6de!important}
-  .hero-grid,.metrics{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr}
+  .cell{border-right:none!important}
+  .cell:not(:last-child){border-bottom:0.5px solid var(--border2)}
+  .cell.full{grid-column:span 1}
+  .hg,.mets{grid-template-columns:1fr}
   .invest-box{flex-direction:column;gap:.75rem}
-  .be-number{font-size:40px}
+  .be-number{font-size:38px}
   .be-split{flex-direction:column;align-items:center}
 }
 </style>
@@ -111,8 +138,8 @@ input[type=range]{width:100%;accent-color:#185FA5;cursor:pointer}
 
 <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem">
   <div>
-    <h1 id="main-title" data-i18n="h1">Achat vs Location — Montréal</h1>
-    <p class="subtitle" data-i18n="subtitle">Calculateur de loyer équivalent sur 30 ans</p>
+    <h1 data-i18n="h1">Achat vs Location — Montréal</h1>
+    <p class="subtitle" data-i18n="subtitle">Calculateur de loyer équivalent · Projection sur la durée choisie</p>
   </div>
   <div class="lang-toggle">
     <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
@@ -120,119 +147,144 @@ input[type=range]{width:100%;accent-color:#185FA5;cursor:pointer}
   </div>
 </div>
 
-<div class="ctrl-grid">
-
-  <div class="ctrl-item ctrl-wide">
+<div class="panel">
+  <div class="row"><div class="cell full">
     <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_prix">Prix d'achat</span><span class="ctrl-val" id="prix-o">750 000 $</span></div>
     <div class="ctrl-desc" data-i18n="desc_prix">Valeur de la propriété. Médiane Montréal : ~580–700 k$ maison · ~430 k$ condo (2026).</div>
-    <input type="range" id="prix" min="400000" max="1200000" step="25000" value="750000">
-  </div>
+    <input type="range" id="prix" min="300000" max="2000000" step="25000" value="750000">
+  </div></div>
 
-  <div class="ctrl-item">
-    <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_mise">Mise de fonds</span><span class="ctrl-val" id="mise-o">200 000 $</span></div>
-    <div class="ctrl-desc" data-i18n="desc_mise">Montant payé comptant. Le reste est financé par hypothèque. Dans le scénario location, cet argent est investi en bourse dès le départ.</div>
-    <div class="ctrl-ref" data-i18n="ref_mise">Min légal 5 % (SCHL requis sous 20 %). 20 %+ = pas d'assurance.</div>
-    <input type="range" id="mise" min="50000" max="350000" step="10000" value="200000">
-  </div>
-
-  <div class="ctrl-item">
-    <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_taux">Taux hypothécaire</span><span class="ctrl-val" id="taux-o">4,50 %</span></div>
-    <div class="ctrl-desc" data-i18n="desc_taux">Taux d'intérêt annuel sur l'hypothèque.</div>
-    <div class="ctrl-scenarios">
-      <span class="sc-pill sc-pess" data-i18n="sc_taux_pess" onclick="setVal('taux',5.5)">Pessimiste 5,5 %</span>
-      <span class="sc-pill sc-moy"  data-i18n="sc_taux_moy"  onclick="setVal('taux',4.5)">Moyen 4,5 %</span>
-      <span class="sc-pill sc-opt"  data-i18n="sc_taux_opt"  onclick="setVal('taux',3.5)">Optimiste 3,5 %</span>
+  <div class="row">
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_mise">Mise de fonds</span><span class="ctrl-val" id="mise-o">200 000 $</span></div>
+      <div class="ctrl-desc" data-i18n="desc_mise">Montant payé comptant. Dans le scénario location, investi en bourse dès le départ.</div>
+      <div class="ctrl-ref" data-i18n="ref_mise">Min légal 5 % (SCHL sous 20 %). 20 %+ = pas d'assurance hypothécaire.</div>
+      <input type="range" id="mise" min="50000" max="800000" step="10000" value="200000">
     </div>
-    <div class="ctrl-ref" data-i18n="ref_taux">2020–21 ~2 % (creux historique) · 2023–24 ~5–6 % · 2026 ~4–4,5 %.</div>
-    <input type="range" id="taux" min="2.5" max="7" step="0.25" value="4.5">
-  </div>
-
-  <div class="ctrl-item">
-    <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_condo">Frais de condo</span><span class="ctrl-val" id="condo-o">400 $</span></div>
-    <div class="ctrl-desc" data-i18n="desc_condo">Charges mensuelles de copropriété. Mettre 0 $ pour une maison unifamiliale.</div>
-    <div class="ctrl-scenarios">
-      <span class="sc-pill sc-pess" data-i18n="sc_condo_pess" onclick="setVal('condo',600)">Pessimiste 600 $</span>
-      <span class="sc-pill sc-moy"  data-i18n="sc_condo_moy"  onclick="setVal('condo',400)">Moyen 400 $</span>
-      <span class="sc-pill sc-opt"  data-i18n="sc_condo_opt"  onclick="setVal('condo',200)">Optimiste 200 $</span>
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_amort">Durée d'hypothèque</span><span class="ctrl-val" id="amort-o">25 ans</span></div>
+      <div class="ctrl-desc" data-i18n="desc_amort">Nombre d'années pour rembourser l'hypothèque. À la fin, le versement mensuel est investi en bourse.</div>
+      <div class="ctrl-ref" data-i18n="ref_amort">Standard Canada : 25 ans. Max assurable : 25 ans. Sans assurance : jusqu'à 30 ans.</div>
+      <input type="range" id="amort" min="10" max="30" step="5" value="25">
     </div>
-    <div class="ctrl-ref" data-i18n="ref_condo">Petit immeuble 200–400 $/mois · Grand condo avec services 400–700 $/mois.</div>
-    <input type="range" id="condo" min="0" max="800" step="25" value="400">
   </div>
 
-  <div class="ctrl-item">
-    <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_appre">Appréciation immobilière</span><span class="ctrl-val" id="appre-o">3,0 %</span></div>
-    <div class="ctrl-desc" data-i18n="desc_appre">Hausse annuelle estimée de la valeur de la propriété à Montréal.</div>
-    <div class="ctrl-scenarios">
-      <span class="sc-pill sc-pess" data-i18n="sc_appre_pess" onclick="setVal('appre',2)">Pessimiste 2 %</span>
-      <span class="sc-pill sc-moy"  data-i18n="sc_appre_moy"  onclick="setVal('appre',3.5)">Moyen 3,5 %</span>
-      <span class="sc-pill sc-opt"  data-i18n="sc_appre_opt"  onclick="setVal('appre',5)">Optimiste 5 %</span>
+  <div class="row">
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_taux">Taux hypothécaire</span><span class="ctrl-val" id="taux-o">4,50 %</span></div>
+      <div class="ctrl-desc" data-i18n="desc_taux">Taux d'intérêt annuel sur l'hypothèque.</div>
+      <div class="pills">
+        <span class="pill pp" data-i18n="sc_taux_pess" onclick="sv('taux',5.5)">Pessimiste 5,5 %</span>
+        <span class="pill pm" data-i18n="sc_taux_moy"  onclick="sv('taux',4.5)">Moyen 4,5 %</span>
+        <span class="pill po" data-i18n="sc_taux_opt"  onclick="sv('taux',3.5)">Optimiste 3,5 %</span>
+      </div>
+      <div class="ctrl-ref" data-i18n="ref_taux">2020–21 ~2 % · 2023–24 ~5–6 % · 2026 ~4–4,5 %.</div>
+      <input type="range" id="taux" min="1" max="10" step="0.25" value="4.5">
     </div>
-    <div class="ctrl-ref" data-i18n="ref_appre">Montréal : 10 ans ~5–6 % · 20 ans ~4–5 % · 30 ans ~4 % · 40 ans ~3–4 %.</div>
-    <input type="range" id="appre" min="0" max="6" step="0.5" value="3">
-  </div>
-
-  <div class="ctrl-item">
-    <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_bourse">Rendement bourse</span><span class="ctrl-val" id="bourse-o">7,0 %</span></div>
-    <div class="ctrl-desc" data-i18n="desc_bourse">Rendement annuel moyen d'un portefeuille diversifié (ex. S&amp;P 500, dividendes réinvestis).</div>
-    <div class="ctrl-scenarios">
-      <span class="sc-pill sc-pess" data-i18n="sc_bourse_pess" onclick="setVal('bourse',5)">Pessimiste 5 %</span>
-      <span class="sc-pill sc-moy"  data-i18n="sc_bourse_moy"  onclick="setVal('bourse',7)">Moyen 7 %</span>
-      <span class="sc-pill sc-opt"  data-i18n="sc_bourse_opt"  onclick="setVal('bourse',9.5)">Optimiste 9,5 %</span>
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_condo">Frais de condo</span><span class="ctrl-val" id="condo-o">400 $</span></div>
+      <div class="ctrl-desc" data-i18n="desc_condo">Charges mensuelles de copropriété. 0 $ pour une maison unifamiliale.</div>
+      <div class="pills">
+        <span class="pill pp" data-i18n="sc_condo_pess" onclick="sv('condo',600)">Pessimiste 600 $</span>
+        <span class="pill pm" data-i18n="sc_condo_moy"  onclick="sv('condo',400)">Moyen 400 $</span>
+        <span class="pill po" data-i18n="sc_condo_opt"  onclick="sv('condo',200)">Optimiste 200 $</span>
+      </div>
+      <div class="ctrl-ref" data-i18n="ref_condo">Petit immeuble 200–400 $ · Grand condo 400–700 $/mois.</div>
+      <input type="range" id="condo" min="0" max="1000" step="25" value="400">
     </div>
-    <div class="ctrl-ref" data-i18n="ref_bourse">S&amp;P 500 : 10 ans ~11 % · 20 ans ~8 % · 30 ans ~9 % · 100 ans ~10 %. Prudent après inflation : 7 %.</div>
-    <input type="range" id="bourse" min="3" max="12" step="0.5" value="7">
   </div>
 
-  <div class="ctrl-item">
-    <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_infl">Hausse annuelle des frais</span><span class="ctrl-val" id="infl-o">2,0 %</span></div>
-    <div class="ctrl-desc" data-i18n="desc_infl">Augmentation annuelle des frais de condo, assurances et taxes municipales.</div>
-    <div class="ctrl-scenarios">
-      <span class="sc-pill sc-pess" data-i18n="sc_infl_pess" onclick="setVal('infl',3.5)">Pessimiste 3,5 %</span>
-      <span class="sc-pill sc-moy"  data-i18n="sc_infl_moy"  onclick="setVal('infl',2)">Moyen 2 %</span>
-      <span class="sc-pill sc-opt"  data-i18n="sc_infl_opt"  onclick="setVal('infl',1.5)">Optimiste 1,5 %</span>
+  <div class="row">
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_appre">Appréciation immobilière</span><span class="ctrl-val" id="appre-o">3,0 %</span></div>
+      <div class="ctrl-desc" data-i18n="desc_appre">Hausse annuelle estimée de la valeur de la propriété à Montréal.</div>
+      <div class="pills">
+        <span class="pill pp" data-i18n="sc_appre_pess" onclick="sv('appre',2)">Pessimiste 2 %</span>
+        <span class="pill pm" data-i18n="sc_appre_moy"  onclick="sv('appre',3.5)">Moyen 3,5 %</span>
+        <span class="pill po" data-i18n="sc_appre_opt"  onclick="sv('appre',5)">Optimiste 5 %</span>
+      </div>
+      <div class="ctrl-ref" data-i18n="ref_appre">Montréal : 10 ans ~5–6 % · 20 ans ~4–5 % · 30–40 ans ~3–4 %.</div>
+      <input type="range" id="appre" min="0" max="10" step="0.5" value="3">
     </div>
-    <div class="ctrl-ref" data-i18n="ref_infl">Cible Banque du Canada : 2 %/an. Taxes Montréal : ~2–4 %/an sur 10 ans.</div>
-    <input type="range" id="infl" min="1" max="5" step="0.5" value="2">
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_bourse">Rendement bourse</span><span class="ctrl-val" id="bourse-o">7,0 %</span></div>
+      <div class="ctrl-desc" data-i18n="desc_bourse">Rendement annuel d'un portefeuille diversifié (ex. S&amp;P 500, dividendes réinvestis).</div>
+      <div class="pills">
+        <span class="pill pp" data-i18n="sc_bourse_pess" onclick="sv('bourse',5)">Pessimiste 5 %</span>
+        <span class="pill pm" data-i18n="sc_bourse_moy"  onclick="sv('bourse',7)">Moyen 7 %</span>
+        <span class="pill po" data-i18n="sc_bourse_opt"  onclick="sv('bourse',9.5)">Optimiste 9,5 %</span>
+      </div>
+      <div class="ctrl-ref" data-i18n="ref_bourse">S&amp;P 500 : 10 ans ~11 % · 20 ans ~8 % · 30 ans ~9 % · 100 ans ~10 %.</div>
+      <input type="range" id="bourse" min="3" max="15" step="0.5" value="7">
+    </div>
   </div>
 
-  <div class="ctrl-item">
-    <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_tmi">Taux marginal d'imposition</span><span class="ctrl-val" id="tmi-o">45 %</span></div>
-    <div class="ctrl-desc" data-i18n="desc_tmi">TMI combiné fédéral + Québec. Sert à calculer l'impôt sur les gains en capital du portefeuille à la revente.</div>
-    <div class="ctrl-ref" data-i18n="ref_tmi">Québec : 40–50 k$ ~37 % · 50–100 k$ ~45 % · 100–200 k$ ~50 % · 200 k$+ ~53 %.</div>
-    <input type="range" id="tmi" min="30" max="55" step="1" value="45">
+  <div class="row">
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_infl">Hausse annuelle des frais</span><span class="ctrl-val" id="infl-o">2,0 %</span></div>
+      <div class="ctrl-desc" data-i18n="desc_infl">Augmentation annuelle des frais de condo, assurances et taxes municipales.</div>
+      <div class="pills">
+        <span class="pill pp" data-i18n="sc_infl_pess" onclick="sv('infl',3.5)">Pessimiste 3,5 %</span>
+        <span class="pill pm" data-i18n="sc_infl_moy"  onclick="sv('infl',2)">Moyen 2 %</span>
+        <span class="pill po" data-i18n="sc_infl_opt"  onclick="sv('infl',1.5)">Optimiste 1,5 %</span>
+      </div>
+      <div class="ctrl-ref" data-i18n="ref_infl">Cible BdC : 2 %/an. Taxes Montréal : ~2–4 %/an sur 10 ans.</div>
+      <input type="range" id="infl" min="1" max="5" step="0.5" value="2">
+    </div>
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_ans">Durée de projection</span><span class="ctrl-val" id="ans-o">30 ans</span></div>
+      <div class="ctrl-desc" data-i18n="desc_ans">Horizon temporel de la comparaison achat vs location.</div>
+      <div class="ctrl-ref" data-i18n="ref_ans">30 ans = horizon standard pour un achat résidentiel.</div>
+      <input type="range" id="ans" min="10" max="40" step="5" value="30">
+    </div>
   </div>
 
-  <div class="ctrl-item">
-    <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_txp">Portion en compte taxable</span><span class="ctrl-val" id="txp-o">50 %</span></div>
-    <div class="ctrl-desc" data-i18n="desc_txp">Part du portefeuille hors REER/CELI. Seule cette portion est imposée sur les gains à la revente. Taux d'inclusion : 50 % (hausse annulée, mars 2025).</div>
-    <div class="ctrl-ref" data-i18n="ref_txp">CELI ~95 k$ droits cumulatifs (2026) · REER 18 % du revenu annuel.</div>
-    <input type="range" id="txp" min="0" max="100" step="5" value="50">
+  <div class="row">
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_tmi">Taux marginal d'imposition</span><span class="ctrl-val" id="tmi-o">45 %</span></div>
+      <div class="ctrl-desc" data-i18n="desc_tmi">TMI combiné fédéral + Québec. Sert à calculer l'impôt sur les gains en capital du portefeuille à la revente.</div>
+      <div class="ctrl-ref" data-i18n="ref_tmi">40–50 k$ ~37 % · 50–100 k$ ~45 % · 100–200 k$ ~50 % · 200 k$+ ~53 %.</div>
+      <input type="range" id="tmi" min="30" max="55" step="1" value="45">
+    </div>
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_txp">Portion en compte taxable</span><span class="ctrl-val" id="txp-o">50 %</span></div>
+      <div class="ctrl-desc" data-i18n="desc_txp">Part du portefeuille hors REER/CELI. Seule cette portion est imposée sur les gains en capital à la revente. Taux d'inclusion : 50 % (hausse annulée, mars 2025).</div>
+      <div class="ctrl-ref" data-i18n="ref_txp">CELI ~95 k$ droits cumulatifs (2026) · REER 18 % du revenu annuel · 0 % si tout est à l'abri.</div>
+      <input type="range" id="txp" min="0" max="100" step="5" value="50">
+    </div>
   </div>
+</div>
 
+<div class="toggle-row">
+  <input type="checkbox" id="mode-toggle" checked>
+  <div style="flex:1">
+    <label for="mode-toggle" data-i18n="toggle_label">Calculer le loyer équivalent automatiquement</label>
+    <div class="toggle-desc" data-i18n="toggle_desc">Coché : le loyer qui égalise les deux valeurs nettes est calculé automatiquement. Décoché : tu choisis toi-même le loyer de comparaison.</div>
+  </div>
+</div>
+
+<div class="loyer-manual" id="loyer-manual-wrap">
+  <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_loyer">Loyer mensuel de comparaison</span><span class="ctrl-val" id="loyer-o">2 500 $</span></div>
+  <div class="ctrl-desc" data-i18n="desc_loyer">Loyer mensuel que tu paierais dans le scénario location. Ce montant augmente de 3 %/an.</div>
+  <div class="ctrl-ref" data-i18n="ref_loyer">Montréal jan. 2026 : 1 700 $ (1 ch.) · 2 200 $ (2 ch.) · 2 800 $+ (3 ch. / équivalent condo).</div>
+  <input type="range" id="loyer" min="500" max="6000" step="50" value="2500">
 </div>
 
 <div id="result-wrap"></div>
 
-<div class="sec" data-i18n="sec_decomp">Décomposition mensuelle — an 1 vs an 26+ (post-hypo)</div>
+<div class="sec" id="sec-decomp-el">Décomposition mensuelle — an 1 vs post-hypo</div>
 <div class="card"><table>
-  <thead><tr>
-    <th class="tl" data-i18n="th_poste">Poste</th>
-    <th data-i18n="th_an1">An 1</th>
-    <th data-i18n="th_an26">An 26+ (hypo remb.)</th>
-  </tr></thead>
+  <thead><tr><th class="tl" data-i18n="th_poste">Poste</th><th data-i18n="th_an1">An 1</th><th id="th-posthypo">An 26+ (hypo remb.)</th></tr></thead>
   <tbody id="tb-decomp"></tbody>
 </table></div>
 
 <div class="sec" data-i18n="sec_init">Déboursés initiaux (jour 1)</div>
 <div class="card"><table>
-  <thead><tr>
-    <th class="tl" data-i18n="th_poste2">Poste</th>
-    <th data-i18n="th_montant">Montant</th>
-  </tr></thead>
+  <thead><tr><th class="tl" data-i18n="th_poste">Poste</th><th data-i18n="th_montant">Montant</th></tr></thead>
   <tbody id="tb-init"></tbody>
 </table></div>
 
-<div class="sec" data-i18n="sec_fisc">Comparaison fiscale à la revente (an 30)</div>
+<div class="sec" data-i18n="sec_fisc">Comparaison fiscale à la revente</div>
 <div class="card tbl"><table>
   <thead><tr>
     <th class="tl" data-i18n="th_scenario">Scénario</th>
@@ -246,26 +298,26 @@ input[type=range]{width:100%;accent-color:#185FA5;cursor:pointer}
 </table></div>
 <div class="det" id="det-fisc"></div>
 
-<div class="sec" data-i18n="sec_metrics">Valeur nette après impôt — an 30</div>
-<div class="metrics" id="metrics"></div>
+<div class="sec" id="sec-metrics-el">Valeur nette après impôt — an 30</div>
+<div class="mets" id="metrics"></div>
 
-<div class="sec" data-i18n="sec_networth">Valeur nette sur 30 ans</div>
+<div class="sec" id="sec-networth-el">Valeur nette sur 30 ans</div>
 <div class="leg">
-  <span style="display:flex;align-items:center;gap:5px"><span class="ld" style="background:#185FA5"></span><span data-i18n="leg_achat">Achat (immo + bourse post-hypo, exempt)</span></span>
-  <span style="display:flex;align-items:center;gap:5px"><span class="ld" style="background:#0F6E56;opacity:.5"></span><span data-i18n="leg_locBrut">Location — brut</span></span>
-  <span style="display:flex;align-items:center;gap:5px"><span class="ld" style="background:#BA7517"></span><span data-i18n="leg_locNet">Location — net après impôt</span></span>
+  <span style="display:flex;align-items:center;gap:5px"><span class="ld" style="background:var(--blue)"></span><span data-i18n="leg_achat">Achat (immo + bourse post-hypo, exempt)</span></span>
+  <span style="display:flex;align-items:center;gap:5px"><span class="ld" style="background:var(--green);opacity:.6"></span><span data-i18n="leg_locBrut">Location — brut</span></span>
+  <span style="display:flex;align-items:center;gap:5px"><span class="ld" style="background:var(--amber)"></span><span data-i18n="leg_locNet">Location — net après impôt</span></span>
 </div>
 <div class="cw"><canvas id="cNet"></canvas></div>
 
-<div class="sec" data-i18n="sec_monthly">Coût mensuel — achat vs loyer équivalent sur 30 ans</div>
-<div class="infobox" id="cross-msg"></div>
+<div class="sec" data-i18n="sec_monthly">Flux mensuel — achat vs loyer</div>
+<div class="ibox" id="cross-msg"></div>
 <div class="leg">
-  <span style="display:flex;align-items:center;gap:5px"><span class="ld" style="background:#185FA5"></span><span data-i18n="leg_coutAchat">Coût total achat/mois</span></span>
-  <span style="display:flex;align-items:center;gap:5px"><span class="ld" style="background:#0F6E56"></span><span data-i18n="leg_loyerEquiv">Loyer équivalent (+3 %/an)</span></span>
+  <span style="display:flex;align-items:center;gap:5px"><span class="ld" style="background:var(--blue)"></span><span data-i18n="leg_coutAchat">Coût total achat/mois</span></span>
+  <span style="display:flex;align-items:center;gap:5px"><span class="ld" style="background:var(--green)"></span><span data-i18n="leg_loyerEquiv">Loyer (+3 %/an)</span></span>
 </div>
 <div class="cw"><canvas id="cM"></canvas></div>
 
-<div class="sec" data-i18n="sec_table">Tableau détaillé — 30 ans</div>
+<div class="sec" data-i18n="sec_table">Tableau détaillé</div>
 <div class="card tbl"><table>
   <thead><tr>
     <th class="tl" data-i18n="th_annee">Année</th>
@@ -281,218 +333,28 @@ input[type=range]{width:100%;accent-color:#185FA5;cursor:pointer}
   <tbody id="tb-rows"></tbody>
 </table></div>
 
-<p class="note" data-i18n="note">Résidence principale : gain en capital 100 % exempt à la revente (ARC) · Portefeuille : gains inclus à 50 % sur la portion taxable · Taxes (~1,1 %) et entretien (~0,5 %) indexés à la valeur courante · Hypo sur 25 ans — à l'an 26, le versement mensuel va en bourse · Loyer équivalent +3 %/an · Calculé par bissection pour égaliser les deux valeurs nettes à 30 ans.</p>
+<p class="note" data-i18n="note">Résidence principale : gain en capital 100 % exempt à la revente (ARC) · Portefeuille boursier : gains inclus à 50 % dans le revenu sur la portion taxable · Taxes (~1,1 %) et entretien (~0,5 %) indexés à la valeur courante chaque année · À la fin de l'hypothèque, le versement mensuel est investi en bourse jusqu'à la fin de la projection · Loyer équivalent +3 %/an</p>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
-let lang = 'fr';
+const isDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches;
+const gridColor=isDark?'rgba(255,255,255,0.07)':'rgba(0,0,0,0.07)';
+const tickColor=isDark?'#888780':'#888';
+const TRACK=isDark?'#3a3a38':'#e0ddd6';
+function fillSlider(el){
+  const pct=(+el.value-+el.min)/(+el.max-+el.min)*100;
+  el.style.background=`linear-gradient(to right,var(--blue) ${pct}%,${TRACK} ${pct}%)`;
+}
+document.querySelectorAll('input[type=range]').forEach(el=>{
+  fillSlider(el);
+  el.addEventListener('input',()=>fillSlider(el));
+});
 
-// ─── Translations ─────────────────────────────────────────────────────────────
-const T = {
-  fr: {
-    pageTitle: 'Achat vs Location — Montréal',
-    h1: 'Achat vs Location — Montréal',
-    subtitle: 'Calculateur de loyer équivalent sur 30 ans',
-
-    lbl_prix: "Prix d'achat",
-    desc_prix: "Valeur de la propriété. Médiane Montréal : ~580–700 k$ maison · ~430 k$ condo (2026).",
-    lbl_mise: "Mise de fonds",
-    desc_mise: "Montant payé comptant. Le reste est financé par hypothèque. Dans le scénario location, cet argent est investi en bourse dès le départ.",
-    ref_mise: "Min légal 5 % (SCHL requis sous 20 %). 20 %+ = pas d'assurance.",
-    lbl_taux: "Taux hypothécaire",
-    desc_taux: "Taux d'intérêt annuel sur l'hypothèque.",
-    ref_taux: "2020–21 ~2 % (creux historique) · 2023–24 ~5–6 % · 2026 ~4–4,5 %.",
-    sc_taux_pess: "Pessimiste 5,5 %", sc_taux_moy: "Moyen 4,5 %", sc_taux_opt: "Optimiste 3,5 %",
-    lbl_condo: "Frais de condo",
-    desc_condo: "Charges mensuelles de copropriété. Mettre 0 $ pour une maison unifamiliale.",
-    ref_condo: "Petit immeuble 200–400 $/mois · Grand condo avec services 400–700 $/mois.",
-    sc_condo_pess: "Pessimiste 600 $", sc_condo_moy: "Moyen 400 $", sc_condo_opt: "Optimiste 200 $",
-    lbl_appre: "Appréciation immobilière",
-    desc_appre: "Hausse annuelle estimée de la valeur de la propriété à Montréal.",
-    ref_appre: "Montréal : 10 ans ~5–6 % · 20 ans ~4–5 % · 30 ans ~4 % · 40 ans ~3–4 %.",
-    sc_appre_pess: "Pessimiste 2 %", sc_appre_moy: "Moyen 3,5 %", sc_appre_opt: "Optimiste 5 %",
-    lbl_bourse: "Rendement bourse",
-    desc_bourse: "Rendement annuel moyen d'un portefeuille diversifié (ex. S&P 500, dividendes réinvestis).",
-    ref_bourse: "S&P 500 : 10 ans ~11 % · 20 ans ~8 % · 30 ans ~9 % · 100 ans ~10 %. Prudent après inflation : 7 %.",
-    sc_bourse_pess: "Pessimiste 5 %", sc_bourse_moy: "Moyen 7 %", sc_bourse_opt: "Optimiste 9,5 %",
-    lbl_infl: "Hausse annuelle des frais",
-    desc_infl: "Augmentation annuelle des frais de condo, assurances et taxes municipales.",
-    ref_infl: "Cible Banque du Canada : 2 %/an. Taxes Montréal : ~2–4 %/an sur 10 ans.",
-    sc_infl_pess: "Pessimiste 3,5 %", sc_infl_moy: "Moyen 2 %", sc_infl_opt: "Optimiste 1,5 %",
-    lbl_tmi: "Taux marginal d'imposition",
-    desc_tmi: "TMI combiné fédéral + Québec. Sert à calculer l'impôt sur les gains en capital du portefeuille à la revente.",
-    ref_tmi: "Québec : 40–50 k$ ~37 % · 50–100 k$ ~45 % · 100–200 k$ ~50 % · 200 k$+ ~53 %.",
-    lbl_txp: "Portion en compte taxable",
-    desc_txp: "Part du portefeuille hors REER/CELI. Seule cette portion est imposée sur les gains à la revente. Taux d'inclusion : 50 % (hausse annulée, mars 2025).",
-    ref_txp: "CELI ~95 k$ droits cumulatifs (2026) · REER 18 % du revenu annuel.",
-
-    sec_decomp: "Décomposition mensuelle — an 1 vs an 26+ (post-hypo)",
-    sec_init: "Déboursés initiaux (jour 1)",
-    sec_fisc: "Comparaison fiscale à la revente (an 30)",
-    sec_metrics: "Valeur nette après impôt — an 30",
-    sec_networth: "Valeur nette sur 30 ans",
-    sec_monthly: "Coût mensuel — achat vs loyer équivalent sur 30 ans",
-    sec_table: "Tableau détaillé — 30 ans",
-
-    th_poste: "Poste", th_poste2: "Poste", th_an1: "An 1", th_an26: "An 26+ (hypo remb.)",
-    th_montant: "Montant", th_scenario: "Scénario", th_vbrute: "Valeur brute",
-    th_coutbase: "Coût de base", th_gain: "Gain", th_impot: "Impôt", th_vnet: "Valeur nette",
-    th_annee: "Année", th_coutAchat: "Coût achat/mois", th_surplus: "Surplus achat→bourse",
-    th_loyer: "Loyer/mois", th_surploc: "Surplus loc→bourse", th_immo: "Valeur immo",
-    th_bourseAchat: "Bourse achat", th_vNetAchat: "Val. nette achat", th_portfLoc: "Portef. loc. net",
-
-    leg_achat: "Achat (immo + bourse post-hypo, exempt)",
-    leg_locBrut: "Location — brut", leg_locNet: "Location — net après impôt",
-    leg_coutAchat: "Coût total achat/mois", leg_loyerEquiv: "Loyer équivalent (+3 %/an)",
-
-    note: "Résidence principale : gain en capital 100 % exempt à la revente (ARC) · Portefeuille : gains inclus à 50 % sur la portion taxable · Taxes (~1,1 %) et entretien (~0,5 %) indexés à la valeur courante · Hypo sur 25 ans — à l'an 26, le versement mensuel va en bourse · Loyer équivalent +3 %/an · Calculé par bissection pour égaliser les deux valeurs nettes à 30 ans.",
-
-    be_eyebrow: "Loyer de rupture",
-    be_hint: loy => `En dessous de ce montant, louer + investir est préférable sur 30 ans.`,
-    be_below_arrow: "▼", be_below_action: "Louer", be_below_cond: loy => `Si loyer < ${loy}`,
-    be_above_arrow: "▲", be_above_action: "Acheter", be_above_cond: loy => `Si loyer > ${loy}`,
-
-    warn_achat_gagne: "L'achat gagne dans tous les cas avec ces paramètres — même à 0 $ de loyer, la location ne rattrape pas. Essaie d'augmenter le rendement bourse.",
-    warn_loc_gagne: "La location gagne dans tous les cas — même à loyer très élevé. Essaie de baisser le rendement bourse ou d'augmenter l'appréciation immo.",
-
-    invest_label_achatCher: "Montant à investir en bourse (an 1)",
-    invest_sub_achatCher: (cost, loy) => `coût achat ${cost} − loyer équiv. ${loy}`,
-    invest_detail_achatCher: (surplus, am) => `Le locataire doit investir ce surplus chaque mois pour égaler la valeur nette de l'achat à 30 ans.<br>Contributions totales sur ${am} ans : <strong>${surplus}</strong> (avant rendements).<br>À l'an ${am+1}, l'hypo est remboursée et le loyer a rattrapé le coût d'achat.`,
-    invest_label_locCher: "Achat moins cher que le loyer dès l'an 1",
-    invest_sub_locCher: (loy, cost) => `loyer équiv. ${loy} > coût achat ${cost}`,
-    invest_detail_locCher: diff => `L'achat coûte moins cher au mois que le loyer équivalent dès le départ.<br>L'acheteur économise ${diff}/mois qu'il peut investir en bourse en plus.`,
-
-    hero_label: "Loyer initial équivalent — en dessous de ce montant, louer est préférable. Au-dessus, acheter est préférable.",
-    hero_an1_label: "Loyer initial (an 1)", hero_an1_sub: cost => `coût achat : ${cost}/mois`,
-    hero_an25_label: "Loyer à l'an 25", hero_an25_sub: fPost => `frais post-hypo : ${fPost}`,
-    hero_an30_label: "Loyer à l'an 30", hero_an30_sub: "après 30 ans à +3 %/an",
-
-    row_versement: "Versement hypothécaire", row_investi: "Investi en bourse dès l'an 26",
-    row_interets: "dont intérêts", row_capital: "dont capital (épargne forcée)",
-    row_taxes: "Taxes + entretien (valeur courante)", row_condo: "Frais de condo",
-    row_assurances: "Assurances", row_total: "Total mensuel achat", row_loyerEquiv: "Loyer équivalent",
-    row_mise: "Mise de fonds", row_bienvenue: "Droits de mutation (taxe de bienvenue)",
-    row_notaire: "Notaire + inspection", row_divers: "Ajustements / divers",
-    row_totalInit: "Total requis le jour 1",
-    fisc_achat: "Achat — résidence principale + bourse",
-    fisc_loc: "Location — portefeuille",
-    tag_exempt: "immo exempt", tag_imposable: "partiellement imposable",
-    det_fisc: (fvP, cb, gainP, txpPct, gainTax, gainInc, tmiPct, impP, teff) =>
-      `Détail impôt : Gain = ${fvP} − ${cb} = <strong>${gainP}</strong> · Taxable (${txpPct}%) = ${gainTax} · Inclusion 50 % = ${gainInc} · Impôt à ${tmiPct}% = <strong>${impP}</strong> · Taux effectif : ${teff}%`,
-    metric_achat: "Achat — valeur nette (an 30)", metric_loc: "Location — valeur nette (an 30)",
-    metric_avantage: "Avantage net", metric_equilibre: "Équilibre",
-    metric_buy_lbl: "achat", metric_rent_lbl: "location",
-    cross_found: an => `Croisement à l'an ${an} — le loyer équivalent dépasse le coût mensuel de l'achat à partir de ce moment.`,
-    cross_never: "Le coût mensuel de l'achat reste supérieur au loyer équivalent pendant toute la durée de 30 ans.",
-    chart_buy: "Achat", chart_locBrut: "Loc brut", chart_locNet: "Loc net", chart_loyer: "Loyer",
-    chart_year: i => `An ${i}`,
-    det_check: an => `An ${an} ✓`, det_year: an => `An ${an}`,
-  },
-  en: {
-    pageTitle: 'Buy vs Rent — Montréal',
-    h1: 'Buy vs Rent — Montréal',
-    subtitle: '30-year equivalent rent calculator',
-
-    lbl_prix: "Purchase price",
-    desc_prix: "Property value. Montréal median: ~$580–700k house · ~$430k condo (2026).",
-    lbl_mise: "Down payment",
-    desc_mise: "Amount paid upfront. The rest is financed by mortgage. In the renting scenario, this money is invested in stocks from day 1.",
-    ref_mise: "Legal min 5% (CMHC required below 20%). 20%+ = no insurance.",
-    lbl_taux: "Mortgage rate",
-    desc_taux: "Annual interest rate on the mortgage.",
-    ref_taux: "2020–21 ~2% (historical low) · 2023–24 ~5–6% · 2026 ~4–4.5%.",
-    sc_taux_pess: "Pessimistic 5.5%", sc_taux_moy: "Average 4.5%", sc_taux_opt: "Optimistic 3.5%",
-    lbl_condo: "Condo fees",
-    desc_condo: "Monthly co-ownership charges. Set to $0 for a single-family home.",
-    ref_condo: "Small building $200–400/mo · Large condo with services $400–700/mo.",
-    sc_condo_pess: "Pessimistic $600", sc_condo_moy: "Average $400", sc_condo_opt: "Optimistic $200",
-    lbl_appre: "Real estate appreciation",
-    desc_appre: "Estimated annual increase in property value in Montréal.",
-    ref_appre: "Montréal: 10 yr ~5–6% · 20 yr ~4–5% · 30 yr ~4% · 40 yr ~3–4%.",
-    sc_appre_pess: "Pessimistic 2%", sc_appre_moy: "Average 3.5%", sc_appre_opt: "Optimistic 5%",
-    lbl_bourse: "Stock market return",
-    desc_bourse: "Average annual return of a diversified portfolio (e.g. S&P 500, dividends reinvested).",
-    ref_bourse: "S&P 500: 10 yr ~11% · 20 yr ~8% · 30 yr ~9% · 100 yr ~10%. Conservative after inflation: 7%.",
-    sc_bourse_pess: "Pessimistic 5%", sc_bourse_moy: "Average 7%", sc_bourse_opt: "Optimistic 9.5%",
-    lbl_infl: "Annual fee increase",
-    desc_infl: "Annual increase in condo fees, insurance, and municipal taxes.",
-    ref_infl: "Bank of Canada target: 2%/yr. Montréal taxes: ~2–4%/yr over 10 years.",
-    sc_infl_pess: "Pessimistic 3.5%", sc_infl_moy: "Average 2%", sc_infl_opt: "Optimistic 1.5%",
-    lbl_tmi: "Marginal tax rate",
-    desc_tmi: "Combined federal + Québec MTR. Used to calculate capital gains tax on the portfolio at sale.",
-    ref_tmi: "Québec: $40–50k ~37% · $50–100k ~45% · $100–200k ~50% · $200k+ ~53%.",
-    lbl_txp: "Taxable account portion",
-    desc_txp: "Share of portfolio outside RRSP/TFSA. Only this portion is taxed on gains at sale. Inclusion rate: 50% (increase cancelled, March 2025).",
-    ref_txp: "TFSA ~$95k cumulative room (2026) · RRSP 18% of annual income.",
-
-    sec_decomp: "Monthly breakdown — Year 1 vs Year 26+ (post-mortgage)",
-    sec_init: "Upfront costs (day 1)",
-    sec_fisc: "Tax comparison at sale (year 30)",
-    sec_metrics: "Net worth after tax — year 30",
-    sec_networth: "Net worth over 30 years",
-    sec_monthly: "Monthly cost — buying vs equivalent rent over 30 years",
-    sec_table: "Detailed table — 30 years",
-
-    th_poste: "Item", th_poste2: "Item", th_an1: "Year 1", th_an26: "Year 26+ (mortgage paid)",
-    th_montant: "Amount", th_scenario: "Scenario", th_vbrute: "Gross value",
-    th_coutbase: "Cost base", th_gain: "Gain", th_impot: "Tax", th_vnet: "Net value",
-    th_annee: "Year", th_coutAchat: "Buy cost/month", th_surplus: "Buy surplus→stocks",
-    th_loyer: "Rent/month", th_surploc: "Rent surplus→stocks", th_immo: "Property value",
-    th_bourseAchat: "Stocks (buy)", th_vNetAchat: "Net worth (buy)", th_portfLoc: "Net portfolio (rent)",
-
-    leg_achat: "Buy (property + stocks post-mortgage, exempt)",
-    leg_locBrut: "Rent — gross", leg_locNet: "Rent — net after tax",
-    leg_coutAchat: "Total buy cost/month", leg_loyerEquiv: "Equivalent rent (+3%/year)",
-
-    note: "Principal residence: 100% capital gains exempt at sale (CRA) · Portfolio: gains included at 50% on the taxable portion · Taxes (~1.1%) and maintenance (~0.5%) indexed to current value · 25-year mortgage — at year 26, monthly payment goes to stocks · Equivalent rent +3%/year · Calculated by bisection to equalize both net worths at 30 years.",
-
-    be_eyebrow: "Breakeven rent",
-    be_hint: loy => `Below this amount, renting + investing is better over 30 years.`,
-    be_below_arrow: "▼", be_below_action: "Rent", be_below_cond: loy => `If rent < ${loy}`,
-    be_above_arrow: "▲", be_above_action: "Buy", be_above_cond: loy => `If rent > ${loy}`,
-
-    warn_achat_gagne: "Buying wins in all cases — even at $0 rent, renting cannot catch up. Try increasing the stock return.",
-    warn_loc_gagne: "Renting wins in all cases — even at very high rent. Try lowering the stock return or increasing real estate appreciation.",
-
-    invest_label_achatCher: "Amount to invest in stocks (year 1)",
-    invest_sub_achatCher: (cost, loy) => `buy cost ${cost} − equiv. rent ${loy}`,
-    invest_detail_achatCher: (surplus, am) => `The renter must invest this surplus each month to match the buyer's net worth at 30 years.<br>Total contributions over ${am} years: <strong>${surplus}</strong> (before returns).<br>At year ${am+1}, the mortgage is paid and the rent has caught up to the buy cost.`,
-    invest_label_locCher: "Buying is cheaper than rent from year 1",
-    invest_sub_locCher: (loy, cost) => `equiv. rent ${loy} > buy cost ${cost}`,
-    invest_detail_locCher: diff => `Buying costs less per month than equivalent rent from the start.<br>The buyer saves ${diff}/month which can also be invested in stocks.`,
-
-    hero_label: "Equivalent initial rent — below this amount, renting is better. Above it, buying is better.",
-    hero_an1_label: "Initial rent (year 1)", hero_an1_sub: cost => `buy cost: ${cost}/month`,
-    hero_an25_label: "Rent at year 25", hero_an25_sub: fPost => `post-mortgage costs: ${fPost}`,
-    hero_an30_label: "Rent at year 30", hero_an30_sub: "after 30 years at +3%/year",
-
-    row_versement: "Mortgage payment", row_investi: "Invested in stocks from year 26",
-    row_interets: "of which interest", row_capital: "of which principal (forced savings)",
-    row_taxes: "Taxes + maintenance (current value)", row_condo: "Condo fees",
-    row_assurances: "Insurance", row_total: "Total monthly buy cost", row_loyerEquiv: "Equivalent rent",
-    row_mise: "Down payment", row_bienvenue: "Welcome tax (land transfer)",
-    row_notaire: "Notary + inspection", row_divers: "Adjustments / misc.",
-    row_totalInit: "Total required on day 1",
-    fisc_achat: "Buy — principal residence + stocks",
-    fisc_loc: "Rent — portfolio",
-    tag_exempt: "property exempt", tag_imposable: "partially taxable",
-    det_fisc: (fvP, cb, gainP, txpPct, gainTax, gainInc, tmiPct, impP, teff) =>
-      `Tax detail: Gain = ${fvP} − ${cb} = <strong>${gainP}</strong> · Taxable (${txpPct}%) = ${gainTax} · Inclusion 50% = ${gainInc} · Tax at ${tmiPct}% = <strong>${impP}</strong> · Effective rate: ${teff}%`,
-    metric_achat: "Buy — net worth (year 30)", metric_loc: "Rent — net worth (year 30)",
-    metric_avantage: "Net advantage", metric_equilibre: "Break-even",
-    metric_buy_lbl: "buy", metric_rent_lbl: "rent",
-    cross_found: an => `Crossover at year ${an} — the equivalent rent exceeds the monthly buy cost from that point on.`,
-    cross_never: "The monthly buy cost remains higher than the equivalent rent for the entire 30-year period.",
-    chart_buy: "Buy", chart_locBrut: "Rent gross", chart_locNet: "Rent net", chart_loyer: "Rent",
-    chart_year: i => `Yr ${i}`,
-    det_check: an => `Yr ${an} ✓`, det_year: an => `Yr ${an}`,
-  }
-};
-
-// ─── Format helpers ───────────────────────────────────────────────────────────
-function locale(){ return lang==='fr'?'fr-CA':'en-CA'; }
-const fc = v => Math.round(Math.abs(v)).toLocaleString(locale())+' $';
-const fm = v => {
+// ─── Language ─────────────────────────────────────────────────────────────────
+let lang='fr';
+function locale(){return lang==='fr'?'fr-CA':'en-CA';}
+const fc=v=>Math.round(Math.abs(v)).toLocaleString(locale())+' $';
+const fm=v=>{
   const a=Math.abs(v),s=v<0?'-':'';
   if(a>=1000000){
     const m=(a/1000000).toLocaleString(locale(),{minimumFractionDigits:2,maximumFractionDigits:2});
@@ -500,315 +362,329 @@ const fm = v => {
   }
   return s+Math.round(a/1000).toLocaleString(locale())+' k$';
 };
-
 function bvn(p){let t=0,pr=0;for(const[pl,tx]of[[50000,.005],[200000,.01],[300000,.015],[500000,.02],[1e9,.025]]){if(p<=pr)break;t+=(Math.min(p,pl)-pr)*tx;pr=pl;if(p<=pl)break;}return t;}
 
-// ─── Language ─────────────────────────────────────────────────────────────────
+// ─── Translations ─────────────────────────────────────────────────────────────
+const T={
+  fr:{
+    pageTitle:'Achat vs Location — Montréal',h1:'Achat vs Location — Montréal',
+    subtitle:'Calculateur de loyer équivalent · Projection sur la durée choisie',
+    lbl_prix:"Prix d'achat",desc_prix:"Valeur de la propriété. Médiane Montréal : ~580–700 k$ maison · ~430 k$ condo (2026).",
+    lbl_mise:"Mise de fonds",desc_mise:"Montant payé comptant. Dans le scénario location, investi en bourse dès le départ.",ref_mise:"Min légal 5 % (SCHL sous 20 %). 20 %+ = pas d'assurance hypothécaire.",
+    lbl_amort:"Durée d'hypothèque",desc_amort:"Nombre d'années pour rembourser l'hypothèque. À la fin, le versement mensuel est investi en bourse.",ref_amort:"Standard Canada : 25 ans. Max assurable : 25 ans. Sans assurance : jusqu'à 30 ans.",unit_dur:" ans",
+    lbl_taux:"Taux hypothécaire",desc_taux:"Taux d'intérêt annuel sur l'hypothèque.",ref_taux:"2020–21 ~2 % · 2023–24 ~5–6 % · 2026 ~4–4,5 %.",
+    sc_taux_pess:"Pessimiste 5,5 %",sc_taux_moy:"Moyen 4,5 %",sc_taux_opt:"Optimiste 3,5 %",
+    lbl_condo:"Frais de condo",desc_condo:"Charges mensuelles de copropriété. 0 $ pour une maison unifamiliale.",ref_condo:"Petit immeuble 200–400 $ · Grand condo 400–700 $/mois.",
+    sc_condo_pess:"Pessimiste 600 $",sc_condo_moy:"Moyen 400 $",sc_condo_opt:"Optimiste 200 $",
+    lbl_appre:"Appréciation immobilière",desc_appre:"Hausse annuelle estimée de la valeur de la propriété à Montréal.",ref_appre:"Montréal : 10 ans ~5–6 % · 20 ans ~4–5 % · 30–40 ans ~3–4 %.",
+    sc_appre_pess:"Pessimiste 2 %",sc_appre_moy:"Moyen 3,5 %",sc_appre_opt:"Optimiste 5 %",
+    lbl_bourse:"Rendement bourse",desc_bourse:"Rendement annuel d'un portefeuille diversifié (ex. S&P 500, dividendes réinvestis).",ref_bourse:"S&P 500 : 10 ans ~11 % · 20 ans ~8 % · 30 ans ~9 % · 100 ans ~10 %.",
+    sc_bourse_pess:"Pessimiste 5 %",sc_bourse_moy:"Moyen 7 %",sc_bourse_opt:"Optimiste 9,5 %",
+    lbl_infl:"Hausse annuelle des frais",desc_infl:"Augmentation annuelle des frais de condo, assurances et taxes municipales.",ref_infl:"Cible BdC : 2 %/an. Taxes Montréal : ~2–4 %/an sur 10 ans.",
+    sc_infl_pess:"Pessimiste 3,5 %",sc_infl_moy:"Moyen 2 %",sc_infl_opt:"Optimiste 1,5 %",
+    lbl_ans:"Durée de projection",desc_ans:"Horizon temporel de la comparaison achat vs location.",ref_ans:"30 ans = horizon standard pour un achat résidentiel.",
+    lbl_tmi:"Taux marginal d'imposition",desc_tmi:"TMI combiné fédéral + Québec. Sert à calculer l'impôt sur les gains en capital du portefeuille à la revente.",ref_tmi:"40–50 k$ ~37 % · 50–100 k$ ~45 % · 100–200 k$ ~50 % · 200 k$+ ~53 %.",
+    lbl_txp:"Portion en compte taxable",desc_txp:"Part du portefeuille hors REER/CELI. Seule cette portion est imposée sur les gains en capital à la revente. Taux d'inclusion : 50 % (hausse annulée, mars 2025).",ref_txp:"CELI ~95 k$ droits cumulatifs (2026) · REER 18 % du revenu annuel · 0 % si tout est à l'abri.",
+    toggle_label:"Calculer le loyer équivalent automatiquement",toggle_desc:"Coché : le loyer qui égalise les deux valeurs nettes est calculé automatiquement. Décoché : tu choisis toi-même le loyer de comparaison.",
+    lbl_loyer:"Loyer mensuel de comparaison",desc_loyer:"Loyer mensuel que tu paierais dans le scénario location. Ce montant augmente de 3 %/an.",ref_loyer:"Montréal jan. 2026 : 1 700 $ (1 ch.) · 2 200 $ (2 ch.) · 2 800 $+ (3 ch. / équivalent condo).",
+    sec_decomp:"Décomposition mensuelle — an 1 vs post-hypo",sec_init:"Déboursés initiaux (jour 1)",sec_fisc:"Comparaison fiscale à la revente",
+    sec_metrics:an=>`Valeur nette après impôt — an ${an}`,sec_networth:an=>`Valeur nette sur ${an} ans`,
+    sec_monthly:"Flux mensuel — achat vs loyer",sec_table:"Tableau détaillé",
+    th_poste:"Poste",th_an1:"An 1",th_montant:"Montant",th_posthypo:am=>`An ${am+1}+ (hypo remb.)`,
+    th_scenario:"Scénario",th_vbrute:"Valeur brute",th_coutbase:"Coût de base",th_gain:"Gain",th_impot:"Impôt",th_vnet:"Valeur nette",
+    th_annee:"Année",th_coutAchat:"Coût achat/mois",th_surplus:"Surplus achat→bourse",th_loyer:"Loyer/mois",th_surploc:"Surplus loc→bourse",th_immo:"Valeur immo",th_bourseAchat:"Bourse achat",th_vNetAchat:"Val. nette achat",th_portfLoc:"Portef. loc. net",
+    leg_achat:"Achat (immo + bourse post-hypo, exempt)",leg_locBrut:"Location — brut",leg_locNet:"Location — net après impôt",leg_coutAchat:"Coût total achat/mois",leg_loyerEquiv:"Loyer (+3 %/an)",
+    note:"Résidence principale : gain en capital 100 % exempt à la revente (ARC) · Portefeuille boursier : gains inclus à 50 % dans le revenu sur la portion taxable · Taxes (~1,1 %) et entretien (~0,5 %) indexés à la valeur courante chaque année · À la fin de l'hypothèque, le versement mensuel est investi en bourse jusqu'à la fin de la projection · Loyer équivalent +3 %/an",
+    be_eyebrow:"Loyer de rupture",be_hint:()=>"En dessous de ce montant, louer + investir est préférable.",
+    be_below_arrow:"▼",be_below_action:"Louer",be_below_cond:loy=>`Si loyer < ${loy}`,
+    be_above_arrow:"▲",be_above_action:"Acheter",be_above_cond:loy=>`Si loyer > ${loy}`,
+    warn_achat_gagne:"L'achat gagne dans tous les cas — même à 0 $ de loyer, la location ne rattrape pas. Essaie d'augmenter le rendement bourse.",
+    warn_loc_gagne:"La location gagne dans tous les cas — même à loyer très élevé. Essaie de baisser le rendement bourse ou d'augmenter l'appréciation immo.",
+    invest_lbl_cher:"Montant à investir en bourse (an 1)",invest_sub_cher:(c,l)=>`coût achat ${c} − loyer équiv. ${l}`,
+    invest_det_cher:(s,am,an)=>`Le locataire doit investir ce surplus chaque mois pour égaler la valeur nette de l'achat à ${an} ans.<br>Contributions sur ${am} ans : <strong>${s}</strong> (avant rendements).`,
+    invest_lbl_eco:"L'achat coûte moins cher que le loyer dès l'an 1",invest_sub_eco:(l,c)=>`loyer équiv. ${l} > coût achat ${c}`,
+    invest_det_eco:"L'achat est moins cher au mois dès le départ — l'acheteur peut investir ce surplus en bourse.",
+    hero_sub_auto:"Loyer initial équivalent — en dessous : louer est préférable · au-dessus : acheter est préférable",
+    hero_hl_an1:"Loyer initial (an 1)",hero_hs_an1:c=>`coût achat : ${c}/mois`,
+    hero_hl_amort:am=>`Loyer à l'an ${am}`,hero_hs_amort:f=>`frais post-hypo : ${f}`,
+    hero_hl_fin:an=>`Loyer à l'an ${an}`,hero_hs_fin:an=>`après ${an} ans à +3 %/an`,
+    manual_sub:l=>`Comparaison avec un loyer de ${l}/mois (+3 %/an)`,
+    manual_hl1:"Loyer initial choisi",manual_hl2:"Différence mensuelle (an 1)",
+    manual_hs_pos:"achat coûte plus cher",manual_hs_neg:"location coûte plus cher",
+    manual_hl3:an=>`Avantage net (an ${an})`,manual_eq:"équilibre",manual_buy:"avantage achat",manual_rent:"avantage location",
+    row_versement:"Versement hypothécaire",row_investi:"Investi en bourse",row_interets:"dont intérêts",row_capital:"dont capital",
+    row_taxes:"Taxes + entretien (valeur courante)",row_condo_lbl:"Frais de condo",row_ass:"Assurances",row_total:"Total mensuel achat",row_loyer_comp:"Loyer de comparaison",
+    row_mise:"Mise de fonds",row_bienv:"Droits de mutation (taxe de bienvenue)",row_notaire:"Notaire + inspection",row_divers:"Ajustements / divers",row_totalInit:"Total requis le jour 1",
+    fisc_achat:"Achat — résidence principale",fisc_loc:"Location — portefeuille",tag_exempt:"exempt",tag_imp:"partiellement imposable",
+    det_fisc:(fvP,cb,gP,txpP,gT,gI,tmiP,iP,te)=>`Impôt : Gain = ${fvP} − ${cb} = ${gP} · Taxable (${txpP}%) = ${gT} · Inclusion 50 % = ${gI} · Impôt à ${tmiP}% = ${iP} · Taux effectif : ${te}%`,
+    metric_achat:an=>`Achat — valeur nette (an ${an})`,metric_loc:an=>`Location — valeur nette (an ${an})`,
+    metric_avantage:"Avantage net",metric_eq:"Équilibre",metric_buy_lbl:"achat",metric_rent_lbl:"location",
+    cross_found:an=>`Croisement à l'an ${an} — le loyer dépasse le coût mensuel de l'achat à partir de ce moment.`,cross_never:an=>`Le coût mensuel de l'achat reste supérieur au loyer pendant toute la durée de ${an} ans.`,
+    chart_buy:"Achat",chart_locBrut:"Loc brut",chart_locNet:"Loc net",chart_loyer:"Loyer",chart_year:i=>`An ${i}`,det_check:an=>`An ${an} ✓`,det_year:an=>`An ${an}`,
+  },
+  en:{
+    pageTitle:'Buy vs Rent — Montréal',h1:'Buy vs Rent — Montréal',
+    subtitle:'Equivalent rent calculator · Adjustable projection horizon',
+    lbl_prix:"Purchase price",desc_prix:"Property value. Montréal median: ~$580–700k house · ~$430k condo (2026).",
+    lbl_mise:"Down payment",desc_mise:"Amount paid upfront. In the renting scenario, this money is invested in stocks from day 1.",ref_mise:"Legal min 5% (CMHC required below 20%). 20%+ = no mortgage insurance.",
+    lbl_amort:"Mortgage term",desc_amort:"Number of years to pay off the mortgage. After that, the monthly payment is invested in stocks.",ref_amort:"Canadian standard: 25 yrs. Max insurable: 25 yrs. Without insurance: up to 30 yrs.",unit_dur:" yrs",
+    lbl_taux:"Mortgage rate",desc_taux:"Annual interest rate on the mortgage.",ref_taux:"2020–21 ~2% · 2023–24 ~5–6% · 2026 ~4–4.5%.",
+    sc_taux_pess:"Pessimistic 5.5%",sc_taux_moy:"Average 4.5%",sc_taux_opt:"Optimistic 3.5%",
+    lbl_condo:"Condo fees",desc_condo:"Monthly co-ownership charges. $0 for a single-family home.",ref_condo:"Small building $200–400 · Large condo $400–700/month.",
+    sc_condo_pess:"Pessimistic $600",sc_condo_moy:"Average $400",sc_condo_opt:"Optimistic $200",
+    lbl_appre:"Real estate appreciation",desc_appre:"Estimated annual increase in property value in Montréal.",ref_appre:"Montréal: 10 yr ~5–6% · 20 yr ~4–5% · 30–40 yr ~3–4%.",
+    sc_appre_pess:"Pessimistic 2%",sc_appre_moy:"Average 3.5%",sc_appre_opt:"Optimistic 5%",
+    lbl_bourse:"Stock market return",desc_bourse:"Average annual return of a diversified portfolio (e.g. S&P 500, dividends reinvested).",ref_bourse:"S&P 500: 10 yr ~11% · 20 yr ~8% · 30 yr ~9% · 100 yr ~10%.",
+    sc_bourse_pess:"Pessimistic 5%",sc_bourse_moy:"Average 7%",sc_bourse_opt:"Optimistic 9.5%",
+    lbl_infl:"Annual fee increase",desc_infl:"Annual increase in condo fees, insurance, and municipal taxes.",ref_infl:"Bank of Canada target: 2%/yr. Montréal taxes: ~2–4%/yr over 10 years.",
+    sc_infl_pess:"Pessimistic 3.5%",sc_infl_moy:"Average 2%",sc_infl_opt:"Optimistic 1.5%",
+    lbl_ans:"Projection period",desc_ans:"Time horizon for the buy vs rent comparison.",ref_ans:"30 years = standard horizon for a residential purchase.",
+    lbl_tmi:"Marginal tax rate",desc_tmi:"Combined federal + Québec MTR. Used to calculate capital gains tax on the portfolio at sale.",ref_tmi:"$40–50k ~37% · $50–100k ~45% · $100–200k ~50% · $200k+ ~53%.",
+    lbl_txp:"Taxable account portion",desc_txp:"Share of portfolio outside RRSP/TFSA. Only this portion is taxed on capital gains at sale. Inclusion rate: 50% (increase cancelled, March 2025).",ref_txp:"TFSA ~$95k cumulative room (2026) · RRSP 18% of annual income · 0% if fully sheltered.",
+    toggle_label:"Auto-calculate equivalent rent",toggle_desc:"Checked: the rent that equalizes both net worths is calculated automatically. Unchecked: you choose the comparison rent yourself.",
+    lbl_loyer:"Comparison monthly rent",desc_loyer:"Monthly rent you would pay in the renting scenario. This amount increases by 3%/year.",ref_loyer:"Montréal Jan. 2026: $1,700 (1 br.) · $2,200 (2 br.) · $2,800+ (3 br. / condo equiv.).",
+    sec_decomp:"Monthly breakdown — Year 1 vs post-mortgage",sec_init:"Upfront costs (day 1)",sec_fisc:"Tax comparison at sale",
+    sec_metrics:an=>`Net worth after tax — year ${an}`,sec_networth:an=>`Net worth over ${an} years`,
+    sec_monthly:"Monthly cash flow — buy vs rent",sec_table:"Detailed table",
+    th_poste:"Item",th_an1:"Year 1",th_montant:"Amount",th_posthypo:am=>`Yr ${am+1}+ (mortgage paid)`,
+    th_scenario:"Scenario",th_vbrute:"Gross value",th_coutbase:"Cost base",th_gain:"Gain",th_impot:"Tax",th_vnet:"Net value",
+    th_annee:"Year",th_coutAchat:"Buy cost/month",th_surplus:"Buy surplus→stocks",th_loyer:"Rent/month",th_surploc:"Rent surplus→stocks",th_immo:"Property value",th_bourseAchat:"Stocks (buy)",th_vNetAchat:"Net worth (buy)",th_portfLoc:"Net portfolio (rent)",
+    leg_achat:"Buy (property + stocks post-mortgage, exempt)",leg_locBrut:"Rent — gross",leg_locNet:"Rent — net after tax",leg_coutAchat:"Total buy cost/month",leg_loyerEquiv:"Rent (+3%/year)",
+    note:"Principal residence: 100% capital gains exempt at sale (CRA) · Portfolio: gains included at 50% on the taxable portion · Taxes (~1.1%) and maintenance (~0.5%) indexed to current value each year · After the mortgage, the monthly payment is invested in stocks until end of projection · Equivalent rent +3%/year",
+    be_eyebrow:"Breakeven rent",be_hint:()=>"Below this amount, renting + investing is better.",
+    be_below_arrow:"▼",be_below_action:"Rent",be_below_cond:loy=>`If rent < ${loy}`,
+    be_above_arrow:"▲",be_above_action:"Buy",be_above_cond:loy=>`If rent > ${loy}`,
+    warn_achat_gagne:"Buying wins in all cases — even at $0 rent, renting cannot catch up. Try increasing the stock return.",
+    warn_loc_gagne:"Renting wins in all cases — even at very high rent. Try lowering the stock return or increasing real estate appreciation.",
+    invest_lbl_cher:"Amount to invest in stocks (year 1)",invest_sub_cher:(c,l)=>`buy cost ${c} − equiv. rent ${l}`,
+    invest_det_cher:(s,am,an)=>`The renter must invest this surplus each month to match the buyer's net worth at ${an} years.<br>Contributions over ${am} yrs: <strong>${s}</strong> (before returns).`,
+    invest_lbl_eco:"Buying is cheaper than rent from year 1",invest_sub_eco:(l,c)=>`equiv. rent ${l} > buy cost ${c}`,
+    invest_det_eco:"Buying costs less per month from the start — the buyer can invest this surplus in stocks.",
+    hero_sub_auto:"Equivalent initial rent — below: renting is better · above: buying is better",
+    hero_hl_an1:"Initial rent (year 1)",hero_hs_an1:c=>`buy cost: ${c}/month`,
+    hero_hl_amort:am=>`Rent at year ${am}`,hero_hs_amort:f=>`post-mortgage costs: ${f}`,
+    hero_hl_fin:an=>`Rent at year ${an}`,hero_hs_fin:an=>`after ${an} years at +3%/year`,
+    manual_sub:l=>`Comparison with a rent of ${l}/month (+3%/year)`,
+    manual_hl1:"Chosen initial rent",manual_hl2:"Monthly difference (year 1)",
+    manual_hs_pos:"buying costs more",manual_hs_neg:"renting costs more",
+    manual_hl3:an=>`Net advantage (year ${an})`,manual_eq:"break-even",manual_buy:"buying wins",manual_rent:"renting wins",
+    row_versement:"Mortgage payment",row_investi:"Invested in stocks",row_interets:"of which interest",row_capital:"of which principal",
+    row_taxes:"Taxes + maintenance (current value)",row_condo_lbl:"Condo fees",row_ass:"Insurance",row_total:"Total monthly buy cost",row_loyer_comp:"Comparison rent",
+    row_mise:"Down payment",row_bienv:"Welcome tax (land transfer)",row_notaire:"Notary + inspection",row_divers:"Adjustments / misc.",row_totalInit:"Total required on day 1",
+    fisc_achat:"Buy — principal residence",fisc_loc:"Rent — portfolio",tag_exempt:"exempt",tag_imp:"partially taxable",
+    det_fisc:(fvP,cb,gP,txpP,gT,gI,tmiP,iP,te)=>`Tax: Gain = ${fvP} − ${cb} = ${gP} · Taxable (${txpP}%) = ${gT} · Inclusion 50% = ${gI} · Tax at ${tmiP}% = ${iP} · Effective rate: ${te}%`,
+    metric_achat:an=>`Buy — net worth (year ${an})`,metric_loc:an=>`Rent — net worth (year ${an})`,
+    metric_avantage:"Net advantage",metric_eq:"Break-even",metric_buy_lbl:"buy",metric_rent_lbl:"rent",
+    cross_found:an=>`Crossover at year ${an} — the rent exceeds the monthly buy cost from that point on.`,cross_never:an=>`The monthly buy cost remains higher than the rent for the entire ${an}-year period.`,
+    chart_buy:"Buy",chart_locBrut:"Rent gross",chart_locNet:"Rent net",chart_loyer:"Rent",chart_year:i=>`Yr ${i}`,det_check:an=>`Yr ${an} ✓`,det_year:an=>`Yr ${an}`,
+  }
+};
+
 function setLang(l){
   lang=l;
   document.documentElement.lang=l;
+  document.getElementById('page-title').textContent=T[l].pageTitle;
   document.getElementById('btn-fr').classList.toggle('active',l==='fr');
   document.getElementById('btn-en').classList.toggle('active',l==='en');
-  document.getElementById('page-title').textContent=T[l].pageTitle;
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const k=el.getAttribute('data-i18n');
-    if(T[l][k]!==undefined) el.textContent=T[l][k];
+    if(typeof T[l][k]==='string') el.textContent=T[l][k];
   });
-  // Re-format slider display values with new locale
-  refreshSliderOutputs();
+  refreshOutputs();
   go();
 }
 
-function refreshSliderOutputs(){
-  const fmts={
-    prix:v=>Math.round(v).toLocaleString(locale())+' $',
-    mise:v=>Math.round(v).toLocaleString(locale())+' $',
-    taux:v=>parseFloat(v).toLocaleString(locale(),{minimumFractionDigits:2,maximumFractionDigits:2})+' %',
-    condo:v=>Math.round(v).toLocaleString(locale())+' $',
-    appre:v=>parseFloat(v).toLocaleString(locale(),{minimumFractionDigits:1,maximumFractionDigits:1})+' %',
-    bourse:v=>parseFloat(v).toLocaleString(locale(),{minimumFractionDigits:1,maximumFractionDigits:1})+' %',
-    infl:v=>parseFloat(v).toLocaleString(locale(),{minimumFractionDigits:1,maximumFractionDigits:1})+' %',
-    tmi:v=>Math.round(v)+' %',
-    txp:v=>Math.round(v)+' %'
-  };
-  for(const id of Object.keys(fmts)){
-    const el=document.getElementById(id);
-    if(el) document.getElementById(id+'-o').textContent=fmts[id](+el.value);
-  }
-}
-
-function setVal(id,v){
-  document.getElementById(id).value=v;
-  refreshSliderOutputs();
-  go();
-}
-
-// ─── Simulation ───────────────────────────────────────────────────────────────
-function simAchat(prix,mise,tAnn,cBase,app,inf,brs,AN,AM){
-  const hyp=prix-mise,tM=tAnn/12,n=AM*12;
-  const pmt=hyp*(tM*Math.pow(1+tM,n))/(Math.pow(1+tM,n)-1);
-  const vNetArr=[],aMArr=[];
-  let sol=hyp,bpf=0;
-  for(let a=0;a<=AN;a++){
-    const vi=prix*Math.pow(1+app,a);
-    const pa=a<AM?pmt:0;
-    const ta=vi*0.011/12,ea=vi*0.005/12;
-    const ca=cBase*Math.pow(1+inf,a),aa=100*Math.pow(1+inf,a);
-    aMArr.push(Math.round(pa+ta+ea+ca+aa));
-    vNetArr.push(Math.round(vi-(a<AM?Math.max(0,sol):0)+bpf));
-    if(a<AN){
-      if(a<AM){for(let m=0;m<12;m++){const i=sol*tM;sol-=(pmt-i);}}
-      else{bpf=bpf*Math.pow(1+brs/12,12)+pmt*12;}
-    }
-  }
-  return{vNetArr,aMArr,pmt,int1:hyp*tM,cap1:pmt-hyp*tM};
-}
-
-function simLoc(prix,mise,tAnn,cBase,app,inf,brs,tmi,txp,loy0,AN,AM){
-  const hyp=prix-mise,tM=tAnn/12,n=AM*12;
-  const pmt=hyp*(tM*Math.pow(1+tM,n))/(Math.pow(1+tM,n)-1);
-  const calcI=(br,cb)=>Math.max(0,br-cb)*txp*0.5*tmi;
-  const vLb=[],vLn=[];
-  let sol=hyp,pf=mise,cb=mise;
-  for(let a=0;a<=AN;a++){
-    const vi=prix*Math.pow(1+app,a);
-    const pa=a<AM?pmt:0;
-    const ta=vi*0.011/12,ea=vi*0.005/12;
-    const ca=cBase*Math.pow(1+inf,a),aa=100*Math.pow(1+inf,a);
-    const totA=pa+ta+ea+ca+aa;
-    const la=loy0*Math.pow(1.03,a);
-    vLb.push(Math.round(pf));
-    vLn.push(Math.round(pf-calcI(pf,cb)));
-    if(a<AN){
-      if(a<AM){for(let m=0;m<12;m++){const i=sol*tM;sol-=(pmt-i);}}
-      const inv=Math.max(0,totA-la)*12;cb+=inv;
-      pf=pf*Math.pow(1+brs/12,12)+inv;
-    }
-  }
-  const gainP=Math.max(0,pf-cb);
-  const impF=gainP*txp*0.5*tmi;
-  return{vLb,vLn,finalNet:pf-impF,finalBrut:pf,gainPort:gainP,impPort:impF,coutBase:cb};
-}
-
-function findLoyer(prix,mise,tAnn,cBase,app,inf,brs,tmi,txp,AN,AM){
-  const ac=simAchat(prix,mise,tAnn,cBase,app,inf,brs,AN,AM);
-  const target=ac.vNetArr[AN];
-  const rBas=simLoc(prix,mise,tAnn,cBase,app,inf,brs,tmi,txp,0,AN,AM);
-  const rHaut=simLoc(prix,mise,tAnn,cBase,app,inf,brs,tmi,txp,20000,AN,AM);
-  if(rBas.finalNet<target)return{loy:null,reason:'achat_gagne'};
-  if(rHaut.finalNet>=target)return{loy:null,reason:'loc_gagne'};
-  let lo=0,hi=20000;
-  for(let i=0;i<60;i++){
-    const mid=(lo+hi)/2;
-    const r=simLoc(prix,mise,tAnn,cBase,app,inf,brs,tmi,txp,mid,AN,AM);
-    if(r.finalNet>=target)lo=mid;else hi=mid;
-  }
-  return{loy:Math.round((lo+hi)/2),reason:'found'};
-}
-
-let cN,cM2;
-
-// ─── Main render ──────────────────────────────────────────────────────────────
-function go(){
-  const t=T[lang];
-  const prix=+document.getElementById('prix').value;
-  const mise=+document.getElementById('mise').value;
-  const tAnn=+document.getElementById('taux').value/100;
-  const cBase=+document.getElementById('condo').value;
-  const app=+document.getElementById('appre').value/100;
-  const brs=+document.getElementById('bourse').value/100;
-  const inf=+document.getElementById('infl').value/100;
-  const tmi=+document.getElementById('tmi').value/100;
-  const txp=+document.getElementById('txp').value/100;
-  const AN=30,AM=25,ass1=100;
-
-  const hyp=prix-mise,tM=tAnn/12,n=AM*12;
-  const pmt=hyp*(tM*Math.pow(1+tM,n))/(Math.pow(1+tM,n)-1);
-  const calcI=(br,cb)=>Math.max(0,br-cb)*txp*0.5*tmi;
-  const tax1v=prix*0.011/12,ent1v=prix*0.005/12;
-  const tot1=pmt+tax1v+ent1v+cBase+ass1;
-  const fvI=prix*Math.pow(1+app,AN);
-  const tax30=fvI*0.011/12,ent30=fvI*0.005/12;
-  const cond30=cBase*Math.pow(1+inf,AN),ass30=ass1*Math.pow(1+inf,AN);
-  const fraisPost=tax30+ent30+cond30+ass30;
-
-  const ac=simAchat(prix,mise,tAnn,cBase,app,inf,brs,AN,AM);
-  const{loy:loy0,reason}=findLoyer(prix,mise,tAnn,cBase,app,inf,brs,tmi,txp,AN,AM);
-  const loyDisplay=loy0!==null?loy0:tot1;
-  const locR=simLoc(prix,mise,tAnn,cBase,app,inf,brs,tmi,txp,loyDisplay,AN,AM);
-  const fvA=ac.vNetArr[AN];
-  const bienv=bvn(prix);
-
-  let resultHTML='';
-  if(loy0===null){
-    const msg=reason==='achat_gagne'?t.warn_achat_gagne:t.warn_loc_gagne;
-    resultHTML=`<div class="warnbox">${msg}</div>`;
-  } else {
-    const diff=tot1-loy0;
-    const achatChereux=diff>0;
-
-    // ── Breakeven hero ────────────────────────────────────────────────────────
-    resultHTML=`
-      <div class="be-hero">
-        <div class="be-eyebrow">${t.be_eyebrow}</div>
-        <div class="be-number">${fc(loy0)}</div>
-        <div class="be-hint">${t.be_hint(fc(loy0))}</div>
-        <div class="be-split">
-          <div class="be-col">
-            <span class="be-col-arrow">${t.be_below_arrow}</span>
-            <span class="be-col-action">${t.be_below_action}</span>
-            <span class="be-col-cond">${t.be_below_cond(fc(loy0))}</span>
-          </div>
-          <div class="be-col">
-            <span class="be-col-arrow">${t.be_above_arrow}</span>
-            <span class="be-col-action">${t.be_above_action}</span>
-            <span class="be-col-cond">${t.be_above_cond(fc(loy0))}</span>
-          </div>
-        </div>
-      </div>`;
-
-    // ── Invest box ────────────────────────────────────────────────────────────
-    if(achatChereux){
-      resultHTML+=`
-        <div class="invest-box achat-cher">
-          <div class="invest-main">
-            <div class="invest-label blue">${t.invest_label_achatCher}</div>
-            <div class="invest-val blue">${fc(diff)}/mois</div>
-            <div class="invest-sub blue">${t.invest_sub_achatCher(fc(tot1),fc(loy0))}</div>
-          </div>
-          <div class="invest-detail blue">${t.invest_detail_achatCher(fm(diff*12*AM),AM)}</div>
-        </div>`;
-    } else {
-      resultHTML+=`
-        <div class="invest-box loc-cher">
-          <div class="invest-main">
-            <div class="invest-label green">${t.invest_label_locCher}</div>
-            <div class="invest-val green">${fc(Math.abs(diff))}/mois</div>
-            <div class="invest-sub green">${t.invest_sub_locCher(fc(loy0),fc(tot1))}</div>
-          </div>
-          <div class="invest-detail green">${t.invest_detail_locCher(fc(Math.abs(diff)))}</div>
-        </div>`;
-    }
-
-    // ── Year projections ──────────────────────────────────────────────────────
-    resultHTML+=`
-      <div class="hero">
-        <div class="hero-label">${t.hero_label}</div>
-        <div class="hero-grid">
-          <div class="hc"><div class="hl">${t.hero_an1_label}</div><div class="hv pos">${fc(loy0)}</div><div class="hs">${t.hero_an1_sub(fc(tot1))}</div></div>
-          <div class="hc"><div class="hl">${t.hero_an25_label}</div><div class="hv">${fc(loy0*Math.pow(1.03,25))}</div><div class="hs">${t.hero_an25_sub(fc(fraisPost))}</div></div>
-          <div class="hc"><div class="hl">${t.hero_an30_label}</div><div class="hv">${fc(loy0*Math.pow(1.03,AN))}</div><div class="hs">${t.hero_an30_sub}</div></div>
-        </div>
-      </div>`;
-  }
-  document.getElementById('result-wrap').innerHTML=resultHTML;
-
-  // ── Tables ────────────────────────────────────────────────────────────────
-  document.getElementById('tb-decomp').innerHTML=
-    `<tr><td class="tl">${t.row_versement}</td><td>${fc(pmt)}</td><td style="color:#0F6E56;font-weight:500">${t.row_investi}</td></tr>`+
-    `<tr><td class="tl" style="padding-left:18px;font-size:11px;color:#999">${t.row_interets}</td><td style="font-size:11px;color:#999;text-align:right">${fc(ac.int1)}</td><td></td></tr>`+
-    `<tr><td class="tl" style="padding-left:18px;font-size:11px;color:#999">${t.row_capital}</td><td style="font-size:11px;color:#999;text-align:right">${fc(ac.cap1)}</td><td></td></tr>`+
-    `<tr><td class="tl">${t.row_taxes}</td><td>${fc(tax1v+ent1v)}</td><td>${fc(tax30+ent30)}</td></tr>`+
-    `<tr><td class="tl">${t.row_condo}</td><td>${fc(cBase)}</td><td>${fc(cond30)}</td></tr>`+
-    `<tr><td class="tl">${t.row_assurances}</td><td>${fc(ass1)}</td><td>${fc(ass30)}</td></tr>`+
-    `<tr class="tot"><td class="tl">${t.row_total}</td><td>${fc(tot1)}</td><td>${fc(fraisPost)}</td></tr>`+
-    `<tr><td class="tl" style="font-size:11px;color:#999">${t.row_loyerEquiv}</td><td style="font-size:11px;color:#999;text-align:right">${loy0!==null?fc(loy0):'—'}</td><td style="font-size:11px;color:#999;text-align:right">${loy0!==null?fc(loy0*Math.pow(1.03,AN)):'—'}</td></tr>`;
-
-  document.getElementById('tb-init').innerHTML=
-    `<tr><td class="tl">${t.row_mise}</td><td>${fc(mise)}</td></tr>`+
-    `<tr><td class="tl">${t.row_bienvenue}</td><td>${fc(bienv)}</td></tr>`+
-    `<tr><td class="tl">${t.row_notaire}</td><td>2 500 $</td></tr>`+
-    `<tr><td class="tl">${t.row_divers}</td><td>1 000 $</td></tr>`+
-    `<tr class="tot"><td class="tl">${t.row_totalInit}</td><td>${fc(mise+bienv+3500)}</td></tr>`;
-
-  const gainP=locR.gainPort,impP=locR.impPort,fvPn=locR.finalNet,fvP=locR.finalBrut;
-  document.getElementById('tb-fisc').innerHTML=
-    `<tr><td class="tl">${t.fisc_achat} <span class="tag tg">${t.tag_exempt}</span></td><td>${fm(fvI)}</td><td>${fm(prix)}</td><td>${fm(fvI-prix)}</td><td style="color:#0F6E56;font-weight:500">0 $</td><td style="color:#0F6E56;font-weight:500">${fm(fvA)}</td></tr>`+
-    `<tr><td class="tl">${t.fisc_loc} <span class="tag tr2">${t.tag_imposable}</span></td><td>${fm(fvP)}</td><td>${fm(locR.coutBase)}</td><td>${fm(gainP)}</td><td style="color:#993C1D;font-weight:500">-${fm(impP)}</td><td style="color:${fvPn>=fvA?'#0F6E56':'#993C1D'};font-weight:500">${fm(fvPn)}</td></tr>`;
-
-  document.getElementById('det-fisc').innerHTML=t.det_fisc(
-    fm(fvP),fm(locR.coutBase),fm(gainP),
-    Math.round(txp*100),fm(gainP*txp),fm(gainP*txp*0.5),
-    Math.round(tmi*100),fm(impP),
-    fvP>0?(impP/fvP*100).toFixed(1):0
-  );
-
-  const diffFinal=fvA-fvPn;
-  document.getElementById('metrics').innerHTML=
-    `<div class="mc"><div class="ml">${t.metric_achat}</div><div class="mv pos">${fm(fvA)}</div></div>`+
-    `<div class="mc"><div class="ml">${t.metric_loc}</div><div class="mv ${fvPn>=0?'pos':'neg'}">${fm(fvPn)}</div></div>`+
-    `<div class="mc"><div class="ml">${t.metric_avantage}</div><div class="mv ${Math.abs(diffFinal)<10000?'pos':diffFinal>0?'pos':'neg'}">${Math.abs(diffFinal)<10000?t.metric_equilibre:fm(Math.abs(diffFinal))+(diffFinal>0?' ('+t.metric_buy_lbl+')':' ('+t.metric_rent_lbl+')')}</div></div>`;
-
-  // ── Charts ────────────────────────────────────────────────────────────────
-  const labels=Array.from({length:AN+1},(_,i)=>t.chart_year(i));
-  const lMs=labels.map((_,a)=>Math.round(loyDisplay*Math.pow(1.03,a)));
-  let cross=null;
-  for(let a=1;a<=AN;a++){if((ac.aMArr[a]-lMs[a])<=0){cross=a;break;}}
-  document.getElementById('cross-msg').textContent=cross!==null?t.cross_found(cross):t.cross_never;
-
-  if(cN)cN.destroy();
-  cN=new Chart(document.getElementById('cNet'),{type:'line',data:{labels,datasets:[
-    {label:t.chart_buy,data:ac.vNetArr,borderColor:'#185FA5',backgroundColor:'rgba(24,95,165,0.07)',tension:0.3,fill:true,pointRadius:2},
-    {label:t.chart_locBrut,data:locR.vLb,borderColor:'#0F6E56',backgroundColor:'transparent',tension:0.3,fill:false,pointRadius:2,borderDash:[4,3]},
-    {label:t.chart_locNet,data:locR.vLn,borderColor:'#BA7517',backgroundColor:'rgba(186,117,23,0.07)',tension:0.3,fill:true,pointRadius:2}
-  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{ticks:{callback:v=>fm(v),font:{size:10}},grid:{color:'rgba(0,0,0,0.07)'}},x:{ticks:{font:{size:10},autoSkip:true,maxRotation:0}}}}});
-
-  if(cM2)cM2.destroy();
-  cM2=new Chart(document.getElementById('cM'),{type:'line',data:{labels,datasets:[
-    {label:t.chart_buy,data:ac.aMArr,borderColor:'#185FA5',backgroundColor:'rgba(24,95,165,0.07)',tension:0.3,fill:true,pointRadius:2},
-    {label:t.chart_loyer,data:lMs,borderColor:'#0F6E56',backgroundColor:'rgba(15,110,86,0.07)',tension:0.3,fill:true,pointRadius:2}
-  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{ticks:{callback:v=>fc(v),font:{size:10}},grid:{color:'rgba(0,0,0,0.07)'}},x:{ticks:{font:{size:10},autoSkip:true,maxRotation:0}}}}});
-
-  // ── Detail table ──────────────────────────────────────────────────────────
-  let sol2=hyp,pf2=mise,cb2=mise,brs2=0;
-  const rows=[];
-  for(let a=1;a<=AN;a++){
-    const vi=prix*Math.pow(1+app,a);
-    const pa=a<=AM?pmt:0;
-    const ta=vi*0.011/12,ea=vi*0.005/12;
-    const ca=cBase*Math.pow(1+inf,a),aa=ass1*Math.pow(1+inf,a);
-    const totA=pa+ta+ea+ca+aa;
-    const la=loyDisplay*Math.pow(1.03,a);
-    if(a<=AM){for(let m=0;m<12;m++){const i=sol2*tM;sol2-=(pmt-i);}}
-    const equite=vi-(a<=AM?Math.max(0,sol2):0);
-    const surplusAchat=a>AM?pmt:0;
-    if(a>AM){brs2=brs2*Math.pow(1+brs/12,12)+pmt*12;}
-    const vNetteAchat=equite+brs2;
-    const invM=Math.max(0,totA-la);
-    cb2+=invM*12;pf2=pf2*Math.pow(1+brs/12,12)+invM*12;
-    const impA=calcI(pf2,cb2),pnA=pf2-impA;
-    rows.push({a,totA,surplusAchat,la,invLoc:invM,vi,brs2,vNetteAchat,pnA,ms:a===AM});
-  }
-  document.getElementById('tb-rows').innerHTML=rows.map(r=>`
-    <tr class="${r.ms?'ms':''}">
-      <td class="tl">${r.ms?t.det_check(r.a):t.det_year(r.a)}</td>
-      <td>${fc(r.totA)}</td>
-      <td style="color:#0F6E56">${r.surplusAchat>0?fc(r.surplusAchat):'—'}</td>
-      <td>${fc(r.la)}</td>
-      <td style="color:#0F6E56">${r.invLoc>0?fc(r.invLoc):'—'}</td>
-      <td>${fm(r.vi)}</td>
-      <td style="color:#185FA5">${r.brs2>0?fm(r.brs2):'—'}</td>
-      <td class="pos">${fm(r.vNetteAchat)}</td>
-      <td class="${r.pnA>=r.vNetteAchat?'pos':'neg'}">${fm(r.pnA)}</td>
-    </tr>`).join('');
-}
-
-// ─── Slider listeners ─────────────────────────────────────────────────────────
+// ─── Format helpers ───────────────────────────────────────────────────────────
 const fmts={
   prix:v=>Math.round(v).toLocaleString(locale())+' $',
   mise:v=>Math.round(v).toLocaleString(locale())+' $',
+  amort:v=>Math.round(v)+T[lang].unit_dur,
   taux:v=>parseFloat(v).toLocaleString(locale(),{minimumFractionDigits:2,maximumFractionDigits:2})+' %',
   condo:v=>Math.round(v).toLocaleString(locale())+' $',
   appre:v=>parseFloat(v).toLocaleString(locale(),{minimumFractionDigits:1,maximumFractionDigits:1})+' %',
   bourse:v=>parseFloat(v).toLocaleString(locale(),{minimumFractionDigits:1,maximumFractionDigits:1})+' %',
   infl:v=>parseFloat(v).toLocaleString(locale(),{minimumFractionDigits:1,maximumFractionDigits:1})+' %',
+  ans:v=>Math.round(v)+T[lang].unit_dur,
   tmi:v=>Math.round(v)+' %',
-  txp:v=>Math.round(v)+' %'
+  txp:v=>Math.round(v)+' %',
+  loyer:v=>Math.round(v).toLocaleString(locale())+' $'
 };
+function sv(id,v){document.getElementById(id).value=v;document.getElementById(id+'-o').textContent=fmts[id](v);fillSlider(document.getElementById(id));go();}
+function refreshOutputs(){for(const id of Object.keys(fmts)){const el=document.getElementById(id);if(el)document.getElementById(id+'-o').textContent=fmts[id](+el.value);}}
+
+// ─── Simulation ───────────────────────────────────────────────────────────────
+function simAchat(prix,mise,tAnn,cBase,app,inf,brs,AN,AM){
+  const hyp=prix-mise,tM=tAnn/12,n=AM*12;
+  const pmt=hyp*(tM*Math.pow(1+tM,n))/(Math.pow(1+tM,n)-1);
+  const vNA=[],aMA=[];let sol=hyp,bpf=0;
+  for(let a=0;a<=AN;a++){
+    const vi=prix*Math.pow(1+app,a),pa=a<AM?pmt:0;
+    const ta=vi*0.011/12,ea=vi*0.005/12,ca=cBase*Math.pow(1+inf,a),aa=100*Math.pow(1+inf,a);
+    aMA.push(Math.round(pa+ta+ea+ca+aa));
+    vNA.push(Math.round(vi-(a<AM?Math.max(0,sol):0)+bpf));
+    if(a<AN){if(a<AM){for(let m=0;m<12;m++){const i=sol*tM;sol-=(pmt-i);}}else{bpf=bpf*Math.pow(1+brs/12,12)+pmt*12;}}
+  }
+  return{vNA,aMA,pmt,int1:hyp*tM,cap1:pmt-hyp*tM};
+}
+function simLoc(prix,mise,tAnn,cBase,app,inf,brs,tmi,txp,loy0,AN,AM){
+  const hyp=prix-mise,tM=tAnn/12,n=AM*12;
+  const pmt=hyp*(tM*Math.pow(1+tM,n))/(Math.pow(1+tM,n)-1);
+  const cI=(br,cb)=>Math.max(0,br-cb)*txp*0.5*tmi;
+  const vLb=[],vLn=[];let sol=hyp,pf=mise,cb=mise;
+  for(let a=0;a<=AN;a++){
+    const vi=prix*Math.pow(1+app,a),pa=a<AM?pmt:0;
+    const ta=vi*0.011/12,ea=vi*0.005/12,ca=cBase*Math.pow(1+inf,a),aa=100*Math.pow(1+inf,a);
+    const totA=pa+ta+ea+ca+aa,la=loy0*Math.pow(1.03,a);
+    vLb.push(Math.round(pf));vLn.push(Math.round(pf-cI(pf,cb)));
+    if(a<AN){
+      if(a<AM){for(let m=0;m<12;m++){const i=sol*tM;sol-=(pmt-i);}}
+      const inv=Math.max(0,totA-la)*12;cb+=inv;pf=pf*Math.pow(1+brs/12,12)+inv;
+    }
+  }
+  const gP=Math.max(0,pf-cb),iF=gP*txp*0.5*tmi;
+  return{vLb,vLn,finalNet:pf-iF,finalBrut:pf,gainPort:gP,impPort:iF,coutBase:cb};
+}
+function findLoyer(prix,mise,tAnn,cBase,app,inf,brs,tmi,txp,AN,AM){
+  const ac=simAchat(prix,mise,tAnn,cBase,app,inf,brs,AN,AM),target=ac.vNA[AN];
+  const r0=simLoc(prix,mise,tAnn,cBase,app,inf,brs,tmi,txp,0,AN,AM);
+  const rH=simLoc(prix,mise,tAnn,cBase,app,inf,brs,tmi,txp,20000,AN,AM);
+  if(r0.finalNet<target)return{loy:null,reason:'achat_gagne'};
+  if(rH.finalNet>=target)return{loy:null,reason:'loc_gagne'};
+  let lo=0,hi=20000;
+  for(let i=0;i<60;i++){const mid=(lo+hi)/2;const r=simLoc(prix,mise,tAnn,cBase,app,inf,brs,tmi,txp,mid,AN,AM);if(r.finalNet>=target)lo=mid;else hi=mid;}
+  return{loy:Math.round((lo+hi)/2),reason:'found'};
+}
+
+let cN,cM2;
+
+function go(){
+  const t=T[lang];
+  const prix=+document.getElementById('prix').value,mise=+document.getElementById('mise').value;
+  const tAnn=+document.getElementById('taux').value/100,cBase=+document.getElementById('condo').value;
+  const app=+document.getElementById('appre').value/100,brs=+document.getElementById('bourse').value/100;
+  const inf=+document.getElementById('infl').value/100,AN=+document.getElementById('ans').value;
+  const tmi=+document.getElementById('tmi').value/100,txp=+document.getElementById('txp').value/100;
+  const AM=+document.getElementById('amort').value;
+  const modeAuto=document.getElementById('mode-toggle').checked;
+  const loyerManuel=+document.getElementById('loyer').value,ass1=100;
+
+  document.getElementById('sec-metrics-el').textContent=t.sec_metrics(AN);
+  document.getElementById('sec-networth-el').textContent=t.sec_networth(AN);
+  document.getElementById('sec-decomp-el').textContent=t.sec_decomp;
+  document.getElementById('th-posthypo').textContent=t.th_posthypo(AM);
+
+  const hyp=prix-mise,tM=tAnn/12,n=AM*12;
+  const pmt=hyp*(tM*Math.pow(1+tM,n))/(Math.pow(1+tM,n)-1);
+  const cI=(br,cb)=>Math.max(0,br-cb)*txp*0.5*tmi;
+  const tax1=prix*0.011/12,ent1=prix*0.005/12,tot1=pmt+tax1+ent1+cBase+ass1;
+  const fvI=prix*Math.pow(1+app,AN);
+  const taxAN=fvI*0.011/12,entAN=fvI*0.005/12,condAN=cBase*Math.pow(1+inf,AN),assAN=ass1*Math.pow(1+inf,AN);
+  const fraisPost=taxAN+entAN+condAN+assAN;
+  const ac=simAchat(prix,mise,tAnn,cBase,app,inf,brs,AN,AM),fvA=ac.vNA[AN],bienv=bvn(prix);
+
+  let loyDisplay;
+  if(modeAuto){
+    const res=findLoyer(prix,mise,tAnn,cBase,app,inf,brs,tmi,txp,AN,AM);
+    const loy0=res.loy,reason=res.reason;
+    loyDisplay=loy0!==null?loy0:tot1;
+    if(loy0===null){
+      document.getElementById('result-wrap').innerHTML=`<div class="wbox">${reason==='achat_gagne'?t.warn_achat_gagne:t.warn_loc_gagne}</div>`;
+    } else {
+      const diff=tot1-loy0,cher=diff>0;
+      let html=`<div class="be-hero"><div class="be-eyebrow">${t.be_eyebrow}</div><div class="be-number">${fc(loy0)}</div><div class="be-hint">${t.be_hint()}</div><div class="be-split"><div class="be-col"><span class="be-col-arrow">${t.be_below_arrow}</span><span class="be-col-action">${t.be_below_action}</span><span class="be-col-cond">${t.be_below_cond(fc(loy0))}</span></div><div class="be-col"><span class="be-col-arrow">${t.be_above_arrow}</span><span class="be-col-action">${t.be_above_action}</span><span class="be-col-cond">${t.be_above_cond(fc(loy0))}</span></div></div></div>`;
+      html+=cher
+        ?`<div class="invest-box blue"><div class="im"><div class="ilbl b">${t.invest_lbl_cher}</div><div class="ival b">${fc(diff)}/mois</div><div class="isub b">${t.invest_sub_cher(fc(tot1),fc(loy0))}</div></div><div class="idet b">${t.invest_det_cher(fm(diff*12*AM),AM,AN)}</div></div>`
+        :`<div class="invest-box green"><div class="im"><div class="ilbl g">${t.invest_lbl_eco}</div><div class="ival g">${fc(Math.abs(diff))}/mois</div><div class="isub g">${t.invest_sub_eco(fc(loy0),fc(tot1))}</div></div><div class="idet g">${t.invest_det_eco}</div></div>`;
+      html+=`<div class="hero"><div class="hero-sub">${t.hero_sub_auto}</div><div class="hg"><div class="hc"><div class="hl">${t.hero_hl_an1}</div><div class="hv pos">${fc(loy0)}</div><div class="hs">${t.hero_hs_an1(fc(tot1))}</div></div><div class="hc"><div class="hl">${t.hero_hl_amort(AM)}</div><div class="hv">${fc(loy0*Math.pow(1.03,AM))}</div><div class="hs">${t.hero_hs_amort(fc(fraisPost))}</div></div><div class="hc"><div class="hl">${t.hero_hl_fin(AN)}</div><div class="hv">${fc(loy0*Math.pow(1.03,AN))}</div><div class="hs">${t.hero_hs_fin(AN)}</div></div></div></div>`;
+      document.getElementById('result-wrap').innerHTML=html;
+    }
+  } else {
+    loyDisplay=loyerManuel;
+    const locRM=simLoc(prix,mise,tAnn,cBase,app,inf,brs,tmi,txp,loyDisplay,AN,AM);
+    const diff=tot1-loyDisplay,dF=fvA-locRM.finalNet;
+    document.getElementById('result-wrap').innerHTML=`<div class="hero"><div class="hero-sub">${t.manual_sub(fc(loyDisplay))}</div><div class="hg"><div class="hc"><div class="hl">${t.manual_hl1}</div><div class="hv">${fc(loyDisplay)}</div><div class="hs">${t.hero_hs_an1(fc(tot1))}</div></div><div class="hc"><div class="hl">${t.manual_hl2}</div><div class="hv ${diff>0?'neg':'pos'}">${diff>0?'+':'-'}${fc(Math.abs(diff))}</div><div class="hs">${diff>0?t.manual_hs_pos:t.manual_hs_neg}</div></div><div class="hc"><div class="hl">${t.manual_hl3(AN)}</div><div class="hv ${dF>0?'pos':'neg'}">${fm(Math.abs(dF))}</div><div class="hs">${Math.abs(dF)<10000?t.manual_eq:dF>0?t.manual_buy:t.manual_rent}</div></div></div></div>`;
+  }
+
+  const locR=simLoc(prix,mise,tAnn,cBase,app,inf,brs,tmi,txp,loyDisplay,AN,AM);
+  const fvPn=locR.finalNet,fvP=locR.finalBrut,gP=locR.gainPort,iP=locR.impPort;
+
+  document.getElementById('tb-decomp').innerHTML=
+    `<tr><td class="tl">${t.row_versement}</td><td>${fc(pmt)}</td><td style="color:var(--green);font-weight:500">${t.row_investi}</td></tr>`+
+    `<tr><td class="tl" style="padding-left:18px;font-size:11px;color:${tickColor}">${t.row_interets}</td><td style="font-size:11px;color:${tickColor};text-align:right">${fc(ac.int1)}</td><td></td></tr>`+
+    `<tr><td class="tl" style="padding-left:18px;font-size:11px;color:${tickColor}">${t.row_capital}</td><td style="font-size:11px;color:${tickColor};text-align:right">${fc(ac.cap1)}</td><td></td></tr>`+
+    `<tr><td class="tl">${t.row_taxes}</td><td>${fc(tax1+ent1)}</td><td>${fc(taxAN+entAN)}</td></tr>`+
+    `<tr><td class="tl">${t.row_condo_lbl}</td><td>${fc(cBase)}</td><td>${fc(condAN)}</td></tr>`+
+    `<tr><td class="tl">${t.row_ass}</td><td>100 $</td><td>${fc(assAN)}</td></tr>`+
+    `<tr class="tot"><td class="tl">${t.row_total}</td><td>${fc(tot1)}</td><td>${fc(fraisPost)}</td></tr>`+
+    `<tr><td class="tl" style="font-size:11px;color:${tickColor}">${t.row_loyer_comp}</td><td style="font-size:11px;color:${tickColor};text-align:right">${fc(loyDisplay)}</td><td style="font-size:11px;color:${tickColor};text-align:right">${fc(loyDisplay*Math.pow(1.03,AN))}</td></tr>`;
+
+  document.getElementById('tb-init').innerHTML=
+    `<tr><td class="tl">${t.row_mise}</td><td>${fc(mise)}</td></tr>`+
+    `<tr><td class="tl">${t.row_bienv}</td><td>${fc(bienv)}</td></tr>`+
+    `<tr><td class="tl">${t.row_notaire}</td><td>2 500 $</td></tr>`+
+    `<tr><td class="tl">${t.row_divers}</td><td>1 000 $</td></tr>`+
+    `<tr class="tot"><td class="tl">${t.row_totalInit}</td><td>${fc(mise+bienv+3500)}</td></tr>`;
+
+  document.getElementById('tb-fisc').innerHTML=
+    `<tr><td class="tl">${t.fisc_achat} <span class="tag tg">${t.tag_exempt}</span></td><td>${fm(fvI)}</td><td>${fm(prix)}</td><td>${fm(fvI-prix)}</td><td style="color:var(--green);font-weight:500">0 $</td><td style="color:var(--green);font-weight:500">${fm(fvA)}</td></tr>`+
+    `<tr><td class="tl">${t.fisc_loc} <span class="tag tr2">${t.tag_imp}</span></td><td>${fm(fvP)}</td><td>${fm(locR.coutBase)}</td><td>${fm(gP)}</td><td style="color:var(--red);font-weight:500">-${fm(iP)}</td><td style="color:${fvPn>=fvA?'var(--green)':'var(--red)'};font-weight:500">${fm(fvPn)}</td></tr>`;
+
+  document.getElementById('det-fisc').textContent=t.det_fisc(fm(fvP),fm(locR.coutBase),fm(gP),Math.round(txp*100),fm(gP*txp),fm(gP*txp*0.5),Math.round(tmi*100),fm(iP),fvP>0?(iP/fvP*100).toFixed(1):0);
+
+  const dF=fvA-fvPn;
+  document.getElementById('metrics').innerHTML=
+    `<div class="mc"><div class="ml">${t.metric_achat(AN)}</div><div class="mv pos">${fm(fvA)}</div></div>`+
+    `<div class="mc"><div class="ml">${t.metric_loc(AN)}</div><div class="mv ${fvPn>=0?'pos':'neg'}">${fm(fvPn)}</div></div>`+
+    `<div class="mc"><div class="ml">${t.metric_avantage}</div><div class="mv ${Math.abs(dF)<10000?'pos':dF>0?'pos':'neg'}">${Math.abs(dF)<10000?t.metric_eq:fm(Math.abs(dF))+(dF>0?' ('+t.metric_buy_lbl+')':' ('+t.metric_rent_lbl+')')}</div></div>`;
+
+  const labels=Array.from({length:AN+1},(_,i)=>t.chart_year(i));
+  const lMs=labels.map((_,a)=>Math.round(loyDisplay*Math.pow(1.03,a)));
+  let cross=null;
+  for(let a=1;a<=AN;a++){if((ac.aMA[a]-lMs[a])<=0){cross=a;break;}}
+  document.getElementById('cross-msg').textContent=cross!==null?t.cross_found(cross):t.cross_never(AN);
+
+  if(cN)cN.destroy();
+  cN=new Chart(document.getElementById('cNet'),{type:'line',data:{labels,datasets:[
+    {label:t.chart_buy,data:ac.vNA,borderColor:'#185FA5',backgroundColor:'rgba(24,95,165,0.07)',tension:0.3,fill:true,pointRadius:2},
+    {label:t.chart_locBrut,data:locR.vLb,borderColor:'#0F6E56',backgroundColor:'transparent',tension:0.3,fill:false,pointRadius:2,borderDash:[4,3]},
+    {label:t.chart_locNet,data:locR.vLn,borderColor:'#BA7517',backgroundColor:'rgba(186,117,23,0.07)',tension:0.3,fill:true,pointRadius:2}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{ticks:{callback:v=>fm(v),font:{size:10},color:tickColor},grid:{color:gridColor}},x:{ticks:{font:{size:10},color:tickColor,autoSkip:true,maxRotation:0}}}}});
+
+  if(cM2)cM2.destroy();
+  cM2=new Chart(document.getElementById('cM'),{type:'line',data:{labels,datasets:[
+    {label:t.chart_buy,data:ac.aMA,borderColor:'#185FA5',backgroundColor:'rgba(24,95,165,0.07)',tension:0.3,fill:true,pointRadius:2},
+    {label:t.chart_loyer,data:lMs,borderColor:'#0F6E56',backgroundColor:'rgba(15,110,86,0.07)',tension:0.3,fill:true,pointRadius:2}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{ticks:{callback:v=>fc(v),font:{size:10},color:tickColor},grid:{color:gridColor}},x:{ticks:{font:{size:10},color:tickColor,autoSkip:true,maxRotation:0}}}}});
+
+  let s2=hyp,pf2=mise,cb2=mise,brs2=0;const rows=[];
+  for(let a=1;a<=AN;a++){
+    const vi=prix*Math.pow(1+app,a),pa=a<=AM?pmt:0;
+    const ta=vi*0.011/12,ea=vi*0.005/12,ca=cBase*Math.pow(1+inf,a),aa=ass1*Math.pow(1+inf,a);
+    const totA=pa+ta+ea+ca+aa,la=loyDisplay*Math.pow(1.03,a);
+    if(a<=AM){for(let m=0;m<12;m++){const i=s2*tM;s2-=(pmt-i);}}
+    const eq=vi-(a<=AM?Math.max(0,s2):0),sA=a>AM?pmt:0;
+    if(a>AM){brs2=brs2*Math.pow(1+brs/12,12)+pmt*12;}
+    const vN2=eq+brs2,invM=Math.max(0,totA-la);
+    cb2+=invM*12;pf2=pf2*Math.pow(1+brs/12,12)+invM*12;
+    const impA=cI(pf2,cb2),pnA=pf2-impA;
+    rows.push({a,totA,sA,la,invLoc:invM,vi,brs2,vN2,pnA,ms:a===AM});
+  }
+  document.getElementById('tb-rows').innerHTML=rows.map(r=>`
+    <tr class="${r.ms?'ms':''}">
+      <td class="tl">${r.ms?t.det_check(r.a):t.det_year(r.a)}</td>
+      <td>${fc(r.totA)}</td><td style="color:var(--green)">${r.sA>0?fc(r.sA):'—'}</td>
+      <td>${fc(r.la)}</td><td style="color:var(--green)">${r.invLoc>0?fc(r.invLoc):'—'}</td>
+      <td>${fm(r.vi)}</td><td style="color:var(--blue)">${r.brs2>0?fm(r.brs2):'—'}</td>
+      <td class="pos">${fm(r.vN2)}</td><td class="${r.pnA>=r.vN2?'pos':'neg'}">${fm(r.pnA)}</td>
+    </tr>`).join('');
+}
+
+document.getElementById('mode-toggle').addEventListener('change',function(){
+  document.getElementById('loyer-manual-wrap').style.display=this.checked?'none':'block';go();
+});
 for(const id of Object.keys(fmts)){
-  document.getElementById(id).addEventListener('input',function(){
-    document.getElementById(id+'-o').textContent=fmts[id](+this.value);go();
-  });
+  const el=document.getElementById(id);
+  if(el) el.addEventListener('input',function(){document.getElementById(id+'-o').textContent=fmts[id](+this.value);go();});
 }
 go();
 </script>
