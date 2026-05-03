@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="page-title">Achat vs Location — Montréal</title>
+<title id="page-title">Achat vs Location — Québec</title>
 <style>
 :root{
   --bg:#f9f8f6;--bg2:#fff;--bg3:#f1efe8;--bg4:#f5f4f0;
-  --text:#1a1a1a;--text2:#555;--text3:#888;--text4:#bbb;
+  --text:#1a1a1a;--text2:#555;--text3:#5a5a5a;--text4:#888;
   --border:#e0ddd6;--border2:#e8e6de;
   --blue:#185FA5;--blue-bg:#e6f1fb;--blue-text:#0C447C;
   --green:#0F6E56;--green-bg:#E1F5EE;--green-text:#085041;
@@ -76,6 +76,11 @@ input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--bl
 .be-col-arrow{font-size:20px;display:block;margin-bottom:4px}
 .be-col-action{font-size:13px;font-weight:600;display:block;margin-bottom:2px}
 .be-col-cond{font-size:11px;opacity:0.65}
+.be-nums{display:flex;align-items:center;justify-content:center;margin:0.2rem 0 0.15rem}
+.be-num-blk{flex:1;text-align:center}
+.be-num-lbl{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0.6;margin-bottom:0.35rem}
+.be-num-div{font-size:20px;opacity:0.22;padding:0 0.6rem;flex-shrink:0;align-self:center;font-weight:200}
+.be-number-sec{font-size:40px;opacity:0.8}
 
 .invest-box{border-radius:var(--radius-lg);padding:1rem 1.25rem;margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:1.25rem;flex-wrap:wrap}
 .invest-box.blue{background:var(--blue-bg);border:1.5px solid var(--blue)}
@@ -129,7 +134,8 @@ input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--bl
   .cell.full{grid-column:span 1}
   .hg,.mets{grid-template-columns:1fr}
   .invest-box{flex-direction:column;gap:.75rem}
-  .be-number{font-size:38px}
+  .be-number{font-size:36px}
+  .be-number-sec{font-size:26px}
   .be-split{flex-direction:column;align-items:center}
 }
 </style>
@@ -138,7 +144,7 @@ input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--bl
 
 <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem">
   <div>
-    <h1 data-i18n="h1">Achat vs Location — Montréal</h1>
+    <h1 data-i18n="h1">Achat vs Location — Québec</h1>
     <p class="subtitle" data-i18n="subtitle">Calculateur de loyer équivalent · Projection sur la durée choisie</p>
   </div>
   <div class="lang-toggle">
@@ -150,7 +156,7 @@ input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--bl
 <div class="panel">
   <div class="row"><div class="cell full">
     <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_prix">Prix d'achat</span><span class="ctrl-val" id="prix-o">750 000 $</span></div>
-    <div class="ctrl-desc" data-i18n="desc_prix">Valeur de la propriété. Médiane Montréal : ~580–700 k$ maison · ~430 k$ condo (2026).</div>
+    <div class="ctrl-desc" data-i18n="desc_prix">Valeur de la propriété. Médiane Québec : ~580–700 k$ maison · ~430 k$ condo (2026).</div>
     <input type="range" id="prix" min="300000" max="2000000" step="25000" value="750000">
   </div></div>
 
@@ -197,13 +203,13 @@ input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--bl
   <div class="row">
     <div class="cell">
       <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_appre">Appréciation immobilière</span><span class="ctrl-val" id="appre-o">3,0 %</span></div>
-      <div class="ctrl-desc" data-i18n="desc_appre">Hausse annuelle estimée de la valeur de la propriété à Montréal.</div>
+      <div class="ctrl-desc" data-i18n="desc_appre">Hausse annuelle estimée de la valeur de la propriété à Québec.</div>
       <div class="pills">
         <span class="pill pp" data-i18n="sc_appre_pess" onclick="sv('appre',2)">Pessimiste 2 %</span>
         <span class="pill pm" data-i18n="sc_appre_moy"  onclick="sv('appre',3.5)">Moyen 3,5 %</span>
         <span class="pill po" data-i18n="sc_appre_opt"  onclick="sv('appre',5)">Optimiste 5 %</span>
       </div>
-      <div class="ctrl-ref" data-i18n="ref_appre">Montréal : 10 ans ~5–6 % · 20 ans ~4–5 % · 30–40 ans ~3–4 %.</div>
+      <div class="ctrl-ref" data-i18n="ref_appre">Québec : 10 ans ~5–6 % · 20 ans ~4–5 % · 30–40 ans ~3–4 %.</div>
       <input type="range" id="appre" min="0" max="10" step="0.5" value="3">
     </div>
     <div class="cell">
@@ -228,7 +234,7 @@ input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--bl
         <span class="pill pm" data-i18n="sc_infl_moy"  onclick="sv('infl',2)">Moyen 2 %</span>
         <span class="pill po" data-i18n="sc_infl_opt"  onclick="sv('infl',1.5)">Optimiste 1,5 %</span>
       </div>
-      <div class="ctrl-ref" data-i18n="ref_infl">Cible BdC : 2 %/an. Taxes Montréal : ~2–4 %/an sur 10 ans.</div>
+      <div class="ctrl-ref" data-i18n="ref_infl">Cible BdC : 2 %/an. Taxes Québec : ~2–4 %/an sur 10 ans.</div>
       <input type="range" id="infl" min="1" max="5" step="0.5" value="2">
     </div>
     <div class="cell">
@@ -266,7 +272,7 @@ input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--bl
 <div class="loyer-manual" id="loyer-manual-wrap">
   <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_loyer">Loyer mensuel de comparaison</span><span class="ctrl-val" id="loyer-o">2 500 $</span></div>
   <div class="ctrl-desc" data-i18n="desc_loyer">Loyer mensuel que tu paierais dans le scénario location. Ce montant augmente de 3 %/an.</div>
-  <div class="ctrl-ref" data-i18n="ref_loyer">Montréal jan. 2026 : 1 700 $ (1 ch.) · 2 200 $ (2 ch.) · 2 800 $+ (3 ch. / équivalent condo).</div>
+  <div class="ctrl-ref" data-i18n="ref_loyer">Québec jan. 2026 : 1 700 $ (1 ch.) · 2 200 $ (2 ch.) · 2 800 $+ (3 ch. / équivalent condo).</div>
   <input type="range" id="loyer" min="500" max="6000" step="50" value="2500">
 </div>
 
@@ -367,26 +373,26 @@ function bvn(p){let t=0,pr=0;for(const[pl,tx]of[[50000,.005],[200000,.01],[30000
 // ─── Translations ─────────────────────────────────────────────────────────────
 const T={
   fr:{
-    pageTitle:'Achat vs Location — Montréal',h1:'Achat vs Location — Montréal',
+    pageTitle:'Achat vs Location — Québec',h1:'Achat vs Location — Québec',
     subtitle:'Calculateur de loyer équivalent · Projection sur la durée choisie',
-    lbl_prix:"Prix d'achat",desc_prix:"Valeur de la propriété. Médiane Montréal : ~580–700 k$ maison · ~430 k$ condo (2026).",
+    lbl_prix:"Prix d'achat",desc_prix:"Valeur de la propriété. Médiane Québec : ~580–700 k$ maison · ~430 k$ condo (2026).",
     lbl_mise:"Mise de fonds",desc_mise:"Montant payé comptant. Dans le scénario location, investi en bourse dès le départ.",ref_mise:"Min légal 5 % (SCHL sous 20 %). 20 %+ = pas d'assurance hypothécaire.",
     lbl_amort:"Durée d'hypothèque",desc_amort:"Nombre d'années pour rembourser l'hypothèque. À la fin, le versement mensuel est investi en bourse.",ref_amort:"Standard Canada : 25 ans. Max assurable : 25 ans. Sans assurance : jusqu'à 30 ans.",unit_dur:" ans",
     lbl_taux:"Taux hypothécaire",desc_taux:"Taux d'intérêt annuel sur l'hypothèque.",ref_taux:"2020–21 ~2 % · 2023–24 ~5–6 % · 2026 ~4–4,5 %.",
     sc_taux_pess:"Pessimiste 5,5 %",sc_taux_moy:"Moyen 4,5 %",sc_taux_opt:"Optimiste 3,5 %",
     lbl_condo:"Frais de condo",desc_condo:"Charges mensuelles de copropriété. 0 $ pour une maison unifamiliale.",ref_condo:"Petit immeuble 200–400 $ · Grand condo 400–700 $/mois.",
     sc_condo_pess:"Pessimiste 600 $",sc_condo_moy:"Moyen 400 $",sc_condo_opt:"Optimiste 200 $",
-    lbl_appre:"Appréciation immobilière",desc_appre:"Hausse annuelle estimée de la valeur de la propriété à Montréal.",ref_appre:"Montréal : 10 ans ~5–6 % · 20 ans ~4–5 % · 30–40 ans ~3–4 %.",
+    lbl_appre:"Appréciation immobilière",desc_appre:"Hausse annuelle estimée de la valeur de la propriété à Québec.",ref_appre:"Québec : 10 ans ~5–6 % · 20 ans ~4–5 % · 30–40 ans ~3–4 %.",
     sc_appre_pess:"Pessimiste 2 %",sc_appre_moy:"Moyen 3,5 %",sc_appre_opt:"Optimiste 5 %",
     lbl_bourse:"Rendement bourse",desc_bourse:"Rendement annuel d'un portefeuille diversifié (ex. S&P 500, dividendes réinvestis).",ref_bourse:"S&P 500 : 10 ans ~11 % · 20 ans ~8 % · 30 ans ~9 % · 100 ans ~10 %.",
     sc_bourse_pess:"Pessimiste 5 %",sc_bourse_moy:"Moyen 7 %",sc_bourse_opt:"Optimiste 9,5 %",
-    lbl_infl:"Hausse annuelle des frais",desc_infl:"Augmentation annuelle des frais de condo, assurances et taxes municipales.",ref_infl:"Cible BdC : 2 %/an. Taxes Montréal : ~2–4 %/an sur 10 ans.",
+    lbl_infl:"Hausse annuelle des frais",desc_infl:"Augmentation annuelle des frais de condo, assurances et taxes municipales.",ref_infl:"Cible BdC : 2 %/an. Taxes Québec : ~2–4 %/an sur 10 ans.",
     sc_infl_pess:"Pessimiste 3,5 %",sc_infl_moy:"Moyen 2 %",sc_infl_opt:"Optimiste 1,5 %",
     lbl_ans:"Durée de projection",desc_ans:"Horizon temporel de la comparaison achat vs location.",ref_ans:"30 ans = horizon standard pour un achat résidentiel.",
     lbl_tmi:"Taux marginal d'imposition",desc_tmi:"TMI combiné fédéral + Québec. Sert à calculer l'impôt sur les gains en capital du portefeuille à la revente.",ref_tmi:"40–50 k$ ~37 % · 50–100 k$ ~45 % · 100–200 k$ ~50 % · 200 k$+ ~53 %.",
     lbl_txp:"Portion en compte taxable",desc_txp:"Part du portefeuille hors REER/CELI. Seule cette portion est imposée sur les gains en capital à la revente. Taux d'inclusion : 50 % (hausse annulée, mars 2025).",ref_txp:"CELI ~95 k$ droits cumulatifs (2026) · REER 18 % du revenu annuel · 0 % si tout est à l'abri.",
     toggle_label:"Calculer le loyer équivalent automatiquement",toggle_desc:"Coché : le loyer qui égalise les deux valeurs nettes est calculé automatiquement. Décoché : tu choisis toi-même le loyer de comparaison.",
-    lbl_loyer:"Loyer mensuel de comparaison",desc_loyer:"Loyer mensuel que tu paierais dans le scénario location. Ce montant augmente de 3 %/an.",ref_loyer:"Montréal jan. 2026 : 1 700 $ (1 ch.) · 2 200 $ (2 ch.) · 2 800 $+ (3 ch. / équivalent condo).",
+    lbl_loyer:"Loyer mensuel de comparaison",desc_loyer:"Loyer mensuel que tu paierais dans le scénario location. Ce montant augmente de 3 %/an.",ref_loyer:"Québec jan. 2026 : 1 700 $ (1 ch.) · 2 200 $ (2 ch.) · 2 800 $+ (3 ch. / équivalent condo).",
     sec_decomp:"Décomposition mensuelle — an 1 vs post-hypo",sec_init:"Déboursés initiaux (jour 1)",sec_fisc:"Comparaison fiscale à la revente",
     sec_metrics:an=>`Valeur nette après impôt — an ${an}`,sec_networth:an=>`Valeur nette sur ${an} ans`,
     sec_monthly:"Flux mensuel — achat vs loyer",sec_table:"Tableau détaillé",
@@ -395,7 +401,7 @@ const T={
     th_annee:"Année",th_coutAchat:"Coût achat/mois",th_surplus:"Surplus achat→bourse",th_loyer:"Loyer/mois",th_surploc:"Surplus loc→bourse",th_immo:"Valeur immo",th_bourseAchat:"Bourse achat",th_vNetAchat:"Val. nette achat",th_portfLoc:"Portef. loc. net",
     leg_achat:"Achat (immo + bourse post-hypo, exempt)",leg_locBrut:"Location — brut",leg_locNet:"Location — net après impôt",leg_coutAchat:"Coût total achat/mois",leg_loyerEquiv:"Loyer (+3 %/an)",
     note:"Résidence principale : gain en capital 100 % exempt à la revente (ARC) · Portefeuille boursier : gains inclus à 50 % dans le revenu sur la portion taxable · Taxes (~1,1 %) et entretien (~0,5 %) indexés à la valeur courante chaque année · À la fin de l'hypothèque, le versement mensuel est investi en bourse jusqu'à la fin de la projection · Loyer équivalent +3 %/an",
-    be_eyebrow:"Loyer de rupture",be_hint:()=>"En dessous de ce montant, louer + investir est préférable.",
+    be_eyebrow:"Loyer de rupture",be_prix_lbl:"Prix d'achat",be_hint:()=>"En dessous de ce montant, louer + investir est préférable.",
     be_below_arrow:"▼",be_below_action:"Louer",be_below_cond:loy=>`Si loyer < ${loy}`,
     be_above_arrow:"▲",be_above_action:"Acheter",be_above_cond:loy=>`Si loyer > ${loy}`,
     warn_achat_gagne:"L'achat gagne dans tous les cas — même à 0 $ de loyer, la location ne rattrape pas. Essaie d'augmenter le rendement bourse.",
@@ -423,26 +429,26 @@ const T={
     chart_buy:"Achat",chart_locBrut:"Loc brut",chart_locNet:"Loc net",chart_loyer:"Loyer",chart_year:i=>`An ${i}`,det_check:an=>`An ${an} ✓`,det_year:an=>`An ${an}`,
   },
   en:{
-    pageTitle:'Buy vs Rent — Montréal',h1:'Buy vs Rent — Montréal',
+    pageTitle:'Buy vs Rent — Québec',h1:'Buy vs Rent — Québec',
     subtitle:'Equivalent rent calculator · Adjustable projection horizon',
-    lbl_prix:"Purchase price",desc_prix:"Property value. Montréal median: ~$580–700k house · ~$430k condo (2026).",
+    lbl_prix:"Purchase price",desc_prix:"Property value. Québec median: ~$580–700k house · ~$430k condo (2026).",
     lbl_mise:"Down payment",desc_mise:"Amount paid upfront. In the renting scenario, this money is invested in stocks from day 1.",ref_mise:"Legal min 5% (CMHC required below 20%). 20%+ = no mortgage insurance.",
     lbl_amort:"Mortgage term",desc_amort:"Number of years to pay off the mortgage. After that, the monthly payment is invested in stocks.",ref_amort:"Canadian standard: 25 yrs. Max insurable: 25 yrs. Without insurance: up to 30 yrs.",unit_dur:" yrs",
     lbl_taux:"Mortgage rate",desc_taux:"Annual interest rate on the mortgage.",ref_taux:"2020–21 ~2% · 2023–24 ~5–6% · 2026 ~4–4.5%.",
     sc_taux_pess:"Pessimistic 5.5%",sc_taux_moy:"Average 4.5%",sc_taux_opt:"Optimistic 3.5%",
     lbl_condo:"Condo fees",desc_condo:"Monthly co-ownership charges. $0 for a single-family home.",ref_condo:"Small building $200–400 · Large condo $400–700/month.",
     sc_condo_pess:"Pessimistic $600",sc_condo_moy:"Average $400",sc_condo_opt:"Optimistic $200",
-    lbl_appre:"Real estate appreciation",desc_appre:"Estimated annual increase in property value in Montréal.",ref_appre:"Montréal: 10 yr ~5–6% · 20 yr ~4–5% · 30–40 yr ~3–4%.",
+    lbl_appre:"Real estate appreciation",desc_appre:"Estimated annual increase in property value in Québec.",ref_appre:"Québec: 10 yr ~5–6% · 20 yr ~4–5% · 30–40 yr ~3–4%.",
     sc_appre_pess:"Pessimistic 2%",sc_appre_moy:"Average 3.5%",sc_appre_opt:"Optimistic 5%",
     lbl_bourse:"Stock market return",desc_bourse:"Average annual return of a diversified portfolio (e.g. S&P 500, dividends reinvested).",ref_bourse:"S&P 500: 10 yr ~11% · 20 yr ~8% · 30 yr ~9% · 100 yr ~10%.",
     sc_bourse_pess:"Pessimistic 5%",sc_bourse_moy:"Average 7%",sc_bourse_opt:"Optimistic 9.5%",
-    lbl_infl:"Annual fee increase",desc_infl:"Annual increase in condo fees, insurance, and municipal taxes.",ref_infl:"Bank of Canada target: 2%/yr. Montréal taxes: ~2–4%/yr over 10 years.",
+    lbl_infl:"Annual fee increase",desc_infl:"Annual increase in condo fees, insurance, and municipal taxes.",ref_infl:"Bank of Canada target: 2%/yr. Québec taxes: ~2–4%/yr over 10 years.",
     sc_infl_pess:"Pessimistic 3.5%",sc_infl_moy:"Average 2%",sc_infl_opt:"Optimistic 1.5%",
     lbl_ans:"Projection period",desc_ans:"Time horizon for the buy vs rent comparison.",ref_ans:"30 years = standard horizon for a residential purchase.",
     lbl_tmi:"Marginal tax rate",desc_tmi:"Combined federal + Québec MTR. Used to calculate capital gains tax on the portfolio at sale.",ref_tmi:"$40–50k ~37% · $50–100k ~45% · $100–200k ~50% · $200k+ ~53%.",
     lbl_txp:"Taxable account portion",desc_txp:"Share of portfolio outside RRSP/TFSA. Only this portion is taxed on capital gains at sale. Inclusion rate: 50% (increase cancelled, March 2025).",ref_txp:"TFSA ~$95k cumulative room (2026) · RRSP 18% of annual income · 0% if fully sheltered.",
     toggle_label:"Auto-calculate equivalent rent",toggle_desc:"Checked: the rent that equalizes both net worths is calculated automatically. Unchecked: you choose the comparison rent yourself.",
-    lbl_loyer:"Comparison monthly rent",desc_loyer:"Monthly rent you would pay in the renting scenario. This amount increases by 3%/year.",ref_loyer:"Montréal Jan. 2026: $1,700 (1 br.) · $2,200 (2 br.) · $2,800+ (3 br. / condo equiv.).",
+    lbl_loyer:"Comparison monthly rent",desc_loyer:"Monthly rent you would pay in the renting scenario. This amount increases by 3%/year.",ref_loyer:"Québec Jan. 2026: $1,700 (1 br.) · $2,200 (2 br.) · $2,800+ (3 br. / condo equiv.).",
     sec_decomp:"Monthly breakdown — Year 1 vs post-mortgage",sec_init:"Upfront costs (day 1)",sec_fisc:"Tax comparison at sale",
     sec_metrics:an=>`Net worth after tax — year ${an}`,sec_networth:an=>`Net worth over ${an} years`,
     sec_monthly:"Monthly cash flow — buy vs rent",sec_table:"Detailed table",
@@ -451,7 +457,7 @@ const T={
     th_annee:"Year",th_coutAchat:"Buy cost/month",th_surplus:"Buy surplus→stocks",th_loyer:"Rent/month",th_surploc:"Rent surplus→stocks",th_immo:"Property value",th_bourseAchat:"Stocks (buy)",th_vNetAchat:"Net worth (buy)",th_portfLoc:"Net portfolio (rent)",
     leg_achat:"Buy (property + stocks post-mortgage, exempt)",leg_locBrut:"Rent — gross",leg_locNet:"Rent — net after tax",leg_coutAchat:"Total buy cost/month",leg_loyerEquiv:"Rent (+3%/year)",
     note:"Principal residence: 100% capital gains exempt at sale (CRA) · Portfolio: gains included at 50% on the taxable portion · Taxes (~1.1%) and maintenance (~0.5%) indexed to current value each year · After the mortgage, the monthly payment is invested in stocks until end of projection · Equivalent rent +3%/year",
-    be_eyebrow:"Breakeven rent",be_hint:()=>"Below this amount, renting + investing is better.",
+    be_eyebrow:"Breakeven rent",be_prix_lbl:"Purchase price",be_hint:()=>"Below this amount, renting + investing is better.",
     be_below_arrow:"▼",be_below_action:"Rent",be_below_cond:loy=>`If rent < ${loy}`,
     be_above_arrow:"▲",be_above_action:"Buy",be_above_cond:loy=>`If rent > ${loy}`,
     warn_achat_gagne:"Buying wins in all cases — even at $0 rent, renting cannot catch up. Try increasing the stock return.",
@@ -591,7 +597,7 @@ function go(){
       document.getElementById('result-wrap').innerHTML=`<div class="wbox">${reason==='achat_gagne'?t.warn_achat_gagne:t.warn_loc_gagne}</div>`;
     } else {
       const diff=tot1-loy0,cher=diff>0;
-      let html=`<div class="be-hero"><div class="be-eyebrow">${t.be_eyebrow}</div><div class="be-number">${fc(loy0)}</div><div class="be-hint">${t.be_hint()}</div><div class="be-split"><div class="be-col"><span class="be-col-arrow">${t.be_below_arrow}</span><span class="be-col-action">${t.be_below_action}</span><span class="be-col-cond">${t.be_below_cond(fc(loy0))}</span></div><div class="be-col"><span class="be-col-arrow">${t.be_above_arrow}</span><span class="be-col-action">${t.be_above_action}</span><span class="be-col-cond">${t.be_above_cond(fc(loy0))}</span></div></div></div>`;
+      let html=`<div class="be-hero"><div class="be-nums"><div class="be-num-blk"><div class="be-num-lbl">${t.be_eyebrow}</div><div class="be-number">${fc(loy0)}</div></div><div class="be-num-div">vs</div><div class="be-num-blk"><div class="be-num-lbl">${t.be_prix_lbl}</div><div class="be-number be-number-sec">${fm(prix)}</div></div></div><div class="be-hint">${t.be_hint()}</div><div class="be-split"><div class="be-col"><span class="be-col-arrow">${t.be_below_arrow}</span><span class="be-col-action">${t.be_below_action}</span><span class="be-col-cond">${t.be_below_cond(fc(loy0))}</span></div><div class="be-col"><span class="be-col-arrow">${t.be_above_arrow}</span><span class="be-col-action">${t.be_above_action}</span><span class="be-col-cond">${t.be_above_cond(fc(loy0))}</span></div></div></div>`;
       html+=cher
         ?`<div class="invest-box blue"><div class="im"><div class="ilbl b">${t.invest_lbl_cher}</div><div class="ival b">${fc(diff)}/mois</div><div class="isub b">${t.invest_sub_cher(fc(tot1),fc(loy0))}</div></div><div class="idet b">${t.invest_det_cher(fm(diff*12*AM),AM,AN)}</div></div>`
         :`<div class="invest-box green"><div class="im"><div class="ilbl g">${t.invest_lbl_eco}</div><div class="ival g">${fc(Math.abs(diff))}/mois</div><div class="isub g">${t.invest_sub_eco(fc(loy0),fc(tot1))}</div></div><div class="idet g">${t.invest_det_eco}</div></div>`;
