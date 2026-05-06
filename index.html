@@ -225,11 +225,11 @@ input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--bl
       <div class="ctrl-desc" data-i18n="desc_bourse">Rendement annuel d'un portefeuille diversifié (ex. S&amp;P 500, dividendes réinvestis).</div>
       <div class="pills">
         <span class="pill pp" data-i18n="sc_bourse_pess" onclick="sv('bourse',5)">Pessimiste 5 %</span>
-        <span class="pill pm" data-i18n="sc_bourse_moy"  onclick="sv('bourse',7)">Moyen 7 %</span>
+        <span class="pill pm" data-i18n="sc_bourse_moy"  onclick="sv('bourse',7.5)">Moyen 7,5 %</span>
         <span class="pill po" data-i18n="sc_bourse_opt"  onclick="sv('bourse',9.5)">Optimiste 9,5 %</span>
       </div>
       <div class="ctrl-ref" data-i18n="ref_bourse">S&amp;P 500 : 10 ans ~11 % · 20 ans ~8 % · 30 ans ~9 % · 100 ans ~10 %.</div>
-      <input type="range" id="bourse" min="3" max="15" step="0.5" value="7">
+      <input type="range" id="bourse" min="3" max="15" step="0.5" value="7.5">
     </div>
   </div>
 
@@ -296,7 +296,7 @@ input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--bl
   </div></div>
   <div class="row"><div class="cell full">
     <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_loyloc1">Loyer logement 1</span><span class="ctrl-val" id="loyloc1-o">1 400 $</span></div>
-    <div class="ctrl-desc" data-i18n="desc_loyloc1">Loyer mensuel brut du 1er logement locatif. Le modèle déduit ~50 % des frais proportionnels et taxe le revenu net au TMI choisi. Le revenu net est réinvesti en bourse. Augmente de 3 %/an.</div>
+    <div class="ctrl-desc" data-i18n="desc_loyloc1">Loyer mensuel brut du 1er logement locatif. Le modèle déduit ~50 % des frais proportionnels et taxe le revenu net au TMI choisi. Le revenu net réduit ton coût mensuel effectif. Augmente de 3 %/an.</div>
     <div class="ctrl-ref" data-i18n="ref_loyloc">Québec jan. 2026 : ~1 200–1 800 $ pour un 4½ ou 5½ dans un plex.</div>
     <input type="range" id="loyloc1" min="500" max="4000" step="50" value="1400">
   </div></div>
@@ -400,7 +400,7 @@ input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--bl
   <tbody id="tb-rows"></tbody>
 </table></div>
 
-<p class="note" data-i18n="note">Résidence principale : gain en capital 100 % exempt à la revente (ARC) · Portefeuille boursier : gains inclus à 50 % dans le revenu sur la portion taxable · Taxes (~1,1 %) et entretien (~1,0 %) indexés à la valeur courante chaque année · À la fin de l'hypothèque, le versement mensuel est investi en bourse jusqu'à la fin de la projection · Loyer équivalent +3 %/an</p>
+<p class="note" data-i18n="note">Résidence principale : gain en capital 100 % exempt à la revente (ARC) · Portefeuille boursier : gains inclus à 50 % dans le revenu sur la portion taxable · Taxes (~1,1 %) et entretien (~1,0 %) indexés à la valeur courante chaque année · À la fin de l'hypothèque, le versement mensuel est investi en bourse jusqu'à la fin de la projection · Loyer équivalent +3 %/an · Revenus locatifs plex : réduisent le coût mensuel net uniquement (pas réinvestis séparément)</p>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
@@ -464,7 +464,7 @@ const T={
     lbl_appre:"Appréciation immobilière",desc_appre:"Hausse annuelle estimée de la valeur de la propriété à Québec.",ref_appre:"Québec : 10 ans ~5–6 % · 20 ans ~4–5 % · 30–40 ans ~3–4 %.",
     sc_appre_pess:"Pessimiste 2 %",sc_appre_moy:"Moyen 3,5 %",sc_appre_opt:"Optimiste 5 %",
     lbl_bourse:"Rendement bourse",desc_bourse:"Rendement annuel d'un portefeuille diversifié (ex. S&P 500, dividendes réinvestis).",ref_bourse:"S&P 500 : 10 ans ~11 % · 20 ans ~8 % · 30 ans ~9 % · 100 ans ~10 %.",
-    sc_bourse_pess:"Pessimiste 5 %",sc_bourse_moy:"Moyen 7 %",sc_bourse_opt:"Optimiste 9,5 %",
+    sc_bourse_pess:"Pessimiste 5 %",sc_bourse_moy:"Moyen 7,5 %",sc_bourse_opt:"Optimiste 9,5 %",
     lbl_infl:"Hausse annuelle des frais",desc_infl:"Augmentation annuelle des frais de condo, assurances et taxes municipales.",ref_infl:"Cible BdC : 2 %/an. Taxes Québec : ~2–4 %/an sur 10 ans.",
     sc_infl_pess:"Pessimiste 3,5 %",sc_infl_moy:"Moyen 2 %",sc_infl_opt:"Optimiste 1,5 %",
     lbl_ans:"Durée de projection",desc_ans:"Horizon temporel de la comparaison achat vs location.",ref_ans:"30 ans = horizon standard pour un achat résidentiel.",
@@ -475,7 +475,7 @@ const T={
     lbl_nloc:"Logements locatifs",desc_nloc:"Nombre de logements loués dans le plex, en plus du tien.",
     desc_plex_mode:"Mode pour l'achat d'un plex où tu habites dans une unité et loues les autres. Le revenu locatif net réduit ton coût mensuel effectif.",
     nloc_btn_1:"1 logement locatif",nloc_btn_2:"2 logements locatifs",nloc_btn_3:"3 logements locatifs",nloc_btn_4:"4 logements locatifs",nloc_btn_5:"5 logements locatifs",
-    lbl_loyloc1:"Loyer logement 1",desc_loyloc1:"Loyer mensuel brut du 1er logement locatif. Le modèle déduit ~50 % des frais proportionnels et taxe le revenu net au TMI choisi. Le revenu net est réinvesti en bourse. Augmente de 3 %/an.",ref_loyloc:"Québec jan. 2026 : ~1 200–1 800 $ pour un 4½ ou 5½ dans un plex.",
+    lbl_loyloc1:"Loyer logement 1",desc_loyloc1:"Loyer mensuel brut du 1er logement locatif. Le modèle déduit ~50 % des frais proportionnels et taxe le revenu net au TMI choisi. Le revenu net réduit ton coût mensuel effectif. Augmente de 3 %/an.",ref_loyloc:"Québec jan. 2026 : ~1 200–1 800 $ pour un 4½ ou 5½ dans un plex.",
     lbl_loyloc2:"Loyer logement 2",desc_loyloc2:"Loyer mensuel brut du 2e logement locatif. Même traitement fiscal. Augmente de 3 %/an.",
     lbl_loyloc3:"Loyer logement 3",desc_loyloc3:"Loyer mensuel brut du 3e logement locatif. Même traitement fiscal. Augmente de 3 %/an.",
     lbl_loyloc4:"Loyer logement 4",desc_loyloc4:"Loyer mensuel brut du 4e logement locatif. Même traitement fiscal. Augmente de 3 %/an.",
@@ -487,7 +487,7 @@ const T={
     th_scenario:"Scénario",th_vbrute:"Valeur brute",th_coutbase:"Coût de base",th_gain:"Gain",th_impot:"Impôt",th_vnet:"Valeur nette",
     th_annee:"Année",th_coutAchat:"Coût achat/mois",th_surplus:"Surplus achat→bourse",th_loyer:"Loyer/mois",th_surploc:"Surplus loc→bourse",th_immo:"Valeur immo",th_bourseAchat:"Bourse achat",th_vNetAchat:"Val. nette achat",th_portfLoc:"Portef. loc. net",
     leg_achat:"Achat (immo + bourse post-hypo, exempt)",leg_locBrut:"Location — brut",leg_locNet:"Location — net après impôt",leg_coutAchat:"Coût total achat/mois",leg_loyerEquiv:"Loyer (+3 %/an)",
-    note:"Résidence principale : gain en capital 100 % exempt à la revente (ARC) · Portefeuille boursier : gains inclus à 50 % dans le revenu sur la portion taxable · Taxes (~1,1 %) et entretien (~1,0 %) indexés à la valeur courante chaque année · À la fin de l'hypothèque, le versement mensuel est investi en bourse jusqu'à la fin de la projection · Loyer équivalent +3 %/an",
+    note:"Résidence principale : gain en capital 100 % exempt à la revente (ARC) · Portefeuille boursier : gains inclus à 50 % dans le revenu sur la portion taxable · Taxes (~1,1 %) et entretien (~1,0 %) indexés à la valeur courante chaque année · À la fin de l'hypothèque, le versement mensuel est investi en bourse jusqu'à la fin de la projection · Loyer équivalent +3 %/an · Revenus locatifs plex : réduisent le coût mensuel net uniquement (pas réinvestis séparément)",
     be_eyebrow:"Loyer de rupture",be_prix_lbl:"Prix d'achat",
     be_hint:()=>"En dessous de ce montant, louer + investir est préférable.",
     be_hint_plex:()=>"Loyer d'un appartement équivalent pour toi, tenant compte du revenu locatif du plex.",
@@ -531,7 +531,7 @@ const T={
     lbl_appre:"Real estate appreciation",desc_appre:"Estimated annual increase in property value in Québec.",ref_appre:"Québec: 10 yr ~5–6% · 20 yr ~4–5% · 30–40 yr ~3–4%.",
     sc_appre_pess:"Pessimistic 2%",sc_appre_moy:"Average 3.5%",sc_appre_opt:"Optimistic 5%",
     lbl_bourse:"Stock market return",desc_bourse:"Average annual return of a diversified portfolio (e.g. S&P 500, dividends reinvested).",ref_bourse:"S&P 500: 10 yr ~11% · 20 yr ~8% · 30 yr ~9% · 100 yr ~10%.",
-    sc_bourse_pess:"Pessimistic 5%",sc_bourse_moy:"Average 7%",sc_bourse_opt:"Optimistic 9.5%",
+    sc_bourse_pess:"Pessimistic 5%",sc_bourse_moy:"Average 7.5%",sc_bourse_opt:"Optimistic 9.5%",
     lbl_infl:"Annual fee increase",desc_infl:"Annual increase in condo fees, insurance, and municipal taxes.",ref_infl:"Bank of Canada target: 2%/yr. Québec taxes: ~2–4%/yr over 10 years.",
     sc_infl_pess:"Pessimistic 3.5%",sc_infl_moy:"Average 2%",sc_infl_opt:"Optimistic 1.5%",
     lbl_ans:"Projection period",desc_ans:"Time horizon for the buy vs rent comparison.",ref_ans:"30 years = standard horizon for a residential purchase.",
@@ -542,7 +542,7 @@ const T={
     lbl_nloc:"Rental units",desc_nloc:"Number of units you rent out in the plex, in addition to yours.",
     desc_plex_mode:"Mode for buying a plex where you live in one unit and rent out the others. Net rental income reduces your effective monthly cost.",
     nloc_btn_1:"1 rental unit",nloc_btn_2:"2 rental units",nloc_btn_3:"3 rental units",nloc_btn_4:"4 rental units",nloc_btn_5:"5 rental units",
-    lbl_loyloc1:"Unit 1 rent",desc_loyloc1:"Monthly gross rent from unit 1. Model deducts ~50% of proportional expenses and taxes net income at your MTR. Net income is reinvested in stocks. Grows at 3%/year.",ref_loyloc:"Québec Jan. 2026: ~$1,200–1,800 for a 2–3 bed unit in a plex.",
+    lbl_loyloc1:"Unit 1 rent",desc_loyloc1:"Monthly gross rent from unit 1. Model deducts ~50% of proportional expenses and taxes net income at your MTR. Net income reduces your effective monthly cost. Grows at 3%/year.",ref_loyloc:"Québec Jan. 2026: ~$1,200–1,800 for a 2–3 bed unit in a plex.",
     lbl_loyloc2:"Unit 2 rent",desc_loyloc2:"Monthly gross rent from unit 2. Same tax treatment. Grows at 3%/year.",
     lbl_loyloc3:"Unit 3 rent",desc_loyloc3:"Monthly gross rent from unit 3. Same tax treatment. Grows at 3%/year.",
     lbl_loyloc4:"Unit 4 rent",desc_loyloc4:"Monthly gross rent from unit 4. Same tax treatment. Grows at 3%/year.",
@@ -554,7 +554,7 @@ const T={
     th_scenario:"Scenario",th_vbrute:"Gross value",th_coutbase:"Cost base",th_gain:"Gain",th_impot:"Tax",th_vnet:"Net value",
     th_annee:"Year",th_coutAchat:"Buy cost/month",th_surplus:"Buy surplus→stocks",th_loyer:"Rent/month",th_surploc:"Rent surplus→stocks",th_immo:"Property value",th_bourseAchat:"Stocks (buy)",th_vNetAchat:"Net worth (buy)",th_portfLoc:"Net portfolio (rent)",
     leg_achat:"Buy (property + stocks post-mortgage, exempt)",leg_locBrut:"Rent — gross",leg_locNet:"Rent — net after tax",leg_coutAchat:"Total buy cost/month",leg_loyerEquiv:"Rent (+3%/year)",
-    note:"Principal residence: 100% capital gains exempt at sale (CRA) · Portfolio: gains included at 50% on the taxable portion · Taxes (~1.1%) and maintenance (~1.0%) indexed to current value each year · After the mortgage, the monthly payment is invested in stocks until end of projection · Equivalent rent +3%/year",
+    note:"Principal residence: 100% capital gains exempt at sale (CRA) · Portfolio: gains included at 50% on the taxable portion · Taxes (~1.1%) and maintenance (~1.0%) indexed to current value each year · After the mortgage, the monthly payment is invested in stocks until end of projection · Equivalent rent +3%/year · Plex rental income: reduces net monthly cost only (not separately reinvested)",
     be_eyebrow:"Breakeven rent",be_prix_lbl:"Purchase price",
     be_hint:()=>"Below this amount, renting + investing is better.",
     be_hint_plex:()=>"Equivalent apartment rent for your unit, accounting for plex rental income.",
@@ -625,24 +625,27 @@ function sv(id,v){document.getElementById(id).value=v;document.getElementById(id
 function refreshOutputs(){for(const id of Object.keys(fmts)){const el=document.getElementById(id);if(el)document.getElementById(id+'-o').textContent=fmts[id](+el.value);}}
 
 // ─── Simulation ───────────────────────────────────────────────────────────────
-// revLocNet0: monthly after-tax rental income in year 0, grows 3%/yr
+// FIX: revLocNet0 simply reduces monthly cost. It is NOT separately accumulated
+// as a stock portfolio — that was double-counting the same cash.
 function simAchat(prix,mise,tAnn,cBase,app,inf,brs,AN,AM,revLocNet0=0){
   const hyp=prix-mise,tM=tAnn/12,n=AM*12;
   const pmt=hyp*(tM*Math.pow(1+tM,n))/(Math.pow(1+tM,n)-1);
-  const vNA=[],aMA=[];let sol=hyp,bpf=0,plexBrs=0;
+  const vNA=[],aMA=[];let sol=hyp,bpf=0;
   for(let a=0;a<=AN;a++){
     const vi=prix*Math.pow(1+app,a),pa=a<AM?pmt:0;
     const ta=vi*0.011/12,ea=vi*0.01/12,ca=cBase*Math.pow(1+inf,a),aa=100*Math.pow(1+inf,a);
     const revA=revLocNet0*Math.pow(1.03,a);
+    // Monthly cost: rental income offsets housing expenses — nothing more
     aMA.push(Math.round(pa+ta+ea+ca+aa-revA));
-    vNA.push(Math.round(vi-(a<AM?Math.max(0,sol):0)+bpf+plexBrs));
+    // Net worth: equity + post-mortgage stock accumulation only
+    vNA.push(Math.round(vi-(a<AM?Math.max(0,sol):0)+bpf));
     if(a<AN){
       if(a<AM){
         for(let m=0;m<12;m++){const i=sol*tM;sol-=(pmt-i);}
-        plexBrs=plexBrs*Math.pow(1+brs/12,12)+revA*12;
+        // rental income just offsets costs; no separate investment stream
       }else{
+        // After mortgage paid off, freed-up payment is invested
         bpf=bpf*Math.pow(1+brs/12,12)+pmt*12;
-        plexBrs=plexBrs*Math.pow(1+brs/12,12)+revA*12;
       }
     }
   }
@@ -791,7 +794,8 @@ function go(){
     {label:t.chart_loyer,data:lMs,borderColor:'#0F6E56',backgroundColor:'rgba(15,110,86,0.07)',tension:0.3,fill:true,pointRadius:2}
   ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{ticks:{callback:v=>fc(v),font:{size:10},color:tickColor},grid:{color:gridColor}},x:{ticks:{font:{size:10},color:tickColor,autoSkip:true,maxRotation:0}}}}});
 
-  let s2=hyp,pf2=mise,cb2=mise,brs2=0,plexBrs2=0;const rows=[];
+  // FIX: removed plexBrs2 — rental income reduces monthly cost, not a separate stock portfolio
+  let s2=hyp,pf2=mise,cb2=mise,brs2=0;const rows=[];
   for(let a=1;a<=AN;a++){
     const vi=prix*Math.pow(1+app,a),pa=a<=AM?pmt:0;
     const ta=vi*0.011/12,ea=vi*0.01/12,ca=cBase*Math.pow(1+inf,a),aa=ass1*Math.pow(1+inf,a);
@@ -800,8 +804,7 @@ function go(){
     if(a<=AM){for(let m=0;m<12;m++){const i=s2*tM;s2-=(pmt-i);}}
     const eq=vi-(a<=AM?Math.max(0,s2):0),sA=a>AM?pmt:0;
     if(a>AM){brs2=brs2*Math.pow(1+brs/12,12)+pmt*12;}
-    plexBrs2=plexBrs2*Math.pow(1+brs/12,12)+revA*12;
-    const vN2=eq+brs2+plexBrs2,invM=Math.max(0,totA-la);
+    const vN2=eq+brs2,invM=Math.max(0,totA-la);
     cb2+=invM*12;pf2=pf2*Math.pow(1+brs/12,12)+invM*12;
     const impA=cI(pf2,cb2),pnA=pf2-impA;
     rows.push({a,totA,sA,la,invLoc:invM,vi,brs2,vN2,pnA,ms:a===AM});
