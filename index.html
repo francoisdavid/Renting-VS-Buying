@@ -33,6 +33,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 h1{font-size:20px;font-weight:500;margin-bottom:4px;color:var(--text)}
 .subtitle{font-size:13px;color:var(--text3)}
 
+/* Nav */
+.nav-link{display:flex;flex-direction:column;align-items:center;text-align:center;padding:8px 18px;border-radius:10px;border:0.5px solid var(--border);background:var(--bg2);color:var(--text3);text-decoration:none;transition:all .15s;gap:2px}
+.nav-link:hover{border-color:var(--blue);color:var(--blue)}
+.nav-link.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.nav-title{font-size:13px;font-weight:700;line-height:1.2}
+.nav-sub{font-size:11px;font-weight:400;opacity:.72;line-height:1.2}
+
 /* Language toggle */
 .lang-toggle{display:flex;gap:4px;flex-shrink:0}
 .lang-btn{font-size:12px;font-weight:600;padding:4px 10px;border-radius:6px;border:1.5px solid var(--border);background:var(--bg2);color:var(--text3);cursor:pointer;transition:all .15s}
@@ -150,16 +157,23 @@ input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--bl
 </head>
 <body>
 
-<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem">
-  <div>
-    <h1 data-i18n="h1">Achat vs Location — Province de Québec</h1>
-    <p class="subtitle" data-i18n="subtitle">Calculateur de loyer équivalent · Projection sur la durée choisie</p>
-  </div>
-  <div class="lang-toggle">
+<div style="display:flex;align-items:center;gap:6px;margin-bottom:1.5rem;flex-wrap:wrap">
+  <a href="index.html" class="nav-link active">
+    <span class="nav-title" data-i18n="nav_logement">Logement</span>
+    <span class="nav-sub" data-i18n="nav_logement_sub">Acheter ou Louer</span>
+  </a>
+  <a href="investissement.html" class="nav-link" id="nav-invest">
+    <span class="nav-title" data-i18n="nav_invest">Investissement</span>
+    <span class="nav-sub" data-i18n="nav_invest_sub">Indépendance Financière</span>
+  </a>
+  <div class="lang-toggle" style="margin-left:auto">
     <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
     <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
   </div>
 </div>
+
+<h1 data-i18n="h1" style="margin-bottom:4px">Logement — Acheter ou Louer</h1>
+<p class="subtitle" data-i18n="subtitle" style="margin-bottom:1.25rem">Calculateur de loyer équivalent · Projection sur la durée choisie</p>
 
 <div class="panel">
   <div class="row"><div class="cell full">
@@ -221,7 +235,7 @@ input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--bl
       <input type="range" id="appre" min="0" max="10" step="0.5" value="3.5">
     </div>
     <div class="cell">
-      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_bourse">Rendement bourse</span><span class="ctrl-val" id="bourse-o">7,0 %</span></div>
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_bourse">Rendement bourse</span><span class="ctrl-val" id="bourse-o">7,5 %</span></div>
       <div class="ctrl-desc" data-i18n="desc_bourse">Rendement annuel d'un portefeuille diversifié (ex. S&amp;P 500, dividendes réinvestis).</div>
       <div class="pills">
         <span class="pill pp" data-i18n="sc_bourse_pess" onclick="sv('bourse',5)">Pessimiste 5 %</span>
@@ -451,7 +465,8 @@ function bvn(p){let t=0,pr=0;for(const[pl,tx]of[[50000,.005],[200000,.01],[30000
 // ─── Translations ─────────────────────────────────────────────────────────────
 const T={
   fr:{
-    pageTitle:'Achat vs Location — Province de Québec',h1:'Achat vs Location — Province de Québec',
+    nav_logement:'Logement',nav_logement_sub:'Acheter ou Louer',nav_invest:'Investissement',nav_invest_sub:'Indépendance Financière',
+    pageTitle:'Logement — Acheter ou Louer',h1:'Logement — Acheter ou Louer',
     subtitle:'Calculateur de loyer équivalent · Projection sur la durée choisie',
     mode_condo:'Maison / Condo',mode_plex:'Plex',
     lbl_prix:"Prix d'achat",desc_prix:"Valeur de la propriété. Médiane Québec : ~580–700 k$ maison · ~430 k$ condo (2026).",
@@ -518,7 +533,8 @@ const T={
     chart_buy:"Achat",chart_locBrut:"Loc brut",chart_locNet:"Loc net",chart_loyer:"Loyer",chart_year:i=>`An ${i}`,det_check:an=>`An ${an} ✓`,det_year:an=>`An ${an}`,
   },
   en:{
-    pageTitle:'Buy vs Rent — Québec',h1:'Buy vs Rent — Québec',
+    nav_logement:'Housing',nav_logement_sub:'Buy or Rent',nav_invest:'Investments',nav_invest_sub:'Financial Independence',
+    pageTitle:'Housing — Buy or Rent',h1:'Housing — Buy or Rent',
     subtitle:'Equivalent rent calculator · Adjustable projection horizon',
     mode_condo:'House / Condo',mode_plex:'Plex',
     lbl_prix:"Purchase price",desc_prix:"Property value. Québec median: ~$580–700k house · ~$430k condo (2026).",

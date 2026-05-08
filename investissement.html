@@ -1,0 +1,2065 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indépendance Financière — Investissement Québec</title>
+<style>
+:root{
+  --bg:#f9f8f6;--bg2:#fff;--bg3:#f1efe8;--bg4:#f5f4f0;
+  --text:#1a1a1a;--text2:#555;--text3:#5a5a5a;--text4:#888;
+  --border:#e0ddd6;--border2:#e8e6de;
+  --blue:#185FA5;--blue-bg:#e6f1fb;--blue-text:#0C447C;
+  --green:#0F6E56;--green-bg:#E1F5EE;--green-text:#085041;
+  --red:#993C1D;--red-bg:#FAECE7;--red-text:#712B13;
+  --amber:#BA7517;--amber-bg:#faeeda;--amber-text:#633806;
+  --purple:#7B4FC8;--purple-bg:#F2EDFB;--purple-text:#4A2A8C;
+  --radius:8px;--radius-lg:12px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1a1a18;--bg2:#242422;--bg3:#2c2c2a;--bg4:#323230;
+    --text:#e8e6de;--text2:#b4b2a9;--text3:#888780;--text4:#555;
+    --border:#3a3a38;--border2:#333330;
+    --blue:#378ADD;--blue-bg:#0c2a44;--blue-text:#85B7EB;
+    --green:#1D9E75;--green-bg:#04342C;--green-text:#9FE1CB;
+    --red:#D85A30;--red-bg:#2a1008;--red-text:#F0997B;
+    --amber:#EF9F27;--amber-bg:#2a1c04;--amber-text:#FAC775;
+    --purple:#A97EE8;--purple-bg:#1E1030;--purple-text:#C9A8F0;
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:1.5rem;font-size:14px;line-height:1.5}
+h1{font-size:20px;font-weight:500;margin-bottom:4px;color:var(--text)}
+.subtitle{font-size:13px;color:var(--text3)}
+.topbar{display:flex;align-items:center;gap:6px;margin-bottom:1.5rem;flex-wrap:wrap}
+.nav-link{display:flex;flex-direction:column;align-items:center;text-align:center;padding:8px 18px;border-radius:10px;border:0.5px solid var(--border);background:var(--bg2);color:var(--text3);text-decoration:none;transition:all .15s;gap:2px}
+.nav-link:hover{border-color:var(--blue);color:var(--blue)}
+.nav-link.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.nav-title{font-size:13px;font-weight:700;line-height:1.2}
+.nav-sub{font-size:11px;font-weight:400;opacity:.72;line-height:1.2}
+.lang-toggle{display:flex;gap:4px;margin-left:auto}
+.lang-btn{font-size:12px;font-weight:600;padding:4px 10px;border-radius:6px;border:1.5px solid var(--border);background:var(--bg2);color:var(--text3);cursor:pointer;transition:all .15s}
+.lang-btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.lang-btn:hover:not(.active){border-color:var(--blue);color:var(--blue)}
+.panel{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:1.25rem}
+.panel-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:10px 15px 9px;border-bottom:0.5px solid var(--border2)}
+.row{display:grid;grid-template-columns:1fr 1fr;border-bottom:0.5px solid var(--border2)}
+.row:last-child{border-bottom:none}
+.cell{padding:11px 15px;border-right:0.5px solid var(--border2)}
+.cell:last-child{border-right:none}
+.ctrl-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px}
+.ctrl-label{font-size:13px;font-weight:500;color:var(--text)}
+.ctrl-val{font-size:13px;font-weight:500;color:var(--blue);min-width:80px;text-align:right}
+.ctrl-desc{font-size:11px;color:var(--text3);margin-bottom:5px;line-height:1.35}
+.ctrl-ref{font-size:10px;color:var(--text4);margin-top:3px;line-height:1.35}
+.pills{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:5px}
+.pill{font-size:10px;padding:2px 7px;border-radius:10px;border:0.5px solid;cursor:pointer;user-select:none;transition:opacity .1s}
+.pill:hover{opacity:.75}
+.pp{background:var(--red-bg);border-color:var(--red);color:var(--red-text)}
+.pm{background:var(--bg3);border-color:var(--border);color:var(--text2)}
+.po{background:var(--green-bg);border-color:var(--green);color:var(--green-text)}
+input[type=range]{width:100%;height:4px;-webkit-appearance:none;appearance:none;border-radius:2px;outline:none;cursor:pointer;margin-top:2px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--blue);cursor:pointer;border:2px solid var(--bg2);box-shadow:0 0 0 1px var(--blue)}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--blue);cursor:pointer;border:2px solid var(--bg2);box-shadow:0 0 0 1px var(--blue)}
+input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--blue)}
+.toggle-row{display:flex;align-items:flex-start;gap:12px;padding:11px 15px;border-bottom:0.5px solid var(--border2)}
+.toggle-row:last-child{border-bottom:none}
+.toggle-row label{font-size:13px;font-weight:500;color:var(--text);cursor:pointer;display:block}
+.toggle-desc{font-size:11px;color:var(--text3);margin-top:2px}
+.hero{background:linear-gradient(135deg,#0d3660 0%,#185FA5 100%);color:#fff;border-radius:var(--radius-lg);padding:1.5rem 2rem;margin-bottom:1.25rem;display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr;gap:.75rem;align-items:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(255,255,255,0.09),transparent 60%);pointer-events:none}
+.hero-div{background:rgba(255,255,255,0.18);width:1px;height:48px;margin:0 auto}
+.hero-metric{text-align:center}
+.hero-eyebrow{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:.3rem}
+.hero-value{font-size:36px;font-weight:600;letter-spacing:-1px;line-height:1}
+.hero-sub{font-size:10px;opacity:.5;margin-top:.3rem}
+.wf-wrap{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:1.25rem}
+.wf-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:.9rem;flex-wrap:wrap;gap:4px}
+.wf-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3)}
+.wf-order{font-size:11px;color:var(--text3)}
+.wf-bar{display:flex;border-radius:8px;overflow:hidden;height:40px;margin-bottom:1rem;background:var(--bg3)}
+.wf-seg{height:100%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;overflow:hidden;transition:width .35s ease;min-width:0}
+.wf-seg span{white-space:nowrap;padding:0 8px}
+.ws-match{background:#B45309}
+.ws-celiapp{background:var(--purple)}
+.ws-celi{background:var(--green)}
+.ws-reer{background:var(--blue)}
+.ws-nonreg{background:var(--amber)}
+.wf-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.wf-card{border-radius:var(--radius);padding:.85rem 1rem;border:1px solid}
+.wf-card.hidden{display:none}
+.wf-card.match{background:var(--amber-bg);border-color:#B45309;border-width:2px}
+.wf-card.celiapp{background:var(--purple-bg);border-color:var(--purple)}
+.wf-card.celi{background:var(--green-bg);border-color:var(--green)}
+.wf-card.reer{background:var(--blue-bg);border-color:var(--blue)}
+.wf-card.nonreg{background:var(--amber-bg);border-color:var(--amber)}
+.wf-card-badge{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.3rem}
+.wf-card-badge.celiapp{color:var(--purple-text)}
+.wf-card-badge.celi{color:var(--green-text)}
+.wf-card-badge.reer{color:var(--blue-text)}
+.wf-card-badge.nonreg{color:var(--amber-text)}
+.wf-card-amt{font-size:22px;font-weight:600;margin-bottom:.2rem}
+.wf-card-amt.celiapp{color:var(--purple)}
+.wf-card-amt.celi{color:var(--green)}
+.wf-card-amt.reer{color:var(--blue)}
+.wf-card-amt.nonreg{color:var(--amber)}
+.wf-card-note{font-size:10.5px;color:var(--text3);line-height:1.4}
+.chart-panel{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:1.25rem}
+.chart-panel h3{font-size:13px;font-weight:600;color:var(--text);margin-bottom:1rem}
+.chart-wrap{position:relative;height:280px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{padding:8px 12px;text-align:right;font-weight:600;color:var(--text3);border-bottom:0.5px solid var(--border);font-size:11px;white-space:nowrap}
+th:first-child{text-align:left}
+td{padding:8px 12px;text-align:right;border-bottom:0.5px solid var(--border2);color:var(--text2)}
+td:first-child{text-align:left;font-weight:500;color:var(--text)}
+tr.total-row td{font-weight:600;color:var(--text);background:var(--bg3);border-bottom:none}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.note{font-size:11px;color:var(--text4);line-height:1.65;padding:1rem 0 0}
+.cell.full{grid-column:span 2;border-right:none!important}
+/* Décaissement */
+.sec-divider{display:flex;align-items:center;gap:1rem;margin:2rem 0 1.25rem}
+.sec-divider-line{flex:1;height:0.5px;background:var(--border)}
+.sec-divider-lbl{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--text4)}
+.dec-hero{background:linear-gradient(135deg,#083d28 0%,#0F6E56 100%);color:#fff;border-radius:var(--radius-lg);padding:1.5rem 2rem;margin-bottom:1.25rem;display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr;gap:.75rem;align-items:center;position:relative;overflow:hidden}
+.dec-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(255,255,255,0.09),transparent 60%);pointer-events:none}
+.dec-hero-div{background:rgba(255,255,255,0.18);width:1px;height:48px;margin:0 auto}
+.age-pills{display:flex;gap:4px;margin-bottom:6px;flex-wrap:wrap}
+.age-pill{font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px;border:1px solid var(--border);background:var(--bg3);color:var(--text2);cursor:pointer;transition:all .15s}
+.age-pill.active{background:var(--green);border-color:var(--green);color:#fff}
+.age-pill:hover:not(.active){border-color:var(--green);color:var(--green)}
+.sec-hd{display:flex;align-items:flex-start;gap:.8rem;margin:2.25rem 0 1.1rem}
+.sec-num{font-size:11px;font-weight:700;min-width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.sec-hd-title{font-size:15px;font-weight:600;color:var(--text);line-height:1.2}
+.sec-hd-desc{font-size:12px;color:var(--text3);margin-top:3px}
+.sec-toggle{width:100%;text-align:left;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:13px 16px;cursor:pointer;color:var(--text);display:flex;align-items:center;justify-content:space-between;margin:1.75rem 0 0;transition:border-color .2s,background .2s;gap:1rem}
+.sec-toggle:hover{border-color:var(--green)}
+.sec-toggle.open{border-color:var(--green);background:var(--green-bg)}
+.sec-toggle-caret{font-size:16px;opacity:.45;transition:transform .2s;flex-shrink:0}
+.sec-toggle.open .sec-toggle-caret{transform:rotate(0deg)}
+.sec-toggle:not(.open) .sec-toggle-caret{transform:rotate(-90deg)}
+.inner-divider{display:flex;align-items:center;gap:1rem;margin:2rem 0 1.25rem}
+.inner-divider-line{flex:1;height:0.5px;background:var(--border)}
+.inner-divider-lbl{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--text4)}
+.obj-result{padding:10px 0 4px}
+.obj-main{font-size:28px;font-weight:600;letter-spacing:-.5px;margin-bottom:2px}
+.obj-sub{font-size:12px;color:var(--text3);margin-bottom:6px}
+.obj-note{font-size:11px;line-height:1.45;padding:5px 8px;border-radius:6px;background:var(--bg3)}
+@media(max-width:600px){
+  .row{grid-template-columns:1fr}
+  .cell{border-right:none!important}
+  .cell:not(:last-child){border-bottom:0.5px solid var(--border2)}
+  .hero{grid-template-columns:1fr;gap:.75rem}
+  .hero-div{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="index.html" class="nav-link">
+    <span class="nav-title" data-i18n="nav_calc">Logement</span>
+    <span class="nav-sub" data-i18n="nav_calc_sub">Acheter ou Louer</span>
+  </a>
+  <a href="investissement.html" class="nav-link active">
+    <span class="nav-title" data-i18n="nav_invest">Investissement</span>
+    <span class="nav-sub" data-i18n="nav_invest_sub">Indépendance Financière</span>
+  </a>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</div>
+
+<h1 data-i18n="title">Investissement — Indépendance Financière</h1>
+<div class="subtitle" style="margin-bottom:.75rem" data-i18n="subtitle">Où investir votre prochain dollar — Québec 2026</div>
+<div style="background:#FEF3C7;border:1.5px solid #F59E0B;border-radius:8px;padding:10px 14px;margin-bottom:1.25rem;font-size:13px;color:#92400E;display:flex;align-items:center;gap:10px">
+  <span style="font-size:18px;line-height:1">🚧</span>
+  <span><strong>Travail en cours</strong> — Cet outil est en développement actif. Les calculs peuvent contenir des erreurs. Ne pas utiliser comme référence financière.</span>
+</div>
+
+<button class="sec-toggle open" id="sec1-toggle-btn" onclick="toggleSec1()" style="margin-top:1rem">
+  <div style="display:flex;align-items:center;gap:.75rem">
+    <div class="sec-num">1</div>
+    <div style="text-align:left">
+      <div class="sec-hd-title" data-i18n="sec1_title">Allocation recommandée cette année</div>
+      <div class="sec-hd-desc" data-i18n="sec1_desc">Où placer votre prochain dollar selon votre situation fiscale</div>
+    </div>
+  </div>
+  <span class="sec-toggle-caret">▼</span>
+</button>
+<div id="sec1-wrap" style="margin-top:1.25rem">
+<!-- Profil -->
+<div class="panel">
+  <div class="panel-title" data-i18n="sec_profil">Profil</div>
+  <div class="row">
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_revenu">Revenu brut annuel</span><span class="ctrl-val" id="revenu-o">80 000 $</span></div>
+      <div class="ctrl-desc" data-i18n="desc_revenu">Votre salaire ou revenu total avant impôt.</div>
+      <div class="pills">
+        <span class="pill pm" onclick="svLogS('revenu',50000,25000,300000)">50 k$</span>
+        <span class="pill pm" onclick="svLogS('revenu',80000,25000,300000)">80 k$</span>
+        <span class="pill pm" onclick="svLogS('revenu',120000,25000,300000)">120 k$</span>
+        <span class="pill pm" onclick="svLogS('revenu',200000,25000,300000)">200 k$</span>
+      </div>
+      <input type="range" id="revenu" min="0" max="100" step="1" value="47" oninput="upd('revenu','$');calc()">
+    </div>
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_invest">Montant à investir cette année</span><span class="ctrl-val" id="invest-o">15 000 $</span></div>
+      <div class="ctrl-desc" data-i18n="desc_invest">Capital disponible à investir annuellement (constant, en dollars d'aujourd'hui).</div>
+      <div class="pills">
+        <span class="pill pm" onclick="svLogS('invest',5000,1000,120000)">5 k$</span>
+        <span class="pill pm" onclick="svLogS('invest',15000,1000,120000)">15 k$</span>
+        <span class="pill pm" onclick="svLogS('invest',30000,1000,120000)">30 k$</span>
+        <span class="pill pm" onclick="svLogS('invest',60000,1000,120000)">60 k$</span>
+      </div>
+      <input type="range" id="invest" min="0" max="100" step="1" value="57" oninput="upd('invest','$');calc()">
+    </div>
+  </div>
+  <div class="row">
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_age">Âge actuel</span><span class="ctrl-val" id="age-o">35 ans</span></div>
+      <div class="ctrl-desc" data-i18n="desc_age">Votre âge aujourd'hui.</div>
+      <div class="pills">
+        <span class="pill pm" onclick="sv('age',25)">25</span>
+        <span class="pill pm" onclick="sv('age',35)">35</span>
+        <span class="pill pm" onclick="sv('age',45)">45</span>
+        <span class="pill pm" onclick="sv('age',55)">55</span>
+      </div>
+      <input type="range" id="age" min="18" max="64" step="1" value="35" oninput="upd('age','ans');calc()">
+    </div>
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_retraite">Âge de retraite visé</span><span class="ctrl-val" id="retraite-o">65 ans</span></div>
+      <div style="font-size:12px;font-weight:600;color:var(--blue);margin-bottom:5px" id="horizon-desc">→ 30 ans d'horizon</div>
+      <div class="pills">
+        <span class="pill pm" onclick="sv('retraite',55)">55</span>
+        <span class="pill pm" onclick="sv('retraite',60)">60</span>
+        <span class="pill pm" onclick="sv('retraite',65)">65</span>
+        <span class="pill pm" onclick="sv('retraite',70)">70</span>
+      </div>
+      <input type="range" id="retraite" min="40" max="75" step="1" value="65" oninput="upd('retraite','ans');calc()">
+    </div>
+  </div>
+  <div class="toggle-row">
+    <input type="checkbox" id="match-on" onchange="toggleMatch();calc()">
+    <div>
+      <label for="match-on" data-i18n="lbl_match">Mon employeur offre une cotisation équivalente (REER collectif)</label>
+      <div class="toggle-desc" data-i18n="desc_match">Retour immédiat de 50–100 % — à maximiser avant tout autre compte. La cotisation de l'employeur s'ajoute à votre budget d'investissement.</div>
+    </div>
+  </div>
+  <div id="match-row" class="row" style="display:none">
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_match_emp">Cotisation employé</span><span class="ctrl-val" id="match-emp-o">4,0 %</span></div>
+      <div class="ctrl-desc" data-i18n="desc_match_emp">% de votre salaire versé dans le REER collectif pour déclencher la cotisation.</div>
+      <div class="pills">
+        <span class="pill pm" onclick="sv('match-emp',2)">2 %</span>
+        <span class="pill pm" onclick="sv('match-emp',4)">4 %</span>
+        <span class="pill pm" onclick="sv('match-emp',6)">6 %</span>
+      </div>
+      <input type="range" id="match-emp" min="0.5" max="10" step="0.5" value="4" oninput="upd('match-emp','%');calc()">
+    </div>
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_match_rate">Taux de la cotisation employeur</span><span class="ctrl-val" id="match-rate-o">100 %</span></div>
+      <div class="ctrl-desc" data-i18n="desc_match_rate">% que l'employeur ajoute sur votre cotisation. 100 % = dollar pour dollar.</div>
+      <div class="pills">
+        <span class="pill pm" onclick="sv('match-rate',50)">50 %</span>
+        <span class="pill pm" onclick="sv('match-rate',75)">75 %</span>
+        <span class="pill pm" onclick="sv('match-rate',100)">100 %</span>
+      </div>
+      <input type="range" id="match-rate" min="25" max="150" step="25" value="100" oninput="upd('match-rate','%');calc()">
+    </div>
+  </div>
+  <div class="toggle-row">
+    <input type="checkbox" id="career-on" onchange="toggleCareer();calc()">
+    <div>
+      <label for="career-on" data-i18n="lbl_career">Revenu futur plus élevé prévu (pic de carrière)</label>
+      <div class="toggle-desc" data-i18n="desc_career">Si votre salaire augmentera significativement, la déduction REER vaudra davantage — peut justifier prioriser le CELI maintenant et maximiser le REER plus tard.</div>
+    </div>
+  </div>
+  <div id="career-row" class="row" style="display:none">
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_career_income">Revenu de pointe prévu</span><span class="ctrl-val" id="career-income-o">120 000 $</span></div>
+      <div class="ctrl-desc" data-i18n="desc_career_income">Revenu annuel brut estimé à votre sommet de carrière.</div>
+      <div class="pills">
+        <span class="pill pm" onclick="sv('career-income',80000)">80 k$</span>
+        <span class="pill pm" onclick="sv('career-income',120000)">120 k$</span>
+        <span class="pill pm" onclick="sv('career-income',160000)">160 k$</span>
+        <span class="pill pm" onclick="sv('career-income',200000)">200 k$</span>
+      </div>
+      <input type="range" id="career-income" min="30000" max="300000" step="5000" value="120000" oninput="upd('career-income','$');calc()">
+    </div>
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_career_yrs">Dans combien d'années</span><span class="ctrl-val" id="career-yrs-o">5 ans</span></div>
+      <div class="ctrl-desc" data-i18n="desc_career_yrs">Horizon estimé pour atteindre ce revenu de pointe.</div>
+      <div class="pills">
+        <span class="pill pm" onclick="sv('career-yrs',2)">2 ans</span>
+        <span class="pill pm" onclick="sv('career-yrs',5)">5 ans</span>
+        <span class="pill pm" onclick="sv('career-yrs',10)">10 ans</span>
+      </div>
+      <input type="range" id="career-yrs" min="1" max="20" step="1" value="5" oninput="upd('career-yrs','ans');calc()">
+    </div>
+  </div>
+</div>
+
+<!-- Droits de cotisation -->
+<div class="panel">
+  <div class="panel-title" data-i18n="sec_droits">Droits de cotisation disponibles</div>
+  <div class="row">
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_celi_room">Droits CELI inutilisés</span><span class="ctrl-val" id="celi-room-o">7 000 $</span></div>
+      <div class="ctrl-desc" data-i18n="desc_celi_room">Visible dans Mon dossier CRA. Plafond 2026 : 7 000 $/an — cumul ~109 000 $ depuis 2009 si jamais cotisé.</div>
+      <input type="range" id="celi-room" min="0" max="109000" step="1000" value="7000" oninput="upd('celi-room','$');calc()">
+    </div>
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_reer_room">Droits REER inutilisés</span><span class="ctrl-val" id="reer-room-o">40 000 $</span></div>
+      <div class="ctrl-desc" data-i18n="desc_reer_room">Visible sur votre Avis de cotisation CRA. 2026 : 18 % du revenu gagné, max 32 490 $.</div>
+      <input type="range" id="reer-room" min="0" max="250000" step="1000" value="40000" oninput="upd('reer-room','$');calc()">
+    </div>
+  </div>
+  <div class="toggle-row">
+    <input type="checkbox" id="ftb" onchange="toggleFTB();calc()" checked>
+    <div>
+      <label for="ftb" data-i18n="lbl_ftb">Premier acheteur·euse — accès au CELIAPP</label>
+      <div class="toggle-desc" data-i18n="desc_ftb">N'avez pas été propriétaire dans les 4 dernières années. Le CELIAPP est déductible à l'entrée ET libre d'impôt à la sortie.</div>
+    </div>
+  </div>
+  <div id="celiapp-row" class="row">
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_celiapp_room">Droits CELIAPP inutilisés</span><span class="ctrl-val" id="celiapp-room-o">16 000 $</span></div>
+      <div class="ctrl-desc" data-i18n="desc_celiapp_room">8 000 $/an — max 40 000 $ à vie. Déductible comme le REER + libre d'impôt à la sortie comme le CELI.</div>
+      <div class="pills">
+        <span class="pill pm" onclick="sv('celiapp-room',8000)">8 k$</span>
+        <span class="pill pm" onclick="sv('celiapp-room',16000)">16 k$</span>
+        <span class="pill pm" onclick="sv('celiapp-room',24000)">24 k$</span>
+        <span class="pill pm" onclick="sv('celiapp-room',40000)">40 k$</span>
+      </div>
+      <input type="range" id="celiapp-room" min="0" max="40000" step="8000" value="16000" oninput="upd('celiapp-room','$');calc()">
+    </div>
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_horizon">Achat prévu dans</span><span class="ctrl-val" id="horizon-o">5 ans</span></div>
+      <div class="ctrl-desc" data-i18n="desc_horizon">Les fonds CELIAPP sont retirés libres d'impôt à cette date pour l'achat.</div>
+      <div class="pills">
+        <span class="pill pm" onclick="sv('horizon',2)">2 ans</span>
+        <span class="pill pm" onclick="sv('horizon',5)">5 ans</span>
+        <span class="pill pm" onclick="sv('horizon',10)">10 ans</span>
+      </div>
+      <input type="range" id="horizon" min="1" max="15" step="1" value="5" oninput="upd('horizon','ans');calc()">
+    </div>
+  </div>
+</div>
+
+<!-- Soldes actuels — inputs that feed Section 1 allocation recommendation -->
+<div class="panel">
+  <div class="panel-title" data-i18n="sec_soldes">Soldes actuels dans vos comptes</div>
+  <div class="row">
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_sol_celi">Solde CELI</span><span class="ctrl-val" id="sol-celi-o">0 $</span></div>
+      <div class="ctrl-desc" data-i18n="desc_sol_celi">Solde actuel de votre CELI — informe la recommandation d'allocation et la projection de retraite.</div>
+      <div class="pills">
+        <span class="pill pm" onclick="svLog0S('sol-celi',0,1000,250000)">0</span>
+        <span class="pill pm" onclick="svLog0S('sol-celi',20000,1000,250000)">20 k$</span>
+        <span class="pill pm" onclick="svLog0S('sol-celi',50000,1000,250000)">50 k$</span>
+        <span class="pill pm" onclick="svLog0S('sol-celi',100000,1000,250000)">100 k$</span>
+      </div>
+      <input type="range" id="sol-celi" min="0" max="100" step="1" value="0" oninput="upd('sol-celi','$');calc()">
+    </div>
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_sol_reer">Solde REER</span><span class="ctrl-val" id="sol-reer-o">0 $</span></div>
+      <div class="ctrl-desc" data-i18n="desc_sol_reer">Solde actuel de votre REER — détermine si votre balance est déjà trop élevée pour que cotiser davantage au REER soit optimal.</div>
+      <div class="pills">
+        <span class="pill pm" onclick="svLog0S('sol-reer',0,1000,5000000)">0</span>
+        <span class="pill pm" onclick="svLog0S('sol-reer',50000,1000,5000000)">50 k$</span>
+        <span class="pill pm" onclick="svLog0S('sol-reer',200000,1000,5000000)">200 k$</span>
+        <span class="pill pm" onclick="svLog0S('sol-reer',500000,1000,5000000)">500 k$</span>
+        <span class="pill pm" onclick="svLog0S('sol-reer',1000000,1000,5000000)">1 M$</span>
+      </div>
+      <input type="range" id="sol-reer" min="0" max="100" step="1" value="0" oninput="upd('sol-reer','$');calc()">
+    </div>
+  </div>
+  <div class="row">
+    <div class="cell" id="sol-celiapp-cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_sol_celiapp">Solde CELIAPP</span><span class="ctrl-val" id="sol-celiapp-o">0 $</span></div>
+      <div class="ctrl-desc" data-i18n="desc_sol_celiapp">Valeur actuelle de votre CELIAPP. Peut dépasser 40 000 $ grâce aux rendements.</div>
+      <div class="pills">
+        <span class="pill pm" onclick="sv('sol-celiapp',0)">0</span>
+        <span class="pill pm" onclick="sv('sol-celiapp',20000)">20 k$</span>
+        <span class="pill pm" onclick="sv('sol-celiapp',40000)">40 k$</span>
+        <span class="pill pm" onclick="sv('sol-celiapp',60000)">60 k$</span>
+      </div>
+      <input type="range" id="sol-celiapp" min="0" max="80000" step="1000" value="0" oninput="upd('sol-celiapp','$');calc()">
+    </div>
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_sol_nonreg">Compte non enregistré</span><span class="ctrl-val" id="sol-nonreg-o">0 $</span></div>
+      <div class="ctrl-desc" data-i18n="desc_sol_nonreg">Valeur actuelle de votre portefeuille imposable (hors REER/CELI).</div>
+      <div class="pills">
+        <span class="pill pm" onclick="svLog0S('sol-nonreg',0,1000,500000)">0</span>
+        <span class="pill pm" onclick="svLog0S('sol-nonreg',10000,1000,500000)">10 k$</span>
+        <span class="pill pm" onclick="svLog0S('sol-nonreg',50000,1000,500000)">50 k$</span>
+        <span class="pill pm" onclick="svLog0S('sol-nonreg',100000,1000,500000)">100 k$</span>
+      </div>
+      <input type="range" id="sol-nonreg" min="0" max="100" step="1" value="0" oninput="upd('sol-nonreg','$');calc()">
+    </div>
+  </div>
+</div>
+
+<!-- Hero section 1 -->
+<div class="hero">
+  <div class="hero-metric">
+    <div class="hero-eyebrow" data-i18n="hero_taux">Taux marginal actuel</div>
+    <div class="hero-value" id="hero-taux">—</div>
+    <div class="hero-sub" data-i18n="hero_taux_hint">Québec 2026 · fédéral + provincial</div>
+  </div>
+  <div class="hero-div"></div>
+  <div class="hero-metric">
+    <div class="hero-eyebrow" data-i18n="hero_econ">Économie fiscale / an</div>
+    <div class="hero-value" id="hero-econ">—</div>
+    <div class="hero-sub" data-i18n="hero_econ_hint">CELIAPP + REER cette année</div>
+  </div>
+</div>
+
+<!-- Waterfall -->
+<div class="wf-wrap">
+  <div class="wf-header">
+    <div class="wf-title" data-i18n="wf_title">Allocation recommandée cette année</div>
+    <div class="wf-order" id="wf-order"></div>
+  </div>
+  <div id="wf-explain" style="font-size:11px;color:var(--text3);margin-bottom:.6rem;line-height:1.5;padding:6px 10px;background:var(--bg3);border-radius:6px"></div>
+  <!-- REER vs CELI comparison table -->
+  <div style="border-radius:8px;overflow:hidden;border:0.5px solid var(--border);margin-bottom:.75rem">
+    <table style="width:100%;border-collapse:collapse;font-size:12px">
+      <thead>
+        <tr style="background:var(--bg3)">
+          <th style="padding:7px 12px;text-align:left;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);border-bottom:0.5px solid var(--border2)" id="cmp-header-label">Pour 1 000 $ bruts</th>
+          <th style="padding:7px 12px;text-align:right;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-text);border-bottom:0.5px solid var(--border2)">REER<br><span style="font-size:9px;font-weight:400;opacity:.7;text-transform:none;letter-spacing:0" id="cmp-reer-sub">1 000 $ cotisés</span></th>
+          <th style="padding:7px 12px;text-align:right;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green-text);border-bottom:0.5px solid var(--border2)"><span id="cmp-celi-header">CELI</span><br><span style="font-size:9px;font-weight:400;opacity:.7;text-transform:none;letter-spacing:0" id="cmp-celi-sub">X $ nets investis</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:6px 12px;color:var(--text3);font-size:11px;border-bottom:0.5px solid var(--border2)" id="cmp-inv-label">Montant investi</td>
+          <td style="padding:6px 12px;text-align:right;color:var(--text2);border-bottom:0.5px solid var(--border2)" id="cmp-reer-inv">—</td>
+          <td style="padding:6px 12px;text-align:right;color:var(--text2);border-bottom:0.5px solid var(--border2)" id="cmp-celi-inv">—</td>
+        </tr>
+        <tr style="background:var(--bg3)">
+          <td style="padding:6px 12px;color:var(--text3);font-size:11px;border-bottom:0.5px solid var(--border2)" id="cmp-ded-label">Remboursement d'impôt immédiat</td>
+          <td style="padding:6px 12px;text-align:right;color:var(--green);font-weight:500;border-bottom:0.5px solid var(--border2)" id="cmp-reer-ded">—</td>
+          <td style="padding:6px 12px;text-align:right;color:var(--text4);border-bottom:0.5px solid var(--border2)" id="cmp-celi-ded">—</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 12px;color:var(--text3);font-size:11px;border-bottom:0.5px solid var(--border2)" id="cmp-fv-label">Valeur à la retraite</td>
+          <td style="padding:6px 12px;text-align:right;border-bottom:0.5px solid var(--border2)" id="cmp-reer-fv">—</td>
+          <td style="padding:6px 12px;text-align:right;border-bottom:0.5px solid var(--border2)" id="cmp-celi-fv">—</td>
+        </tr>
+        <tr style="background:var(--bg3)">
+          <td style="padding:6px 12px;color:var(--text3);font-size:11px;border-bottom:0.5px solid var(--border2)" id="cmp-tax-label">Impôt au retrait</td>
+          <td style="padding:6px 12px;text-align:right;color:var(--red);border-bottom:0.5px solid var(--border2)" id="cmp-reer-tax">—</td>
+          <td style="padding:6px 12px;text-align:right;color:var(--text4);border-bottom:0.5px solid var(--border2)" id="cmp-celi-tax">—</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 12px;font-weight:600;color:var(--text);font-size:12px" id="cmp-net-label">Net après impôt</td>
+          <td style="padding:6px 12px;text-align:right;font-weight:700;font-size:14px" id="cmp-reer-net">—</td>
+          <td style="padding:6px 12px;text-align:right;font-weight:700;font-size:14px" id="cmp-celi-net">—</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="padding:5px 12px;background:var(--bg4);border-top:0.5px solid var(--border2);font-size:10px;color:var(--text4);line-height:1.5" id="wf-vs-ctx"></div>
+  </div>
+  <div class="wf-bar">
+    <div class="wf-seg ws-match" id="seg-match"><span id="seg-match-lbl"></span></div>
+    <div class="wf-seg ws-celiapp" id="seg-celiapp"><span id="seg-celiapp-lbl"></span></div>
+    <div class="wf-seg ws-celi" id="seg-celi"><span id="seg-celi-lbl"></span></div>
+    <div class="wf-seg ws-reer" id="seg-reer"><span id="seg-reer-lbl"></span></div>
+    <div class="wf-seg ws-nonreg" id="seg-nonreg"><span id="seg-nonreg-lbl"></span></div>
+  </div>
+  <div class="wf-cards">
+    <div class="wf-card match hidden" id="card-match">
+      <div class="wf-card-badge" style="color:#92400E" data-i18n="badge_match">Match employeur</div>
+      <div class="wf-card-amt" style="color:#B45309" id="card-match-amt">—</div>
+      <div class="wf-card-note" id="card-match-note">—</div>
+    </div>
+    <div class="wf-card celiapp hidden" id="card-celiapp">
+      <div class="wf-card-badge celiapp">CELIAPP</div>
+      <div class="wf-card-amt celiapp" id="card-celiapp-amt">—</div>
+      <div class="wf-card-note" id="card-celiapp-note">—</div>
+    </div>
+    <div class="wf-card celi" id="card-celi">
+      <div class="wf-card-badge celi" data-i18n="badge_celi">CELI</div>
+      <div class="wf-card-amt celi" id="card-celi-amt">—</div>
+      <div class="wf-card-note" id="card-celi-note">—</div>
+    </div>
+    <div class="wf-card reer" id="card-reer">
+      <div class="wf-card-badge reer" data-i18n="badge_reer">REER</div>
+      <div class="wf-card-amt reer" id="card-reer-amt">—</div>
+      <div class="wf-card-note" id="card-reer-note">—</div>
+    </div>
+    <div class="wf-card nonreg" id="card-nonreg">
+      <div class="wf-card-badge nonreg" data-i18n="badge_nonreg">Non enregistré</div>
+      <div class="wf-card-amt nonreg" id="card-nonreg-amt">—</div>
+      <div class="wf-card-note" id="card-nonreg-note">—</div>
+    </div>
+  </div>
+</div>
+
+
+</div><!-- /sec1-wrap -->
+
+<button class="sec-toggle open" id="sec2-toggle-btn" onclick="toggleSec2()">
+  <div style="display:flex;align-items:center;gap:.75rem">
+    <div class="sec-num" style="background:var(--green)">2</div>
+    <div style="text-align:left">
+      <div class="sec-hd-title" data-i18n="sec2_title">Projection à la retraite &amp; Décaissement</div>
+      <div class="sec-hd-desc" data-i18n="sec2_desc">Combien vous aurez et comment optimiser vos retraits</div>
+    </div>
+  </div>
+  <span class="sec-toggle-caret">▼</span>
+</button>
+<div id="sec2-wrap" style="margin-top:1.25rem">
+
+<!-- Paramètres de projection -->
+<div class="panel">
+  <div class="panel-title" data-i18n="sec_params">Paramètres de projection</div>
+  <div class="row">
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_rendement">Rendement prévu</span><span class="ctrl-val" id="rendement-o">7,5 %</span></div>
+      <div class="ctrl-desc" data-i18n="desc_rendement">Rendement annuel nominal (ex. FNB diversifié, S&amp;P 500).</div>
+      <div class="pills">
+        <span class="pill pp" onclick="sv('rendement',5)">5 %</span>
+        <span class="pill pm" onclick="sv('rendement',7.5)">7,5 %</span>
+        <span class="pill po" onclick="sv('rendement',9)">9 %</span>
+      </div>
+      <input type="range" id="rendement" min="2" max="12" step="0.5" value="7.5" oninput="upd('rendement','%');calc()">
+    </div>
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_obj_income">Revenu annuel net désiré</span><span class="ctrl-val" id="obj-income-o">36 000 $/an</span></div>
+      <div class="ctrl-desc" data-i18n="desc_obj_income">Montant net (après impôt) souhaité par an à la retraite. Détermine aussi le taux marginal estimé (<span id="taux-ret-o">—</span>).</div>
+      <div class="pills">
+        <span class="pill pm" onclick="sv('obj-income',24000)">24 k$</span>
+        <span class="pill pm" onclick="sv('obj-income',36000)">36 k$</span>
+        <span class="pill pm" onclick="sv('obj-income',60000)">60 k$</span>
+        <span class="pill pm" onclick="sv('obj-income',96000)">96 k$</span>
+      </div>
+      <input type="range" id="obj-income" min="6000" max="180000" step="3000" value="36000" oninput="upd('obj-income','$');calc()">
+      <div style="font-size:11px;color:var(--amber-text);background:var(--amber-bg);border-radius:4px;padding:3px 8px;margin-top:5px;line-height:1.4;display:none" id="obj-income-infl"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Soldes — configured in Section 1, displayed here for reference -->
+<div style="font-size:11px;color:var(--text3);padding:9px 14px;background:var(--bg3);border-radius:var(--radius);border:0.5px solid var(--border2);margin-bottom:1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+  <span id="sec2-soldes-summary">—</span>
+  <a href="#" onclick="document.getElementById('sec1-wrap').style.display='';document.getElementById('sec1-toggle-btn').classList.add('open');window.scrollTo({top:0,behavior:'smooth'});return false" style="font-size:11px;color:var(--blue);text-decoration:none;font-weight:500" data-i18n="lbl_edit_soldes">Modifier ↑</a>
+</div>
+
+<!-- Immobilier -->
+<div class="panel">
+  <div class="panel-title" data-i18n="sec_immo">Immobilier (optionnel)</div>
+  <div class="toggle-row">
+    <input type="checkbox" id="immo-on" onchange="toggleImmo();calc()">
+    <div>
+      <label for="immo-on" data-i18n="lbl_immo">Je prévois vendre une propriété à la retraite</label>
+      <div class="toggle-desc" data-i18n="desc_immo">Ajoutez une propriété comme actif de retraite. La valeur future est projetée selon le taux d'appréciation choisi.</div>
+    </div>
+  </div>
+  <div id="immo-wrap" style="display:none">
+    <div class="row">
+      <div class="cell">
+        <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_immo_val">Valeur actuelle de la propriété</span><span class="ctrl-val" id="immo-val-o">500 000 $</span></div>
+        <div class="ctrl-desc" data-i18n="desc_immo_val">Prix de marché actuel de la propriété.</div>
+        <div class="pills">
+          <span class="pill pm" onclick="sv('immo-val',300000)">300 k$</span>
+          <span class="pill pm" onclick="sv('immo-val',500000)">500 k$</span>
+          <span class="pill pm" onclick="sv('immo-val',800000)">800 k$</span>
+          <span class="pill pm" onclick="sv('immo-val',1200000)">1,2 M$</span>
+        </div>
+        <input type="range" id="immo-val" min="100000" max="3000000" step="25000" value="500000" oninput="upd('immo-val','$');calc()">
+      </div>
+      <div class="cell">
+        <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_immo_rate">Appréciation annuelle</span><span class="ctrl-val" id="immo-rate-o">3,5 %</span></div>
+        <div class="ctrl-desc" data-i18n="desc_immo_rate">Taux d'appréciation annuel moyen de la propriété (nominal).</div>
+        <div class="pills">
+          <span class="pill pp" onclick="sv('immo-rate',2)">2 %</span>
+          <span class="pill pm" onclick="sv('immo-rate',3.5)">3,5 %</span>
+          <span class="pill po" onclick="sv('immo-rate',5)">5 %</span>
+        </div>
+        <input type="range" id="immo-rate" min="0" max="10" step="0.5" value="3.5" oninput="upd('immo-rate','%');calc()">
+      </div>
+    </div>
+    <div class="toggle-row">
+      <input type="checkbox" id="immo-primary" onchange="calc()" checked>
+      <div>
+        <label for="immo-primary" data-i18n="lbl_immo_primary">Résidence principale</label>
+        <div class="toggle-desc" data-i18n="desc_immo_primary">L'exemption pour résidence principale s'applique — le gain en capital est entièrement libre d'impôt à la vente.</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:.75rem">
+      <div style="flex:1;min-width:140px;background:var(--bg3);border-radius:var(--radius);padding:.75rem 1rem;border:0.5px solid var(--border2)">
+        <div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:.3rem" data-i18n="lbl_immo_fv">Valeur à la retraite</div>
+        <div style="font-size:22px;font-weight:600;color:var(--red)" id="immo-fv-val">—</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:.15rem" id="immo-fv-hint"></div>
+      </div>
+      <div style="flex:1;min-width:140px;background:var(--bg3);border-radius:var(--radius);padding:.75rem 1rem;border:0.5px solid var(--border2)">
+        <div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:.3rem" data-i18n="lbl_immo_net">Valeur nette après vente</div>
+        <div style="font-size:22px;font-weight:600;color:var(--green)" id="immo-net-val">—</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:.15rem" id="immo-net-hint"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Hero section 2 -->
+<div class="hero">
+  <div class="hero-metric">
+    <div class="hero-eyebrow" data-i18n="hero_val">Valeur brute à la retraite</div>
+    <div class="hero-value" id="hero-val">—</div>
+    <div id="hero-val-breakdown" style="font-size:10px;opacity:.65;margin-top:.4rem;line-height:1.5">—</div>
+  </div>
+  <div class="hero-div"></div>
+  <div class="hero-metric">
+    <div class="hero-eyebrow" data-i18n="hero_net">Valeur nette estimée</div>
+    <div class="hero-value" id="hero-net">—</div>
+    <div id="hero-net-breakdown" style="font-size:10px;opacity:.65;margin-top:.4rem;line-height:1.5">—</div>
+  </div>
+</div>
+
+<!-- Reverse calculator -->
+<div class="panel" style="margin-bottom:1.25rem">
+  <div class="panel-title" data-i18n="sec_obj">Objectif de retraite</div>
+  <div class="row">
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_obj_capital">Capital cible estimé</span></div>
+      <div class="obj-result">
+        <div class="obj-main" id="obj-capital" style="color:var(--blue)">—</div>
+        <div class="obj-sub" id="obj-capital-hint">—</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:3px;line-height:1.45" id="obj-capital-infl"></div>
+      </div>
+      <div class="ctrl-top" style="margin-top:.75rem"><span class="ctrl-label" data-i18n="lbl_obj_requis">Épargne annuelle nécessaire</span></div>
+      <div class="obj-result">
+        <div class="obj-main" id="obj-an" style="color:var(--blue)">—</div>
+        <div class="obj-sub" id="obj-mo">—</div>
+        <div class="obj-note" id="obj-note">—</div>
+      </div>
+    </div>
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_heritage">Héritage souhaité</span><span class="ctrl-val" id="heritage-o">0 $</span></div>
+      <div class="ctrl-desc" data-i18n="desc_heritage">Montant (en dollars d'aujourd'hui) à préserver pour vos héritiers. S'ajoute au capital cible calculé.</div>
+      <div class="pills">
+        <span class="pill pm" onclick="svH(0)">0 $</span>
+        <span class="pill pm" onclick="svH(100000)">100 k$</span>
+        <span class="pill pm" onclick="svH(500000)">500 k$</span>
+        <span class="pill pm" onclick="svH(2000000)">2 M$</span>
+      </div>
+      <input type="range" id="heritage" min="0" max="100" step="1" value="0" oninput="document.getElementById('heritage-o').textContent=fmtk(heritageFromSlider(+this.value));fillSlider(this);calc()">
+      <div id="heritage-income-wrap" style="display:none;margin-top:10px;padding-top:10px;border-top:0.5px solid var(--border2)">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:4px" data-i18n="lbl_heritage_income">Rente maximale avec cet héritage</div>
+        <div style="font-size:20px;font-weight:600;color:var(--green);line-height:1.1" id="heritage-income-val">—</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:3px;line-height:1.45" id="heritage-income-hint">—</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:2px;line-height:1.45" id="heritage-income-sources">—</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Combined lifecycle chart -->
+<div class="chart-panel">
+  <h3 data-i18n="lifecycle_chart_title">Accumulation &amp; Décroissance du portefeuille</h3>
+  <div class="chart-wrap" style="height:320px"><canvas id="lifecycleChart"></canvas></div>
+</div>
+
+<!-- Summary table -->
+<div class="panel" style="overflow-x:auto;margin-bottom:0">
+  <div class="panel-title" data-i18n="tbl_title">Résumé à la retraite</div>
+  <table>
+    <thead>
+      <tr>
+        <th data-i18n="th_compte">Compte</th>
+        <th data-i18n="th_contrib">Cotisations totales</th>
+        <th data-i18n="th_brut">Valeur brute</th>
+        <th data-i18n="th_econ">Économie fiscale</th>
+        <th data-i18n="th_net">Valeur nette après impôt</th>
+      </tr>
+    </thead>
+    <tbody id="tbl-body"></tbody>
+  </table>
+</div>
+
+<!-- ═══ DÉCAISSEMENT ═══ -->
+<div class="inner-divider">
+  <div class="inner-divider-line"></div>
+  <div class="inner-divider-lbl" data-i18n="sec_dec">Décaissement</div>
+  <div class="inner-divider-line"></div>
+</div>
+
+<div class="panel">
+  <div class="panel-title" data-i18n="sec_dec_inputs">Revenus gouvernementaux &amp; objectifs</div>
+  <div class="row">
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_rrq">RRQ mensuel à 65 ans</span><span class="ctrl-val" id="rrq-o">1 200 $</span></div>
+      <div class="ctrl-desc" data-i18n="desc_rrq">Estimation de votre rente QPP à 65 ans. Vérifiez dans Mon dossier Retraite Québec.</div>
+      <div class="pills">
+        <span class="pill pm" onclick="sv('rrq',800)">800 $</span>
+        <span class="pill pm" onclick="sv('rrq',1200)">1 200 $</span>
+        <span class="pill pm" onclick="sv('rrq',1800)">1 800 $</span>
+      </div>
+      <input type="range" id="rrq" min="0" max="2500" step="50" value="1200" oninput="upd('rrq','$/mo');calc()">
+    </div>
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_rrq_age">Âge de début RRQ</span></div>
+      <div class="ctrl-desc" data-i18n="desc_rrq_age">Avant 65 : −0,5 %/mois · Après 65 : +0,7 %/mois (max 70).</div>
+      <div class="age-pills">
+        <button class="age-pill" onclick="setAgeRRQ(60)">60</button>
+        <button class="age-pill active" onclick="setAgeRRQ(65)">65</button>
+        <button class="age-pill" onclick="setAgeRRQ(70)">70</button>
+      </div>
+      <div style="font-size:12px;color:var(--text2);margin-top:4px">→ <span id="rrq-adj-lbl" style="font-weight:600;color:var(--green)">1 200 $/mois</span> <span id="rrq-adj-note" style="color:var(--text4)"></span></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_psv">PSV mensuel (à 65 ans)</span><span class="ctrl-val" id="psv-o">713 $</span></div>
+      <div class="ctrl-desc" data-i18n="desc_psv">Pension de la Sécurité de vieillesse. Max 2026 : ~713 $/mois. Réduite si revenu &gt; 90 997 $.</div>
+      <div class="pills">
+        <span class="pill pm" onclick="sv('psv',400)">400 $</span>
+        <span class="pill pm" onclick="sv('psv',713)">713 $</span>
+      </div>
+      <input type="range" id="psv" min="0" max="900" step="10" value="713" oninput="upd('psv','$/mo');calc()">
+    </div>
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_psv_age">Âge de début PSV</span></div>
+      <div class="ctrl-desc" data-i18n="desc_psv_age">Après 65 : +0,6 %/mois jusqu'à 70 (+36 % au total).</div>
+      <div class="age-pills">
+        <button class="age-pill active" onclick="setAgePSV(65)">65</button>
+        <button class="age-pill" onclick="setAgePSV(70)">70</button>
+      </div>
+      <div style="font-size:12px;color:var(--text2);margin-top:4px">→ <span id="psv-adj-lbl" style="font-weight:600;color:var(--green)">713 $/mois</span></div>
+    </div>
+  </div>
+  <div class="toggle-row">
+    <input type="checkbox" id="db-on" onchange="toggleDB();calc()">
+    <div>
+      <label for="db-on" data-i18n="lbl_db">Régime à prestations déterminées (RREGOP, RRPE, CARRA, etc.)</label>
+      <div class="toggle-desc" data-i18n="desc_db">Pension garantie à vie versée par l'employeur. Réduit le capital financier requis et s'intègre à la stratégie de décaissement.</div>
+    </div>
+  </div>
+  <div id="db-wrap" class="row" style="display:none">
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_db_pension">Rente mensuelle à la retraite</span><span class="ctrl-val" id="db-pension-o">2 000 $</span></div>
+      <div class="ctrl-desc" data-i18n="desc_db_pension">Montant brut estimé de votre rente au moment de la retraite. Consultez votre relevé annuel ou estimez-la avec la formule ci-contre.</div>
+      <div class="pills">
+        <span class="pill pm" onclick="sv('db-pension',1000)">1 k$</span>
+        <span class="pill pm" onclick="sv('db-pension',2000)">2 k$</span>
+        <span class="pill pm" onclick="sv('db-pension',3500)">3 500 $</span>
+        <span class="pill pm" onclick="sv('db-pension',5000)">5 k$</span>
+      </div>
+      <input type="range" id="db-pension" min="100" max="10000" step="100" value="2000" oninput="upd('db-pension','$/mo');calc()">
+    </div>
+    <div class="cell">
+      <div class="ctrl-label" data-i18n="lbl_db_formula" style="font-size:12px;font-weight:600;margin-bottom:6px">Estimation RREGOP</div>
+      <div class="ctrl-desc" data-i18n="desc_db_formula">Formule : <strong>2 % × salaire moyen 5 meilleures années × années de service ÷ 12</strong><br>Ex. : 2 % × 80 000 $ × 25 ans ÷ 12 = <strong>3 333 $/mois</strong><br>Coordonnée avec le RRQ à 65 ans (réduction de la rente avant 65 ans).</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_cible">Revenu brut équivalent (calculé)</span></div>
+      <div style="font-size:22px;font-weight:600;color:var(--blue);margin-top:6px" id="cible-derived">—</div>
+      <div style="font-size:11px;color:var(--text3);margin-top:4px;line-height:1.4" id="cible-derived-hint" data-i18n="desc_cible">Revenu brut avant impôt correspondant au revenu net désiré (calculé automatiquement depuis la section 2 · Paramètres).</div>
+    </div>
+    <div class="cell">
+      <div class="ctrl-top"><span class="ctrl-label" data-i18n="lbl_esp_vie">Espérance de vie</span><span class="ctrl-val" id="esp-vie-o">90 ans</span></div>
+      <div class="ctrl-desc" data-i18n="desc_esp_vie">Horizon de la projection de décaissement. Visez large — l'espérance à 65 ans au Québec est ~88 ans.</div>
+      <div class="pills">
+        <span class="pill pm" onclick="sv('esp-vie',80)">80</span>
+        <span class="pill pm" onclick="sv('esp-vie',90)">90</span>
+        <span class="pill pm" onclick="sv('esp-vie',100)">100</span>
+      </div>
+      <input type="range" id="esp-vie" min="70" max="105" step="1" value="90" oninput="upd('esp-vie','ans');calc()">
+    </div>
+  </div>
+</div>
+
+<!-- Insight hero -->
+<div class="dec-hero" id="dec-hero">
+  <div class="hero-metric">
+    <div class="hero-eyebrow" data-i18n="dec_hero_strat">Stratégie optimale REER</div>
+    <div class="hero-value" id="dec-melt-lbl" style="font-size:24px;letter-spacing:-.5px">—</div>
+    <div class="hero-sub" id="dec-melt-hint">—</div>
+  </div>
+  <div class="dec-hero-div"></div>
+  <div class="hero-metric">
+    <div class="hero-eyebrow" data-i18n="dec_hero_econ">Économie fiscale totale</div>
+    <div class="hero-value" id="dec-econ-lbl">—</div>
+    <div class="hero-sub" data-i18n="dec_hero_econ_hint">vs. aucun décaissement planifié</div>
+  </div>
+  <div class="dec-hero-div"></div>
+  <div class="hero-metric">
+    <div class="hero-eyebrow" data-i18n="dec_hero_celi">CELI préservé jusqu'à</div>
+    <div class="hero-value" id="dec-celi-lbl">—</div>
+    <div class="hero-sub" data-i18n="dec_hero_celi_hint">Âge où le CELI s'épuise (stratégie opt.)</div>
+  </div>
+</div>
+
+<!-- Décaissement chart -->
+<div class="chart-panel">
+  <h3 data-i18n="dec_chart_title">Sources de revenus à la retraite (stratégie optimisée)</h3>
+  <div class="chart-wrap"><canvas id="decChart"></canvas></div>
+</div>
+
+<!-- Year-by-year table -->
+<div class="panel" style="overflow-x:auto;margin-bottom:0">
+  <div class="panel-title" data-i18n="dec_tbl_title">Décaissement année par année</div>
+  <table id="dec-table">
+    <thead>
+      <tr>
+        <th data-i18n="dec_th_age">Âge</th>
+        <th data-i18n="dec_th_rrq">RRQ/QPP</th>
+        <th data-i18n="dec_th_psv">PSV/OAS</th>
+        <th class="dec-th-db" data-i18n="dec_th_db" style="display:none;color:var(--purple)">Rente RPD</th>
+        <th data-i18n="dec_th_ferr">REER/FERR</th>
+        <th data-i18n="dec_th_nonreg">Non-reg</th>
+        <th data-i18n="dec_th_celi">CELI</th>
+        <th data-i18n="dec_th_brut">Total brut</th>
+        <th data-i18n="dec_th_impot">Impôt</th>
+        <th data-i18n="dec_th_net">Net</th>
+        <th data-i18n="dec_th_sreer">Solde REER</th>
+        <th data-i18n="dec_th_sceli">Solde CELI</th>
+      </tr>
+    </thead>
+    <tbody id="dec-tbody"></tbody>
+  </table>
+</div>
+</div><!-- /sec2-wrap -->
+
+<p class="note" data-i18n="note">Taux marginaux Québec 2026 (fédéral + provincial, abattement de 16,5 % inclus) · CELIAPP : déductible à l'entrée, libre d'impôt à la sortie pour une première propriété (max 40 000 $, 8 000 $/an) · CELI : croissance et retraits 100 % libres d'impôt · REER : déductible à l'entrée, imposable à la sortie · Non enregistré : gains en capital à 50 % d'inclusion · Rendements nominaux avant inflation · Page informative — ne constitue pas un conseil financier professionnel.</p>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+let lang = 'fr';
+let lifecycleChart = null, decChart = null;
+let gRet = {celi:0,reer:0,nonreg:0,nonregBasis:0,age:65,r:0.07};
+let gDecRows = [];
+let gRRQAge = 65, gPSVAge = 65;
+const isDark = window.matchMedia('(prefers-color-scheme:dark)').matches;
+const TRACK = isDark ? '#3a3a38' : '#e0ddd6';
+
+const RRIF = {71:5.28,72:5.40,73:5.53,74:5.67,75:5.82,76:5.98,77:6.17,78:6.36,79:6.58,80:6.82,81:7.08,82:7.38,83:7.71,84:8.08,85:8.51,86:8.99,87:9.55,88:10.21,89:10.99,90:11.92,91:13.06,92:14.49,93:16.34,94:18.79};
+function rrifRate(age){return (RRIF[Math.min(age,94)]||20)/100;}
+
+// Effective income tax (Quebec 2026, includes BPA credits)
+function totalTax(income){
+  if(income<=0)return 0;
+  let fed=0,prev=0;
+  for(const[lim,rt]of[[55867,.15],[111733,.205],[177882,.26],[253414,.29],[1e9,.33]]){
+    const a=Math.min(income,lim)-prev;if(a<=0)break;fed+=a*rt;prev=lim;if(income<=lim)break;
+  }
+  fed=Math.max(0,fed-15705*.15)*0.835;
+  let qc=0;prev=0;
+  for(const[lim,rt]of[[51780,.14],[103545,.19],[126000,.24],[1e9,.2575]]){
+    const a=Math.min(income,lim)-prev;if(a<=0)break;qc+=a*rt;prev=lim;if(income<=lim)break;
+  }
+  qc=Math.max(0,qc-17183*.14);
+  return fed+qc;
+}
+
+function adjRRQ(base,startAge){
+  const months=(startAge-65)*12;
+  return base*(months<0?1+months*0.005:1+months*0.007);
+}
+function adjPSV(base,startAge){
+  return base*(1+Math.max(0,(startAge-65)*12)*0.006);
+}
+
+function setAgeRRQ(age){
+  gRRQAge=age;
+  document.querySelectorAll('.age-pill[onclick^="setAgeRRQ"]').forEach(b=>b.classList.toggle('active',+b.textContent===age));
+  calc();
+}
+function setAgePSV(age){
+  gPSVAge=age;
+  document.querySelectorAll('.age-pill[onclick^="setAgePSV"]').forEach(b=>b.classList.toggle('active',+b.textContent===age));
+  calc();
+}
+
+// One year of decaissement. Returns {rrq,psv,db,reerW,nonregW,celiW,tax,net,celiB,reerB,nonregB,nonregBasis}
+function stepDec(age,state,params,extraReer){
+  let{celiB,reerB,nonregB,nonregBasis}=state;
+  const{rrqAnn,psvAnn,rrqAge,psvAge,targetGross,r,retAge,dbAnn}=params;
+
+  const rrq=age>=rrqAge?rrqAnn:0;
+  const psvGross=age>=psvAge?psvAnn:0;
+  const db=age>=retAge?(dbAnn||0):0; // DB pension starts at retirement, fully taxable
+
+  // RRIF mandatory minimum
+  const rrifMin=age>=71?reerB*rrifRate(age):0;
+  const govNow=rrq+psvGross+db;
+  let reerW=Math.min(reerB,rrifMin+Math.max(0,extraReer-govNow-rrifMin));
+
+  // Fill remaining target from non-reg, then CELI
+  let needed=Math.max(0,targetGross-govNow-reerW);
+  const gainFrac=nonregB>1?Math.max(0,(nonregB-nonregBasis)/nonregB):0;
+  let nonregW=Math.min(nonregB,needed);
+  const nonregTaxable=nonregW*gainFrac*0.5;
+  needed=Math.max(0,needed-nonregW);
+  let celiW=Math.min(celiB,needed);
+
+  // OAS clawback (15% of income above ~$90 997)
+  const baseInc=rrq+reerW+nonregTaxable+db;
+  const clawback=Math.max(0,0.15*(baseInc+psvGross-90997));
+  const psv=Math.max(0,psvGross-clawback);
+
+  const taxableInc=rrq+psv+reerW+nonregTaxable+db;
+  const tax=totalTax(taxableInc);
+  const net=rrq+psv+reerW+nonregW+celiW+db-tax;
+
+  // Update balances
+  const nonregRemain=nonregB-nonregW;
+  const basisWithdrawn=nonregBasis*(nonregB>0?nonregW/nonregB:0);
+  nonregBasis=Math.max(0,nonregBasis-basisWithdrawn);
+  celiB =(celiB -celiW )*(1+r);
+  reerB =(reerB -reerW )*(1+r);
+  nonregB=nonregRemain*(1+r);
+
+  return{rrq,psv,db,reerW,nonregW,celiW,taxableInc,tax,net,
+         celiB,reerB,nonregB,nonregBasis};
+}
+
+function simLifetime(extraReer,params){
+  const{retAge,lifeAge,rrqAge,psvAge}=params;
+  let state={celiB:gRet.celi,reerB:gRet.reer,nonregB:gRet.nonreg,nonregBasis:gRet.nonregBasis};
+  let totalTaxPaid=0,celiExhaustedAge=lifeAge+1;
+  for(let age=retAge;age<=lifeAge;age++){
+    const melt=(age<Math.max(rrqAge,psvAge))?extraReer:0;
+    const s=stepDec(age,state,params,melt);
+    totalTaxPaid+=s.tax;
+    if(s.celiB<100&&celiExhaustedAge>lifeAge)celiExhaustedAge=age;
+    state={celiB:s.celiB,reerB:s.reerB,nonregB:s.nonregB,nonregBasis:s.nonregBasis};
+  }
+  return{totalTaxPaid,celiExhaustedAge};
+}
+
+function optMeltdown(params){
+  // Ternary search — lifetime tax is convex in the meltdown amount
+  let lo=0,hi=Math.min(params.targetGross*2,gRet.reer*0.8);
+  for(let i=0;i<50;i++){
+    const m1=lo+(hi-lo)/3,m2=hi-(hi-lo)/3;
+    if(simLifetime(m1,params).totalTaxPaid<simLifetime(m2,params).totalTaxPaid)hi=m2;
+    else lo=m1;
+  }
+  return(lo+hi)/2;
+}
+
+function calcDec(){
+  const retAge=gRet.age;
+  const lifeAge=parseFloat(document.getElementById('esp-vie').value);
+  const rrqBase=parseFloat(document.getElementById('rrq').value)*12;
+  const psvBase=parseFloat(document.getElementById('psv').value)*12;
+  const objIncomeNet=parseFloat(document.getElementById('obj-income').value);
+  const targetGross=grossFromNet(objIncomeNet);
+  const r=gRet.r;
+  if(lifeAge<=retAge)return;
+
+  // Update derived gross display
+  const derivedEl=document.getElementById('cible-derived');
+  if(derivedEl) derivedEl.textContent=fmtk(Math.round(targetGross))+'/an';
+  const derivedHint=document.getElementById('cible-derived-hint');
+  if(derivedHint) derivedHint.textContent=lang==='fr'
+    ?`Brut correspondant à ${fmtk(objIncomeNet)} net/an · taux effectif ~${fmtPct((1-objIncomeNet/targetGross)*100)}`
+    :`Gross for ${fmtk(objIncomeNet)} net/yr · effective rate ~${fmtPct((1-objIncomeNet/targetGross)*100)}`;
+
+  const rrqAnn=adjRRQ(rrqBase,gRRQAge);
+  const psvAnn=adjPSV(psvBase,gPSVAge);
+
+  // Update adjusted labels
+  const rrqMo=Math.round(rrqAnn/12);
+  document.getElementById('rrq-adj-lbl').textContent=fmtk(rrqMo)+'/mois';
+  const pct=Math.round((rrqAnn/Math.max(rrqBase,1)-1)*100);
+  document.getElementById('rrq-adj-note').textContent=pct!==0?`(${pct>0?'+':''}${pct} %)`:' ';
+  document.getElementById('psv-adj-lbl').textContent=fmtk(Math.round(psvAnn/12))+'/mois';
+
+  const dbAnn=gRet.dbAnn||0;
+  const params={retAge,lifeAge,rrqAnn,psvAnn,rrqAge:gRRQAge,psvAge:gPSVAge,targetGross,r,retAge,dbAnn};
+
+  const noMelt=simLifetime(0,params);
+  const opt=optMeltdown(params);
+  const withOpt=simLifetime(opt,params);
+  const taxSavings=Math.max(0,noMelt.totalTaxPaid-withOpt.totalTaxPaid);
+
+  // Hero
+  const firstGovAge=Math.max(gRRQAge,gPSVAge);
+  document.getElementById('dec-melt-lbl').textContent=
+    opt>500?fmtk(opt)+'/an REER':'Aucun décaissement additionnel';
+  document.getElementById('dec-melt-hint').textContent=
+    opt>500?`Entre ${retAge} et ${Math.min(firstGovAge,lifeAge)} ans`:' ';
+  document.getElementById('dec-econ-lbl').textContent=fmtk(taxSavings);
+  document.getElementById('dec-celi-lbl').textContent=
+    withOpt.celiExhaustedAge>lifeAge?'Intact à l\'horizon':withOpt.celiExhaustedAge+' ans';
+
+  // Run full simulation for chart + table
+  let state={celiB:gRet.celi,reerB:gRet.reer,nonregB:gRet.nonreg,nonregBasis:gRet.nonregBasis};
+  const rows=[];
+  for(let age=retAge;age<=lifeAge;age++){
+    const melt=age<firstGovAge?opt:0;
+    const s=stepDec(age,state,params,melt);
+    rows.push({age,...s});
+    state={celiB:s.celiB,reerB:s.reerB,nonregB:s.nonregB,nonregBasis:s.nonregBasis};
+  }
+
+  gDecRows=rows;
+  renderDecChart(rows,rrqAnn,psvAnn);
+  renderDecTable(rows);
+}
+
+function renderDecChart(rows,rrqAnn,psvAnn){
+  const ctx=document.getElementById('decChart').getContext('2d');
+  const dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  const grid=dark?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.06)';
+  const tick=dark?'#888780':'#888';
+  const labels=rows.map(r=>r.age);
+  const hasDB=rows.some(r=>(r.db||0)>0);
+  const datasets=[
+    {label:t('dec_th_rrq'),data:rows.map(r=>Math.round(r.rrq)),backgroundColor:'rgba(100,130,180,0.8)',stack:'s'},
+    {label:t('dec_th_psv'),data:rows.map(r=>Math.round(r.psv)),backgroundColor:'rgba(30,158,117,0.8)',stack:'s'},
+    ...(hasDB?[{label:t('dec_th_db'),data:rows.map(r=>Math.round(r.db||0)),backgroundColor:'rgba(123,79,200,0.75)',stack:'s'}]:[]),
+    {label:t('dec_th_ferr'),data:rows.map(r=>Math.round(r.reerW)),backgroundColor:'rgba(24,95,165,0.8)',stack:'s'},
+    {label:t('dec_th_nonreg'),data:rows.map(r=>Math.round(r.nonregW)),backgroundColor:'rgba(186,117,23,0.75)',stack:'s'},
+    {label:t('dec_th_celi'),data:rows.map(r=>Math.round(r.celiW)),backgroundColor:'rgba(15,110,86,0.8)',stack:'s'},
+  ];
+  const targetLine={label:t('lbl_cible'),data:rows.map(r=>r.rrq+r.psv+r.reerW+r.nonregW+r.celiW),
+    type:'line',borderColor:'rgba(255,255,255,0.5)',borderWidth:1.5,borderDash:[4,4],
+    pointRadius:0,fill:false,stack:undefined};
+  if(dark)datasets.push(targetLine);
+
+  if(decChart){decChart.data.labels=labels;decChart.data.datasets=datasets;decChart.update('none');return;}
+  decChart=new Chart(ctx,{
+    type:'bar',data:{labels,datasets},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{
+        legend:{position:'bottom',labels:{color:tick,font:{size:11},padding:14,usePointStyle:true,pointStyleWidth:10}},
+        tooltip:{callbacks:{label:c=>' '+c.dataset.label+': '+fmtk(c.parsed.y)}}
+      },
+      scales:{
+        x:{grid:{color:grid},ticks:{color:tick,maxTicksLimit:15}},
+        y:{grid:{color:grid},ticks:{color:tick,callback:v=>fmtk(v)},stacked:true}
+      }
+    }
+  });
+}
+
+function renderDecTable(rows){
+  const tbody=document.getElementById('dec-tbody');
+  const hasDB=rows.some(r=>(r.db||0)>0);
+  // Update DB column header visibility
+  document.querySelectorAll('.dec-th-db').forEach(el=>el.style.display=hasDB?'':'none');
+  let html='';
+  rows.forEach(({age,rrq,psv,db,reerW,nonregW,celiW,taxableInc,tax,net,celiB,reerB})=>{
+    const gross=rrq+psv+(db||0)+reerW+nonregW+celiW;
+    const rrif=age>=71;
+    html+=`<tr${age%5===0?' style="background:var(--bg3)"':''}>
+      <td><strong>${age}</strong>${rrif?' <span style="font-size:9px;color:var(--text4)">FERR</span>':''}</td>
+      <td>${rrq>0?fmtk(rrq):'—'}</td>
+      <td>${psv>0?fmtk(psv):'—'}</td>
+      ${hasDB?`<td style="color:var(--purple)">${(db||0)>0?fmtk(db):'—'}</td>`:''}
+      <td>${reerW>0?fmtk(reerW):'—'}</td>
+      <td>${nonregW>0?fmtk(nonregW):'—'}</td>
+      <td>${celiW>0?fmtk(celiW):'—'}</td>
+      <td>${fmtk(gross)}</td>
+      <td style="color:var(--red)">${fmtk(tax)}</td>
+      <td style="color:var(--green);font-weight:600">${fmtk(net)}</td>
+      <td style="color:var(--blue)">${fmtk(reerB)}</td>
+      <td style="color:var(--green)">${fmtk(celiB)}</td>
+    </tr>`;
+  });
+  tbody.innerHTML=html;
+}
+
+function fillSlider(el){
+  const pct = (+el.value - +el.min) / (+el.max - +el.min) * 100;
+  el.style.background = `linear-gradient(to right,var(--blue) ${pct}%,${TRACK} ${pct}%)`;
+}
+
+const T = {
+  fr:{
+    title:"Investissement — Indépendance Financière",subtitle:"Où investir votre prochain dollar — Québec 2026",
+    nav_calc:"Logement",nav_calc_sub:"Acheter ou Louer",nav_invest:"Investissement",nav_invest_sub:"Indépendance Financière",
+    sec1_title:"Allocation recommandée cette année",sec1_desc:"Où placer votre prochain dollar selon votre situation fiscale",
+    sec2_title:"Projection à la retraite & Décaissement",sec2_desc:"Combien vous aurez et comment optimiser vos retraits",
+    sec_params:"Paramètres de projection",
+    sec_obj:"Objectif de retraite",lbl_obj_income:"Revenu mensuel net désiré",desc_obj_income:"Montant net (après impôt) souhaité chaque mois à la retraite. Le capital nécessaire est calculé automatiquement.",lbl_obj_capital:"Capital cible estimé",lbl_obj_requis:"Épargne annuelle nécessaire",lbl_heritage:"Héritage souhaité",desc_heritage:"Montant (en dollars d'aujourd'hui) à préserver pour vos héritiers. S'ajoute au capital cible calculé.",lbl_heritage_income:"Rente maximale avec cet héritage",obj_chart_title:"Décroissance du capital à la retraite (scénario cible)",
+    sec_profil:"Profil",
+    sec_soldes:"Soldes actuels dans vos comptes",
+    sec_droits:"Droits de cotisation disponibles",
+    lbl_revenu:"Revenu brut annuel",desc_revenu:"Votre salaire ou revenu total avant impôt.",
+    lbl_age:"Âge actuel",desc_age:"Votre âge aujourd'hui.",
+    lbl_invest:"Montant à investir cette année",desc_invest:"Capital disponible à investir cette année.",
+    lbl_horizon_yrs:"ans avant la retraite",desc_horizon_yrs:"Objectif configurable dans la section 2",
+    sec_immo:"Immobilier (optionnel)",lbl_immo:"Je prévois vendre une propriété à la retraite",desc_immo:"Ajoutez une propriété comme actif de retraite. La valeur future est projetée selon le taux d'appréciation choisi.",lbl_immo_val:"Valeur actuelle de la propriété",desc_immo_val:"Prix de marché actuel de la propriété.",lbl_immo_rate:"Appréciation annuelle",desc_immo_rate:"Taux d'appréciation annuel moyen de la propriété (nominal).",lbl_immo_primary:"Résidence principale",desc_immo_primary:"L'exemption pour résidence principale s'applique — le gain en capital est entièrement libre d'impôt à la vente.",
+    lbl_retraite:"Âge de retraite visé",desc_retraite:"L'horizon est recalculé automatiquement.",
+    lbl_rendement:"Rendement prévu",desc_rendement:"Rendement annuel nominal (ex. FNB diversifié, S&P 500).",
+    lbl_taux_ret:"Taux marginal estimé à la retraite",desc_taux_ret:"Utilisé uniquement pour estimer l'impôt sur les retraits REER. Conservateur : visez votre palier le plus bas probable.",ref_taux_ret:"~26 % si revenu retraite < 52 k$ · ~36 % si ~60–80 k$ · ~46 % si ~110 k$+",
+    lbl_sol_celi:"Solde CELI",desc_sol_celi:"Valeur actuelle de votre CELI — point de départ de la projection.",
+    lbl_sol_reer:"Solde REER",desc_sol_reer:"Valeur actuelle de votre REER — point de départ de la projection.",
+    lbl_sol_celiapp:"Solde CELIAPP",desc_sol_celiapp:"Valeur actuelle de votre CELIAPP.",
+    lbl_sol_nonreg:"Compte non enregistré",desc_sol_nonreg:"Valeur actuelle de votre portefeuille imposable (hors REER/CELI).",
+    lbl_celi_room:"Droits CELI inutilisés",desc_celi_room:"Visible dans Mon dossier CRA. Plafond 2026 : 7 000 $/an — cumul ~109 000 $ depuis 2009.",
+    lbl_reer_room:"Droits REER inutilisés",desc_reer_room:"Visible sur votre Avis de cotisation CRA. 2026 : 18 % du revenu gagné, max 32 490 $.",
+    lbl_ftb:"Premier acheteur·euse — accès au CELIAPP",desc_ftb:"N'avez pas été propriétaire dans les 4 dernières années. Le CELIAPP est déductible à l'entrée ET libre d'impôt à la sortie.",
+    lbl_celiapp_room:"Droits CELIAPP inutilisés",desc_celiapp_room:"8 000 $/an — max 40 000 $ à vie. Déductible comme le REER + libre d'impôt à la sortie comme le CELI.",
+    lbl_horizon:"Achat prévu dans",desc_horizon:"Les fonds CELIAPP sont retirés libres d'impôt à cette date pour l'achat.",
+    hero_taux:"Taux marginal actuel",hero_taux_hint:"Québec 2026 · fédéral + provincial",
+    hero_econ:"Économie fiscale / an",hero_econ_hint:"CELIAPP + REER cette année",
+    hero_val:"Valeur brute à la retraite",hero_val_hint:"Tous comptes confondus",
+    hero_net:"Valeur nette estimée",hero_net_hint:"Après impôt au taux de retraite",
+    wf_title:"Allocation recommandée cette année",
+    badge_celi:"CELI",badge_reer:"REER",badge_nonreg:"Non enregistré",
+    badge_match:"Match employeur",
+    lbl_match:"Mon employeur offre une cotisation équivalente (REER collectif)",desc_match:"Retour immédiat de 50–100 % — à maximiser avant tout autre compte. La cotisation de l'employeur s'ajoute à votre budget.",
+    lbl_match_emp:"Cotisation employé",desc_match_emp:"% de votre salaire versé dans le REER collectif pour déclencher la cotisation.",
+    lbl_match_rate:"Taux de la cotisation employeur",desc_match_rate:"% que l'employeur ajoute sur votre cotisation. 100 % = dollar pour dollar.",
+    lifecycle_chart_title:"Accumulation & Décroissance du portefeuille",chart_title:"Projection du portefeuille à la retraite",
+    tbl_title:"Résumé à la retraite",
+    th_compte:"Compte",th_contrib:"Cotisations totales",th_brut:"Valeur brute",th_econ:"Économie fiscale",th_net:"Valeur nette après impôt",
+    lbl_total:"Total",
+    note:"Taux marginaux Québec 2026 (fédéral + provincial, abattement de 16,5 % inclus) · CELIAPP : déductible à l'entrée, libre d'impôt à la sortie pour une première propriété (max 40 000 $, 8 000 $/an) · CELI : croissance et retraits 100 % libres d'impôt · REER : déductible à l'entrée, imposable à la sortie · Non enregistré : gains en capital à 50 % d'inclusion · Rendements nominaux avant inflation · Page informative — ne constitue pas un conseil financier professionnel.",
+    chart_celiapp:"CELIAPP",chart_celi:"CELI",chart_reer:"REER",chart_nonreg:"Non enregistré",
+    note_celiapp_dbl:"Double avantage fiscal — priorité absolue",
+    note_celi_flex:"Croissance et retraits 100 % libres d'impôt",
+    note_reer_good:"Taux actuel > taux retraite → déduction avantageuse",
+    note_reer_neutral:"Taux actuel ≈ taux retraite → avantage limité",
+    note_nonreg:"Aucun abri fiscal · Dernier recours",
+    order_label:"Ordre :",
+    econ_label:"Économie :",ret_rate:"→ retraite",taxfree:"libre d'impôt à la sortie",gains_label:"Gains imposés à 50 % ·",
+    withdrawn:"retiré à l'achat",gross:"brut",ans:"ans",
+    lbl_db:"Régime à prestations déterminées (RREGOP, RRPE, CARRA, etc.)",desc_db:"Pension garantie à vie versée par l'employeur. Réduit le capital financier requis et s'intègre à la stratégie de décaissement.",
+    lbl_db_pension:"Rente mensuelle à la retraite",desc_db_pension:"Montant brut estimé de votre rente au moment de la retraite. Consultez votre relevé annuel ou estimez-la avec la formule ci-contre.",
+    lbl_db_formula:"Estimation RREGOP",desc_db_formula:"Formule : 2 % × salaire moyen 5 meilleures années × années de service ÷ 12. Ex. : 2 % × 80 000 $ × 25 ans ÷ 12 = 3 333 $/mois. Coordonnée avec le RRQ à 65 ans.",
+    dec_th_db:"Rente RPD",
+    sec_dec:"Décaissement — Stratégie de retrait à la retraite",
+    sec_dec_inputs:"Revenus gouvernementaux & objectifs",
+    lbl_rrq:"RRQ — Régime de rentes du Québec",desc_rrq:"Montant mensuel estimé de votre rente à 65 ans. Vérifiez dans Mon dossier Retraite Québec (retraiteQuebec.gouv.qc.ca).",
+    lbl_rrq_age:"Âge de début RRQ",desc_rrq_age:"Avant 65 : −0,5 %/mois (−30 % à 60 ans) · Après 65 : +0,7 %/mois (+42 % à 70 ans).",
+    lbl_psv:"PSV — Pension de la Sécurité de vieillesse",desc_psv:"Prestation fédérale versée à partir de 65 ans. Maximum 2026 : ~713 $/mois. Récupérée à 15 % si revenu annuel > 90 997 $.",
+    lbl_psv_age:"Âge de début PSV",desc_psv_age:"Report après 65 ans : +0,6 %/mois, soit +36 % si vous attendez jusqu'à 70 ans.",
+    lbl_cible:"Revenu brut cible / an",desc_cible:"Revenu annuel avant impôt souhaité à la retraite (RRQ + PSV + retraits compris).",
+    lbl_esp_vie:"Espérance de vie",desc_esp_vie:"Horizon de la projection de décaissement. Visez large — l'espérance à 65 ans au Québec est ~88 ans.",
+    dec_hero_strat:"Stratégie optimale REER",dec_hero_econ:"Économie fiscale totale",dec_hero_econ_hint:"vs. aucun décaissement planifié",
+    dec_hero_celi:"CELI préservé jusqu'à",dec_hero_celi_hint:"Âge où le CELI s'épuise (stratégie opt.)",
+    dec_chart_title:"Sources de revenus à la retraite (stratégie optimisée)",
+    dec_tbl_title:"Décaissement année par année",
+    dec_th_age:"Âge",dec_th_rrq:"RRQ/QPP",dec_th_psv:"PSV/OAS",dec_th_ferr:"REER → FERR",
+    dec_th_nonreg:"Non-reg",dec_th_celi:"CELI",dec_th_brut:"Total brut",
+    dec_th_impot:"Impôt",dec_th_net:"Net",dec_th_sreer:"Solde REER",dec_th_sceli:"Solde CELI",
+    lbl_career:"Revenu futur plus élevé prévu (pic de carrière)",
+    desc_career:"Si votre salaire augmentera significativement, la déduction REER vaudra davantage — peut justifier prioriser le CELI maintenant et maximiser le REER plus tard.",
+    lbl_career_income:"Revenu de pointe prévu",
+    desc_career_income:"Revenu annuel brut estimé à votre sommet de carrière.",
+    lbl_career_yrs:"Dans combien d'années",
+    desc_career_yrs:"Horizon estimé pour atteindre ce revenu de pointe.",
+  },
+  en:{
+    title:"Investments — Financial Independence",subtitle:"Where to invest your next dollar — Quebec 2026",
+    nav_calc:"Housing",nav_calc_sub:"Buy or Rent",nav_invest:"Investments",nav_invest_sub:"Financial Independence",
+    sec1_title:"Recommended allocation this year",sec1_desc:"Where to put your next dollar based on your tax situation",
+    sec2_title:"Retirement Projection & Drawdown",sec2_desc:"How much you'll have and how to optimize your withdrawals",
+    sec_params:"Projection parameters",
+    sec_obj:"Retirement goal",lbl_obj_income:"Desired monthly net income",desc_obj_income:"Net (after-tax) amount desired each month in retirement. The required capital is calculated automatically.",lbl_obj_capital:"Estimated target capital",lbl_obj_requis:"Required annual savings",lbl_heritage:"Desired inheritance",desc_heritage:"Amount (in today's dollars) to preserve for your heirs. Added to the calculated target capital.",lbl_heritage_income:"Max income with this inheritance",obj_chart_title:"Capital drawdown in retirement (target scenario)",
+    sec_profil:"Profile",
+    sec_soldes:"Current account balances",
+    sec_droits:"Available contribution room",
+    lbl_revenu:"Annual gross income",desc_revenu:"Your salary or total income before tax.",
+    lbl_age:"Current age",desc_age:"Your age today.",
+    lbl_invest:"Amount to invest this year",desc_invest:"Capital available to invest this year.",
+    lbl_horizon_yrs:"years until retirement",desc_horizon_yrs:"Target configurable in section 2",
+    sec_immo:"Real estate (optional)",lbl_immo:"I plan to sell a property at retirement",desc_immo:"Add a property as a retirement asset. The future value is projected using the chosen appreciation rate.",lbl_immo_val:"Current property value",desc_immo_val:"Current market value of the property.",lbl_immo_rate:"Annual appreciation",desc_immo_rate:"Average annual appreciation rate of the property (nominal).",lbl_immo_primary:"Principal residence",desc_immo_primary:"The principal residence exemption applies — the capital gain is entirely tax-free at sale.",
+    lbl_retraite:"Target retirement age",desc_retraite:"Horizon is recalculated automatically.",
+    lbl_rendement:"Expected return",desc_rendement:"Nominal annual return (e.g. diversified ETF, S&P 500).",
+    lbl_taux_ret:"Estimated marginal rate in retirement",desc_taux_ret:"Used only to estimate tax on RRSP withdrawals. Be conservative — aim for your lowest likely bracket.",ref_taux_ret:"~26% if retirement income < $52k · ~36% if ~$60–80k · ~46% if ~$110k+",
+    lbl_sol_celi:"TFSA balance",desc_sol_celi:"Current value of your TFSA — starting point for the projection.",
+    lbl_sol_reer:"RRSP balance",desc_sol_reer:"Current value of your RRSP — starting point for the projection.",
+    lbl_sol_celiapp:"FHSA balance",desc_sol_celiapp:"Current value of your FHSA. Can exceed $40,000 due to investment returns.",
+    lbl_sol_nonreg:"Non-registered account",desc_sol_nonreg:"Current value of your taxable portfolio (excluding RRSP/TFSA).",
+    lbl_celi_room:"Unused TFSA room",desc_celi_room:"Visible in My CRA Account. 2026 limit: $7,000/year — cumulative ~$109,000 since 2009.",
+    lbl_reer_room:"Unused RRSP room",desc_reer_room:"Visible on your CRA Notice of Assessment. 2026: 18% of earned income, max $32,490.",
+    lbl_ftb:"First-time home buyer — FHSA access",desc_ftb:"Have not owned a home in the past 4 years. FHSA is deductible on contribution AND tax-free on withdrawal.",
+    lbl_celiapp_room:"Unused FHSA room",desc_celiapp_room:"$8,000/year — max $40,000 lifetime. Deductible like RRSP + tax-free like TFSA.",
+    lbl_horizon:"Purchase planned in",desc_horizon:"FHSA funds are withdrawn tax-free at this date for the purchase.",
+    hero_taux:"Current marginal rate",hero_taux_hint:"Quebec 2026 · federal + provincial",
+    hero_econ:"Tax savings / yr",hero_econ_hint:"FHSA + RRSP this year",
+    hero_val:"Gross value at retirement",hero_val_hint:"All accounts combined",
+    hero_net:"Estimated net value",hero_net_hint:"After tax at retirement rate",
+    wf_title:"Recommended allocation this year",
+    badge_celi:"TFSA",badge_reer:"RRSP",badge_nonreg:"Non-registered",
+    badge_match:"Employer match",
+    lbl_match:"My employer offers matching contributions (group RRSP)",desc_match:"Instant 50–100% return — maximize before any other account. Employer contribution adds to your investment budget.",
+    lbl_match_emp:"Employee contribution",desc_match_emp:"% of your salary contributed to the group RRSP to trigger the match.",
+    lbl_match_rate:"Employer match rate",desc_match_rate:"% the employer adds on your contribution. 100% = dollar for dollar.",
+    lifecycle_chart_title:"Portfolio Accumulation & Drawdown",chart_title:"Portfolio projection to retirement",
+    tbl_title:"Retirement summary",
+    th_compte:"Account",th_contrib:"Total contributions",th_brut:"Gross value",th_econ:"Tax savings",th_net:"Net value after tax",
+    lbl_total:"Total",
+    note:"Quebec 2026 marginal tax rates (federal + provincial, including 16.5% Quebec abatement) · FHSA: deductible on contribution, tax-free on withdrawal for first home (max $40,000, $8,000/yr) · TFSA: growth and withdrawals 100% tax-free · RRSP: deductible on contribution, taxable on withdrawal · Non-registered: capital gains at 50% inclusion · Nominal returns before inflation · Informational only — not professional financial advice.",
+    chart_celiapp:"FHSA",chart_celi:"TFSA",chart_reer:"RRSP",chart_nonreg:"Non-registered",
+    note_celiapp_dbl:"Double tax benefit — top priority",
+    note_celi_flex:"Growth and withdrawals 100% tax-free",
+    note_reer_good:"Current rate > retirement rate → deduction advantageous",
+    note_reer_neutral:"Current rate ≈ retirement rate → limited advantage",
+    note_nonreg:"No tax shelter · Last resort",
+    order_label:"Order:",
+    econ_label:"Savings:",ret_rate:"→ retirement",taxfree:"tax-free on withdrawal",gains_label:"Capital gains taxed at 50% ·",
+    withdrawn:"withdrawn at purchase",gross:"gross",ans:"yrs",
+    lbl_db:"Defined benefit pension (RREGOP, RRPE, CARRA, etc.)",desc_db:"Employer-guaranteed lifetime pension. Reduces the financial capital required and integrates into the drawdown strategy.",
+    lbl_db_pension:"Monthly pension at retirement",desc_db_pension:"Estimated gross pension amount at retirement. Check your annual pension statement or estimate using the formula shown.",
+    lbl_db_formula:"RREGOP estimate",desc_db_formula:"Formula: 2% × average salary (best 5 years) × years of service ÷ 12. E.g.: 2% × $80,000 × 25 yrs ÷ 12 = $3,333/month. Coordinated with QPP at age 65.",
+    dec_th_db:"DB pension",
+    sec_dec:"Drawdown — Retirement withdrawal strategy",
+    sec_dec_inputs:"Government income & targets",
+    lbl_rrq:"QPP — Quebec Pension Plan",desc_rrq:"Estimated monthly benefit at age 65. Check your My Retirement Quebec account (retraiteQuebec.gouv.qc.ca).",
+    lbl_rrq_age:"QPP start age",desc_rrq_age:"Before 65: −0.5%/month (−30% at 60) · After 65: +0.7%/month (+42% at 70).",
+    lbl_psv:"OAS — Old Age Security",desc_psv:"Federal benefit starting at 65. Maximum 2026: ~$713/month. Clawed back at 15% above $90,997 net income.",
+    lbl_psv_age:"OAS start age",desc_psv_age:"Deferring past 65: +0.6%/month, for a total of +36% if you wait until 70.",
+    lbl_cible:"Target gross income / yr",desc_cible:"Annual pre-tax income desired in retirement (QPP + OAS + withdrawals included).",
+    lbl_esp_vie:"Life expectancy",desc_esp_vie:"Projection horizon. Aim high — life expectancy at 65 in Quebec is ~88 years.",
+    dec_hero_strat:"Optimal RRSP strategy",dec_hero_econ:"Total tax savings",dec_hero_econ_hint:"vs. no planned drawdown",
+    dec_hero_celi:"TFSA preserved until",dec_hero_celi_hint:"Age at which TFSA runs out (opt. strategy)",
+    dec_chart_title:"Retirement income sources (optimized strategy)",
+    dec_tbl_title:"Year-by-year drawdown",
+    dec_th_age:"Age",dec_th_rrq:"QPP",dec_th_psv:"OAS",dec_th_ferr:"RRSP → RRIF",
+    dec_th_nonreg:"Non-reg",dec_th_celi:"TFSA",dec_th_brut:"Total gross",
+    dec_th_impot:"Tax",dec_th_net:"Net",dec_th_sreer:"RRSP bal.",dec_th_sceli:"TFSA bal.",
+    lbl_career:"Higher future income expected (career peak)",
+    desc_career:"If your salary will increase significantly, RRSP deductions will be worth more then — may justify prioritizing TFSA now and maximizing RRSP at the higher bracket.",
+    lbl_career_income:"Expected peak income",
+    desc_career_income:"Estimated annual gross income at your career peak.",
+    lbl_career_yrs:"Years from now",
+    desc_career_yrs:"Estimated time to reach that peak income.",
+  }
+};
+
+function t(k){return T[lang][k]||k;}
+
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(T[l][k])el.textContent=T[l][k];
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
+  calc();
+}
+
+function locale(){return lang==='fr'?'fr-CA':'en-CA';}
+function fmt$(v){return Math.round(v).toLocaleString(locale(),{style:'currency',currency:'CAD',maximumFractionDigits:0});}
+function fmtk(v){
+  const abs=Math.abs(v);
+  if(abs>=1000000)return (v/1000000).toLocaleString(locale(),{minimumFractionDigits:1,maximumFractionDigits:1})+' M$';
+  if(abs>=10000)return Math.round(v/1000).toLocaleString(locale())+' k$';
+  if(abs>=1000)return (v/1000).toLocaleString(locale(),{minimumFractionDigits:0,maximumFractionDigits:1})+' k$';
+  return fmt$(v);
+}
+function fmtPct(v){return v.toLocaleString(locale(),{minimumFractionDigits:1,maximumFractionDigits:1})+' %';}
+
+function sv(id,val){
+  const el=document.getElementById(id);
+  if(!el)return;
+  el.value=val;
+  el.dispatchEvent(new Event('input'));
+}
+
+// Generic log-scale helpers for sliders
+// fromLogS: no-zero, pos=0→minV, pos=100→maxV
+function fromLogS(pos,minV,maxV){return minV*Math.pow(maxV/minV,pos/100);}
+function toLogS(val,minV,maxV){return Math.max(0,Math.min(100,100*Math.log(val/minV)/Math.log(maxV/minV)));}
+// fromLog0S: allows zero, pos=0→0, pos=1-100→minV..maxV
+function fromLog0S(pos,minV,maxV){if(pos<=0)return 0;return minV*Math.pow(maxV/minV,(pos-1)/99);}
+function toLog0S(val,minV,maxV){if(val<=0)return 0;return Math.max(1,Math.min(100,1+99*Math.log(val/minV)/Math.log(maxV/minV)));}
+// Pill setters for log sliders
+function svLogS(id,val,minV,maxV,unit){
+  const el=document.getElementById(id);if(!el)return;
+  el.value=Math.round(toLogS(val,minV,maxV));el.dispatchEvent(new Event('input'));}
+function svLog0S(id,val,minV,maxV){
+  const el=document.getElementById(id);if(!el)return;
+  el.value=val<=0?0:Math.round(toLog0S(val,minV,maxV));el.dispatchEvent(new Event('input'));}
+
+// Logarithmic heritage slider: slider 0-100 → 0 to 10M
+// v=1→50k, v=14→100k, v=44→500k, v=70→2M, v=100→10M
+function heritageFromSlider(v){
+  if(v<=0)return 0;
+  const raw=50000*Math.pow(200,(v-1)/99);
+  return Math.round(raw/50000)*50000;
+}
+function heritageToSlider(h){
+  if(h<=0)return 0;
+  return Math.max(1,Math.min(100,Math.round(1+99*Math.log(h/50000)/Math.log(200))));
+}
+function svH(val){
+  const el=document.getElementById('heritage');
+  if(!el)return;
+  el.value=val===0?0:Math.max(1,Math.min(100,heritageToSlider(val)));
+  el.dispatchEvent(new Event('input'));
+}
+
+// Derive gross income from target net (binary search on totalTax)
+function grossFromNet(netTarget){
+  if(netTarget<=0)return 0;
+  let lo=netTarget,hi=netTarget*2.5;
+  for(let i=0;i<60;i++){const mid=(lo+hi)/2;if(mid-totalTax(mid)<netTarget)lo=mid;else hi=mid;}
+  return(lo+hi)/2;
+}
+
+// Log slider configs: id → [minV, maxV, hasZero]
+const LOG_CFG={
+  'revenu':[25000,300000,false],
+  'invest':[1000,120000,false],
+  'sol-celi':[1000,250000,true],
+  'sol-reer':[1000,5000000,true],
+  'sol-nonreg':[1000,500000,true],
+};
+function readLog(id){
+  const el=document.getElementById(id);if(!el)return 0;
+  const cfg=LOG_CFG[id];if(!cfg)return parseFloat(el.value);
+  const pos=parseFloat(el.value);
+  const raw=cfg[2]?fromLog0S(pos,cfg[0],cfg[1]):fromLogS(pos,cfg[0],cfg[1]);
+  return Math.round(raw/500)*500;
+}
+function updLog(id,unit){
+  const el=document.getElementById(id);if(!el)return;
+  const val=readLog(id);
+  const out=document.getElementById(id+'-o');
+  if(out) out.textContent=unit==='$'?fmtk(val):val+' '+unit;
+  fillSlider(el);
+}
+
+function upd(id,unit){
+  const el=document.getElementById(id);
+  if(!el)return;
+  if(LOG_CFG[id]){updLog(id,unit);return;}
+  const v=parseFloat(el.value);
+  const out=document.getElementById(id+'-o');
+  if(!out)return;
+  if(unit==='$') out.textContent=fmtk(v);
+  else if(unit==='%') out.textContent=fmtPct(v);
+  else if(unit==='ans') out.textContent=v+' '+t('ans');
+  else if(unit==='$/mo') out.textContent=fmt$(v)+'/'+(lang==='fr'?'mois':'mo');
+  fillSlider(el);
+}
+
+function toggleSec1(){
+  const wrap=document.getElementById('sec1-wrap');
+  const btn=document.getElementById('sec1-toggle-btn');
+  const isOpen=wrap.style.display!=='none';
+  wrap.style.display=isOpen?'none':'';
+  btn.classList.toggle('open',!isOpen);
+}
+function toggleSec2(){
+  const wrap=document.getElementById('sec2-wrap');
+  const btn=document.getElementById('sec2-toggle-btn');
+  const isOpen=wrap.style.display!=='none';
+  wrap.style.display=isOpen?'none':'';
+  btn.classList.toggle('open',!isOpen);
+}
+function toggleFTB(){
+  const on=document.getElementById('ftb').checked;
+  document.getElementById('celiapp-row').style.display=on?'':'none';
+  document.getElementById('sol-celiapp-cell').style.display=on?'':'none';
+}
+function toggleMatch(){
+  const on=document.getElementById('match-on').checked;
+  document.getElementById('match-row').style.display=on?'':'none';
+}
+function toggleCareer(){
+  const on=document.getElementById('career-on').checked;
+  document.getElementById('career-row').style.display=on?'':'none';
+}
+function toggleImmo(){
+  const on=document.getElementById('immo-on').checked;
+  document.getElementById('immo-wrap').style.display=on?'':'none';
+}
+function toggleDB(){
+  const on=document.getElementById('db-on').checked;
+  document.getElementById('db-wrap').style.display=on?'':'none';
+  // Rebuild dec chart when DB column is toggled (dataset count changes)
+  if(decChart){decChart.destroy();decChart=null;}
+}
+
+// Quebec 2026 combined marginal rate
+function marginalRate(income){
+  let fed;
+  if(income>253414) fed=33;
+  else if(income>177882) fed=29;
+  else if(income>111733) fed=26;
+  else if(income>55867) fed=20.5;
+  else fed=15;
+  const fedEff=fed*0.835;
+  let qc;
+  if(income>126000) qc=25.75;
+  else if(income>103545) qc=24;
+  else if(income>51780) qc=19;
+  else qc=14;
+  return (fedEff+qc)/100;
+}
+
+function findBracketCeiling(rate){
+  // Binary search: lowest income where marginalRate first reaches `rate`
+  let lo=0,hi=600000;
+  for(let i=0;i<80;i++){
+    const mid=(lo+hi)/2;
+    if(marginalRate(mid)<rate) lo=mid; else hi=mid;
+  }
+  return hi;
+}
+
+function allocate(amount, celiRoom, reerRoom, celiappRoom, ftb, margNow, margRet, matchEmp, matchBonus, retGovIncome, projReerBal, years, r){
+  const alloc={match_emp:0,match_bonus:0,celiapp:0,celi:0,reer:0,nonreg:0};
+  let rem=amount;
+
+  // 0. Employer match — always first (instant guaranteed return)
+  if(matchEmp>0&&rem>0){
+    const emp=Math.min(rem,matchEmp);
+    alloc.match_emp=emp;
+    alloc.match_bonus=emp*(matchBonus/100);
+    rem-=emp;
+    reerRoom=Math.max(0,reerRoom-emp-alloc.match_bonus);
+  }
+
+  // 1. CELIAPP — double tax benefit, highest priority for eligible buyers
+  if(ftb&&celiappRoom>0&&rem>0){const a=Math.min(rem,celiappRoom);alloc.celiapp=a;rem-=a;}
+
+  // 2. Optimal REER vs CELI split using bracket-gap analysis:
+  //    Contribute to REER only until projected RRIF income + gov income fills up to the current bracket ceiling.
+  //    Beyond that, REER withdrawals would be taxed at the same or higher rate — CELI wins.
+  const rrif71Rate=0.0528;
+  let reerOptTarget=0;
+
+  if(margNow>margRet){
+    const ceiling=findBracketCeiling(margNow);
+    const roomForReerIncome=Math.max(0,ceiling-retGovIncome);
+    const reerBalTarget=roomForReerIncome/rrif71Rate;
+    const reerGap=Math.max(0,reerBalTarget-projReerBal);
+    const fv=Math.pow(1+r,Math.max(1,years));
+    const ann=r>0?(fv-1)/r:years;
+    reerOptTarget=ann>0?reerGap/ann:0;
+  }
+
+  // Allocate REER up to optimal target first
+  const reerFirst=Math.min(rem,reerRoom,reerOptTarget);
+  alloc.reer=reerFirst;
+  rem-=reerFirst;
+
+  // Then CELI (tax-free, no future obligation)
+  if(celiRoom>0&&rem>0){const a=Math.min(rem,celiRoom);alloc.celi=a;rem-=a;}
+
+  // REER overflow: if CELI room exhausted, REER still beats non-reg
+  if(rem>0&&reerRoom>alloc.reer){
+    const extra=Math.min(rem,reerRoom-alloc.reer);
+    alloc.reer+=extra;rem-=extra;
+  }
+
+  if(rem>0) alloc.nonreg=rem;
+
+  // Round to whole dollars and absorb rounding error into largest bucket
+  for(const k of Object.keys(alloc)) alloc[k]=Math.round(alloc[k]);
+  const ownSum=alloc.celiapp+alloc.celi+alloc.reer+alloc.nonreg+alloc.match_emp;
+  const roundErr=Math.round(amount)-ownSum;
+  if(roundErr!==0){
+    const biggest=['celi','reer','nonreg','celiapp','match_emp'].find(k=>alloc[k]>0);
+    if(biggest) alloc[biggest]+=roundErr;
+  }
+  return alloc;
+}
+
+function calc(){
+  const income   = readLog('revenu');
+  const age      = parseFloat(document.getElementById('age').value);
+  const invest   = readLog('invest');
+  const retAge   = parseFloat(document.getElementById('retraite').value);
+  const r        = parseFloat(document.getElementById('rendement').value)/100;
+  const margRet  = marginalRate(parseFloat(document.getElementById('obj-income').value));
+  const solCeli  = readLog('sol-celi');
+  const solReer  = readLog('sol-reer');
+  const solNonreg= readLog('sol-nonreg');
+  const ftb      = document.getElementById('ftb').checked;
+  const solCeliapp = ftb ? parseFloat(document.getElementById('sol-celiapp').value) : 0;
+  const celiRoomStart  = parseFloat(document.getElementById('celi-room').value);
+  const reerRoomStart  = parseFloat(document.getElementById('reer-room').value);
+  const celiappRoomStart = ftb ? parseFloat(document.getElementById('celiapp-room').value) : 0;
+  const horizon  = ftb ? parseFloat(document.getElementById('horizon').value) : 0;
+  const years    = Math.max(1, Math.round(retAge - age));
+
+  // Read Section 2 inputs upfront (needed for smart allocation)
+  const dbOnCalcEarly=document.getElementById('db-on').checked;
+  const dbMonthlyEarly=dbOnCalcEarly?parseFloat(document.getElementById('db-pension').value):0;
+  const rrqEstEarly=parseFloat(document.getElementById('rrq').value)*12;
+  const psvEstEarly=parseFloat(document.getElementById('psv').value)*12;
+  const retGovIncome=rrqEstEarly+psvEstEarly+(dbOnCalcEarly?dbMonthlyEarly*12:0);
+
+  const margNow = marginalRate(income);
+  const matchOn = document.getElementById('match-on').checked;
+  const matchEmpPct = matchOn ? parseFloat(document.getElementById('match-emp').value)/100 : 0;
+  const matchRatePct = matchOn ? parseFloat(document.getElementById('match-rate').value) : 0;
+  const matchEmpAnnual = matchEmpPct * income; // employee cost from budget
+  const matchBonusAnnual = matchEmpAnnual * (matchRatePct/100); // employer free addition
+
+  const projReerBal=solReer*Math.pow(1+r,years);
+
+  // First-year allocation for waterfall
+  const celiappY1 = ftb ? Math.min(celiappRoomStart, 8000) : 0;
+  const allocY1 = allocate(invest, celiRoomStart, reerRoomStart, celiappY1, ftb, margNow, margRet, matchEmpAnnual, matchRatePct, retGovIncome, projReerBal, years, r);
+  const taxSavingsY1 = (allocY1.celiapp + allocY1.reer + allocY1.match_emp + allocY1.match_bonus) * margNow;
+
+  // Year-by-year simulation — start from current balances
+  let celiB=solCeli, reerB=solReer, celiappB=solCeliapp, nonregB=solNonreg;
+  let celiRoom=celiRoomStart, reerRoom=reerRoomStart;
+  let celiappLifetime=0, celiappActive=ftb;
+  let totalContrib={celiapp:0,celi:0,reer:0,nonreg:0};
+
+  const labels=[], dCeli=[], dReer=[], dCeliapp=[], dNonreg=[];
+
+  for(let y=1;y<=years;y++){
+    celiB*=(1+r); reerB*=(1+r); celiappB*=(1+r); nonregB*=(1+r);
+
+    const celiappRoom=celiappActive?Math.min(8000,Math.max(0,40000-celiappLifetime)):0;
+    const remYears=Math.max(1,years-y+1);
+    const loopProjReer=reerB*Math.pow(1+r,remYears);
+    const a=allocate(invest,celiRoom,reerRoom,celiappRoom,celiappActive,margNow,margRet,matchEmpAnnual,matchRatePct,retGovIncome,loopProjReer,remYears,r);
+
+    celiB+=a.celi; reerB+=a.reer+a.match_emp+a.match_bonus; celiappB+=a.celiapp; nonregB+=a.nonreg;
+    totalContrib.celi+=a.celi; totalContrib.reer+=a.reer+a.match_emp+a.match_bonus;
+    totalContrib.celiapp+=a.celiapp; totalContrib.nonreg+=a.nonreg;
+
+    celiRoom=Math.max(0,celiRoom-a.celi)+7000;
+    reerRoom=Math.max(0,reerRoom-a.reer)+Math.min(income*0.18,32490);
+    celiappLifetime+=a.celiapp;
+
+    if(ftb&&y===Math.round(horizon)){
+      celiappB=0;
+      celiappActive=false;
+    }
+
+    labels.push(age+y);
+    dCeli.push(Math.round(celiB));
+    dReer.push(Math.round(reerB));
+    dCeliapp.push(Math.round(celiappB));
+    dNonreg.push(Math.round(nonregB));
+  }
+
+  const totalGross=celiB+reerB+nonregB;
+  const reerNet=reerB*(1-margRet);
+  const nonregGains=Math.max(0,nonregB-solNonreg-totalContrib.nonreg);
+  const nonregNet=nonregB-0.5*margRet*nonregGains;
+
+  // CELIAPP value at purchase date (from projection data)
+  const celiappAtPurchase=ftb&&Math.round(horizon)<=years ? (dCeliapp[Math.round(horizon)-1]||0) : 0;
+
+  // Immobilier
+  const immoOn=document.getElementById('immo-on').checked;
+  let immoFV=0,immoNet=0;
+  if(immoOn){
+    const immoVal=parseFloat(document.getElementById('immo-val').value);
+    const immoRate=parseFloat(document.getElementById('immo-rate').value)/100;
+    const immoPrimary=document.getElementById('immo-primary').checked;
+    immoFV=immoVal*Math.pow(1+immoRate,years);
+    if(immoPrimary){
+      immoNet=immoFV;
+    } else {
+      const gain=Math.max(0,immoFV-immoVal);
+      immoNet=immoFV-0.5*margRet*gain;
+    }
+    document.getElementById('immo-fv-val').textContent=fmtk(Math.round(immoFV));
+    document.getElementById('immo-fv-hint').textContent=lang==='fr'
+      ?`Dans ${years} ans · ${fmtPct(immoRate*100)}/an`
+      :`In ${years} yrs · ${fmtPct(immoRate*100)}/yr`;
+    document.getElementById('immo-net-val').textContent=fmtk(Math.round(immoNet));
+    document.getElementById('immo-net-hint').textContent=immoPrimary
+      ?(lang==='fr'?'Exonéré — résidence principale':'Exempt — principal residence')
+      :(lang==='fr'?`Après impôt sur le gain en capital`:`After capital gains tax`);
+  }
+
+  // Hero
+  const totalNet=celiB+reerNet+nonregNet;
+  const totalGrossAll=totalGross+(immoOn?immoFV:0);
+  const totalNetAll=totalNet+(immoOn?immoNet:0);
+  // Update Section 2 balance summary line
+  const sec2sum=document.getElementById('sec2-soldes-summary');
+  if(sec2sum){
+    const parts=[];
+    if(solCeli>0) parts.push((lang==='fr'?'CELI ':'TFSA ')+fmtk(solCeli));
+    if(solReer>0) parts.push((lang==='fr'?'REER ':'RRSP ')+fmtk(solReer));
+    if(ftb&&solCeliapp>0) parts.push('CELIAPP '+fmtk(solCeliapp));
+    if(solNonreg>0) parts.push((lang==='fr'?'Non-reg ':'Non-reg ')+fmtk(solNonreg));
+    sec2sum.textContent=parts.length
+      ?(lang==='fr'?'Soldes configurés en section 1 : ':'Balances set in section 1: ')+parts.join(' · ')
+      :(lang==='fr'?'Soldes actuels : tous à 0 (configurer en section 1)':'Current balances: all $0 (set in section 1)');
+  }
+
+  document.getElementById('hero-taux').textContent=fmtPct(margNow*100);
+  document.getElementById('taux-ret-o').textContent=fmtPct(margRet*100);
+  document.getElementById('hero-econ').textContent=fmtk(taxSavingsY1);
+  document.getElementById('hero-val').textContent=fmtk(totalGrossAll);
+  document.getElementById('hero-net').textContent=fmtk(totalNetAll);
+  // Hero breakdown lines
+  {
+    const grossParts=[];
+    const netParts=[];
+    const celiLabel=lang==='fr'?'CELI':'TFSA';
+    const reerLabel=lang==='fr'?'REER':'RRSP';
+    const nonregLabel=lang==='fr'?'Non-reg':'Non-reg';
+    if(ftb&&celiappAtPurchase>0){
+      grossParts.push('CELIAPP '+fmtk(celiappAtPurchase));
+      netParts.push('CELIAPP '+fmtk(celiappAtPurchase));
+    }
+    const reerNetNote=lang==='fr'?'(après impôt)':'(after tax)';
+    if(celiB>0){grossParts.push(celiLabel+' '+fmtk(celiB));netParts.push(celiLabel+' '+fmtk(celiB));}
+    if(reerB>0){grossParts.push(reerLabel+' '+fmtk(reerB));netParts.push(reerLabel+' '+fmtk(Math.round(reerNet))+' '+reerNetNote);}
+    if(nonregB>0){grossParts.push(nonregLabel+' '+fmtk(nonregB));netParts.push(nonregLabel+' '+fmtk(Math.round(nonregNet)));}
+    if(immoOn&&immoFV>0){grossParts.push((lang==='fr'?'Immo ':'Real est. ')+fmtk(Math.round(immoFV)));netParts.push((lang==='fr'?'Immo ':'Real est. ')+fmtk(Math.round(immoNet)));}
+    const brkEl=document.getElementById('hero-val-breakdown');
+    if(brkEl) brkEl.textContent=grossParts.join(' · ');
+    const brkNetEl=document.getElementById('hero-net-breakdown');
+    if(brkNetEl) brkNetEl.textContent=netParts.join(' · ');
+  }
+
+  // Reverse calculator — capital needed from desired annual net income
+  const objIncomeAnn=parseFloat(document.getElementById('obj-income').value);
+  const heritage=heritageFromSlider(parseFloat(document.getElementById('heritage').value));
+  const retYears=Math.max(1,parseFloat(document.getElementById('esp-vie').value)-retAge);
+  const rReal=Math.max(0.001,r-0.02); // real return after ~2% inflation
+  const dbOnObj=document.getElementById('db-on').checked;
+  const dbMonthlyObj=dbOnObj?parseFloat(document.getElementById('db-pension').value):0;
+  const dbNetAnn=dbMonthlyObj*12*(1-margRet); // rough net after tax
+  const netFromPortfolio=Math.max(0,objIncomeAnn-dbNetAnn);
+  const incomeAnnuity=rReal>0?netFromPortfolio*(1-Math.pow(1+rReal,-retYears))/rReal:netFromPortfolio*retYears;
+  // Heritage PV at retirement in real terms (today's dollars discounted at rReal)
+  const heritagePV=heritage>0?(rReal>0?heritage*Math.pow(1+rReal,-retYears):heritage):0;
+  const objTarget=incomeAnnuity+heritagePV;
+
+  // Inflation-adjusted income note
+  const inflatedIncome=objIncomeAnn*Math.pow(1.02,years);
+  const inflEl=document.getElementById('obj-income-infl');
+  if(inflEl&&years>1){
+    inflEl.style.display='';
+    inflEl.textContent=lang==='fr'
+      ?`→ Équivalent nominal dans ${years} ans à 2 % d'inflation : ${fmtk(Math.round(inflatedIncome))}/an`
+      :`→ Nominal equivalent in ${years} yrs at 2% inflation: ${fmtk(Math.round(inflatedIncome))}/yr`;
+  } else if(inflEl){inflEl.style.display='none';}
+
+  const fvFactor=Math.pow(1+r,years);
+  const currentTotalBal=solCeli+solReer+solNonreg+(ftb?solCeliapp:0);
+  const fvCurrentBal=currentTotalBal*fvFactor;
+  const annuityFactor=r>0?(fvFactor-1)/r:years;
+  const objReqAnn=Math.max(0,(objTarget-fvCurrentBal)/annuityFactor);
+  const onTrack=totalGross>=objTarget;
+  document.getElementById('obj-capital').textContent=fmtk(objTarget);
+  document.getElementById('obj-capital').style.color=onTrack?'var(--green)':'var(--blue)';
+  document.getElementById('obj-capital-hint').textContent=
+    lang==='fr'
+      ?`${retYears} ans de retraite · rendement réel ~${fmtPct(rReal*100)}`
+      :`${retYears} yrs retirement · real return ~${fmtPct(rReal*100)}`;
+  const inflEl2=document.getElementById('obj-capital-infl');
+  if(inflEl2){
+    const parts=[];
+    parts.push(lang==='fr'
+      ?`Revenu ${fmtk(objIncomeAnn)}/an → ${fmtk(Math.round(inflatedIncome))}/an nominal dans ${years} ans (2 % inflation)`
+      :`Income ${fmtk(objIncomeAnn)}/yr → ${fmtk(Math.round(inflatedIncome))}/yr nominal in ${years} yrs (2% inflation)`);
+    if(heritage>0) parts.push(lang==='fr'
+      ?`Héritage ${fmtk(heritage)} → valeur actuelle ${fmtk(Math.round(heritagePV))}`
+      :`Inheritance ${fmtk(heritage)} → present value ${fmtk(Math.round(heritagePV))}`);
+    inflEl2.textContent=parts.join(' · ');
+  }
+  document.getElementById('obj-an').textContent=fmtk(objReqAnn)+'/an';
+  document.getElementById('obj-an').style.color=onTrack?'var(--green)':'var(--blue)';
+  document.getElementById('obj-mo').textContent=fmtk(objReqAnn/12)+' / '+(lang==='fr'?'mois':'month');
+  document.getElementById('obj-note').textContent=onTrack
+    ?(lang==='fr'?`✓ Objectif atteint — votre plan actuel (${fmtk(invest)}/an) génère ${fmtk(totalGross)}`:`✓ Goal reached — current plan (${fmtk(invest)}/yr) will reach ${fmtk(totalGross)}`)
+    :(lang==='fr'?`Votre plan actuel : ${fmtk(invest)}/an → ${fmtk(totalGross)} (manque ${fmtk(objTarget-totalGross)})`:`Current plan: ${fmtk(invest)}/yr → ${fmtk(totalGross)} (gap ${fmtk(objTarget-totalGross)})`);
+  document.getElementById('obj-note').style.background=onTrack?'var(--green-bg)':'var(--bg3)';
+  document.getElementById('obj-note').style.color=onTrack?'var(--green-text)':'';
+
+  // Heritage reverse: given heritage target, what's the max annual income?
+  {
+    const wrap=document.getElementById('heritage-income-wrap');
+    if(wrap){
+      if(heritage>0&&totalNetAll>0){
+        wrap.style.display='';
+        // Drawable = net portfolio minus PV of heritage at retirement
+        const drawable=Math.max(0,totalNetAll-heritagePV);
+        // Max annual portfolio annuity (real, today's $)
+        const portAnn=rReal>0
+          ?drawable*rReal/(1-Math.pow(1+rReal,-retYears))
+          :drawable/Math.max(1,retYears);
+        // Add government benefits (rough net after marginal tax at retirement)
+        const rrqNetAnn=parseFloat(document.getElementById('rrq').value)*12*(1-margRet);
+        const psvNetAnn=parseFloat(document.getElementById('psv').value)*12*(1-margRet);
+        const totalNetAnn=portAnn+rrqNetAnn+psvNetAnn+dbNetAnn;
+        document.getElementById('heritage-income-val').textContent=
+          fmtk(Math.round(totalNetAnn))+'/an  ('+fmtk(Math.round(totalNetAnn/12))+'/'+(lang==='fr'?'mois':'mo')+')';
+        document.getElementById('heritage-income-hint').textContent=lang==='fr'
+          ?`Jusqu'à ${Math.round(retAge+retYears)} ans · héritage ${fmtk(heritage)} préservé · rendement réel ~${fmtPct(rReal*100)}`
+          :`To age ${Math.round(retAge+retYears)} · ${fmtk(heritage)} inheritance preserved · real return ~${fmtPct(rReal*100)}`;
+        // Sources breakdown
+        const srcParts=[];
+        if(portAnn>100) srcParts.push((lang==='fr'?'Portefeuille ':'Portfolio ')+fmtk(Math.round(portAnn)));
+        if(rrqNetAnn>100) srcParts.push('RRQ '+fmtk(Math.round(rrqNetAnn)));
+        if(psvNetAnn>100) srcParts.push('PSV '+fmtk(Math.round(psvNetAnn)));
+        if(dbNetAnn>100) srcParts.push((lang==='fr'?'Rente ':'Pension ')+fmtk(Math.round(dbNetAnn)));
+        document.getElementById('heritage-income-sources').textContent=
+          (lang==='fr'?'Sources (net) : ':'Sources (net): ')+srcParts.join(' + ');
+      } else {
+        wrap.style.display='none';
+      }
+    }
+  }
+
+  // Waterfall bar — total includes employer bonus on top of invest budget
+  const wfTotal = invest + (allocY1.match_bonus||0);
+  const wfSegs = {
+    match: (allocY1.match_emp||0)+(allocY1.match_bonus||0),
+    celiapp: allocY1.celiapp, celi: allocY1.celi, reer: allocY1.reer, nonreg: allocY1.nonreg
+  };
+  Object.entries(wfSegs).forEach(([k,v])=>{
+    const pct=wfTotal>0?(v/wfTotal*100):0;
+    document.getElementById('seg-'+k).style.width=pct+'%';
+    document.getElementById('seg-'+k+'-lbl').textContent=pct>9?fmtk(v):'';
+  });
+
+  // Horizon display in Section 1
+  document.getElementById('horizon-desc').textContent=
+    lang==='fr'?`→ ${years} ans d'horizon`:`→ ${years}-yr horizon`;
+
+  // Auto-estimate true retirement marginal rate from projected income sources
+  const rrqEst=rrqEstEarly;
+  const psvEst=psvEstEarly;
+  const dbEstAnn=dbOnCalcEarly?dbMonthlyEarly*12:0;
+  const rrifEst=reerB*0.0528; // age-71 RRIF minimum on projected REER balance
+  const retIncomeEst=rrqEst+psvEst+dbEstAnn+rrifEst;
+  const autoMargRet=marginalRate(retIncomeEst);
+  const effectiveMargRet=Math.max(margRet,autoMargRet);
+  const autoHigher=autoMargRet>margRet+0.05;
+
+  // Priority order
+  const preferRRSP=margNow>effectiveMargRet+0.02;
+  const order=[];
+  if(matchOn) order.push('Match');
+  if(ftb&&celiappRoomStart>0) order.push('CELIAPP');
+  if(preferRRSP){
+    if(reerRoomStart>0) order.push(lang==='fr'?'REER':'RRSP');
+    order.push(lang==='fr'?'CELI':'TFSA');
+  } else {
+    order.push(lang==='fr'?'CELI':'TFSA');
+    if(reerRoomStart>0) order.push(lang==='fr'?'REER':'RRSP');
+  }
+  order.push(lang==='fr'?'Non enregistré':'Non-reg');
+  document.getElementById('wf-order').textContent=t('order_label')+' '+order.join(' → ');
+
+  // REER vs CELI explanation
+  const retRateLabelFR=autoHigher
+    ?`taux retraite estimé ~${fmtPct(autoMargRet*100)} (RRQ+PSV${dbEstAnn>0?'+RPD':''} + FERR)`
+    :`taux retraite ${fmtPct(margRet*100)}`;
+  const retRateLabelEN=autoHigher
+    ?`est. retirement rate ~${fmtPct(autoMargRet*100)} (QPP+OAS${dbEstAnn>0?'+DB':''} + RRIF)`
+    :`retirement rate ${fmtPct(margRet*100)}`;
+
+  // Explain the split in wf-explain
+  const ceiling=findBracketCeiling(margNow);
+  const roomForIncome=Math.max(0,ceiling-retGovIncome);
+  const reerBalTarget=roomForIncome/0.0528;
+  const fvForExpl=Math.pow(1+r,years);
+  const annForExpl=r>0?(fvForExpl-1)/r:years;
+  const annualReerTarget=annForExpl>0?Math.min(reerRoomStart,reerBalTarget/annForExpl):0;
+  const splitAmt=allocY1.reer>0&&allocY1.celi>0;
+
+  let explTxt='';
+  if(lang==='fr'){
+    if(!preferRRSP){
+      explTxt=`CELI prioritaire : votre taux actuel (${fmtPct(margNow*100)}) ≤ ${retRateLabelFR} → la croissance libre d'impôt est préférable au REER.`;
+    } else if(splitAmt){
+      explTxt=`Répartition optimale : ${fmtk(allocY1.reer)} REER + ${fmtk(allocY1.celi)} CELI. Le REER remplit l'espace jusqu'au plafond du palier actuel (revenu retraite gouvernemental ~${fmtk(retGovIncome)}/an + FERR cible ~${fmtk(retGovIncome+roomForIncome*Math.min(1,allocY1.reer/Math.max(1,annualReerTarget)))}/an ≤ ~${fmtk(ceiling)}). Le solde va en CELI — croissance libre d'impôt sans risque de surcharge à la retraite.`;
+    } else {
+      explTxt=`REER prioritaire : votre taux actuel (${fmtPct(margNow*100)}) > ${retRateLabelFR} → la déduction vaut plus maintenant qu'à la sortie.`;
+    }
+  } else {
+    if(!preferRRSP){
+      explTxt=`TFSA prioritized: current rate (${fmtPct(margNow*100)}) ≤ ${retRateLabelEN} → tax-free growth is preferable to RRSP.`;
+    } else if(splitAmt){
+      explTxt=`Optimal split: ${fmtk(allocY1.reer)} RRSP + ${fmtk(allocY1.celi)} TFSA. RRSP fills up to the current bracket ceiling (est. gov't retirement income ~${fmtk(retGovIncome)}/yr + target RRIF ~${fmtk(retGovIncome+roomForIncome*Math.min(1,allocY1.reer/Math.max(1,annualReerTarget)))}/yr ≤ ~${fmtk(ceiling)}). Remainder in TFSA — tax-free growth with no future withdrawal risk.`;
+    } else {
+      explTxt=`RRSP prioritized: current rate (${fmtPct(margNow*100)}) > ${retRateLabelEN} → deduction worth more now than at withdrawal.`;
+    }
+  }
+  document.getElementById('wf-explain').textContent=explTxt;
+
+  // REER vs CELI comparison table — multi-year withdrawal simulation
+  // For $1000 of gross income invested today, project what you net after tax.
+  const fv1k=Math.pow(1+r,years);
+  const reerBal1k=1000*fv1k;                          // REER balance at retirement from $1000 contribution
+  const celiInv1k=Math.round(1000*(1-margNow));        // after-tax dollars available for CELI
+  const celiBal1k=celiInv1k*fv1k;                     // CELI grows tax-free
+  // Spread REER withdrawal over retirement years; estimate marginal rate on those specific withdrawals
+  const lifeAgeForCmp=parseFloat(document.getElementById('esp-vie').value);
+  const retYearsCmp=Math.max(1,lifeAgeForCmp-retAge);
+  const annualReerW1k=reerBal1k/retYearsCmp;           // withdrawal/yr from just this $1000
+  // Key: use the FULL projected REER balance to determine the marginal bracket.
+  // If reerB = 7 M$, each withdrawal is ~280k/yr → top bracket ~53%.
+  // The last $1000 of REER is taxed at that rate, not at the low-income rate.
+  const totalAnnualReerW=retYearsCmp>0?reerB/retYearsCmp:0;
+  const effTaxRate1k=marginalRate(retGovIncome+totalAnnualReerW);
+  const totalTax1k=annualReerW1k*effTaxRate1k*retYearsCmp;
+  const reerNet1k=reerBal1k-totalTax1k;
+  const reerBetter=reerNet1k>=celiBal1k;
+  // Fill table
+  const fr=lang==='fr';
+  document.getElementById('cmp-header-label').textContent=fr?`Pour 1 000 $ bruts · ${years} ans`:`Per $1,000 gross · ${years} yrs`;
+  document.getElementById('cmp-celi-header').textContent=fr?'CELI':'TFSA';
+  // Subtitle: show what each column actually invests (same gross cost, different net cash)
+  document.getElementById('cmp-reer-sub').textContent=fr?'1 000 $ cotisés (bruts)':'$1,000 contributed (pre-tax)';
+  document.getElementById('cmp-celi-sub').textContent=fr?`${fmt$(celiInv1k)} investis (nets)`:`${fmt$(celiInv1k)} invested (after-tax)`;
+  document.getElementById('cmp-inv-label').textContent=fr?'Capital investi (même coût de poche)':'Capital invested (same out-of-pocket cost)';
+  document.getElementById('cmp-ded-label').textContent=fr?'Remboursement d\'impôt immédiat':'Immediate tax refund';
+  document.getElementById('cmp-fv-label').textContent=fr?`Valeur à la retraite (dans ${years} ans)`:`Value at retirement (in ${years} yrs)`;
+  document.getElementById('cmp-tax-label').textContent=fr
+    ?`Impôt au retrait (réparti sur ${Math.round(retYearsCmp)} ans, ~${fmtPct(effTaxRate1k*100)})`
+    :`Withdrawal tax (spread ${Math.round(retYearsCmp)} yrs, ~${fmtPct(effTaxRate1k*100)})`;
+  document.getElementById('cmp-net-label').textContent=fr?'Net après impôt ✓':'After-tax net ✓';
+  document.getElementById('cmp-reer-inv').textContent=fr?`1 000 $ → cotisé en entier`:`$1,000 → fully contributed`;
+  document.getElementById('cmp-celi-inv').textContent=fr
+    ?`1 000 $ − ${fmt$(Math.round(1000*margNow))} impôt = ${fmt$(celiInv1k)} investis`
+    :`$1,000 − ${fmt$(Math.round(1000*margNow))} tax = ${fmt$(celiInv1k)} invested`;
+  document.getElementById('cmp-reer-ded').textContent='+'+fmt$(Math.round(1000*margNow));
+  document.getElementById('cmp-celi-ded').textContent='—';
+  document.getElementById('cmp-reer-fv').textContent=fmtk(reerBal1k);
+  document.getElementById('cmp-celi-fv').textContent=fmtk(celiBal1k);
+  document.getElementById('cmp-reer-tax').textContent='−'+fmtk(Math.round(totalTax1k));
+  document.getElementById('cmp-celi-tax').textContent=fr?'0 $ (libre)':'$0 (tax-free)';
+  document.getElementById('cmp-reer-net').textContent=fmtk(Math.round(reerNet1k));
+  document.getElementById('cmp-reer-net').style.color=reerBetter?'var(--blue)':'var(--text3)';
+  document.getElementById('cmp-celi-net').textContent=fmtk(Math.round(celiBal1k));
+  document.getElementById('cmp-celi-net').style.color=reerBetter?'var(--text3)':'var(--green)';
+  const ctxEl=document.getElementById('wf-vs-ctx');
+  const warnTxt=autoHigher
+    ?(fr?`⚠ Taux estimé à la retraite ${fmtPct(autoMargRet*100)} — supérieur au ${fmtPct(margRet*100)} configuré (revenu RRQ+PSV+FERR projeté ~${fmtk(Math.round(retIncomeEst))}/an)`
+        :`⚠ Est. retirement rate ${fmtPct(autoMargRet*100)} — higher than configured ${fmtPct(margRet*100)} (projected QPP+OAS+RRIF ~${fmtk(Math.round(retIncomeEst))}/yr)`)
+    :'';
+  // Context: explain the marginal rate is based on the FULL REER balance, not just $1k
+  const totalRetIncome=retGovIncome+totalAnnualReerW;
+  ctxEl.innerHTML=(fr
+    ?`Rendement ${fmtPct(r*100)} · retraite ${retAge}→${Math.round(lifeAgeForCmp)} (${Math.round(retYearsCmp)} ans) · REER projeté ${fmtk(reerB)} → retrait ~${fmtk(Math.round(totalAnnualReerW))}/an → revenu total ~${fmtk(Math.round(totalRetIncome))}/an → <strong>taux marginal ${fmtPct(effTaxRate1k*100)}</strong>`
+    :`Return ${fmtPct(r*100)} · retirement ${retAge}→${Math.round(lifeAgeForCmp)} (${Math.round(retYearsCmp)} yrs) · projected RRSP ${fmtk(reerB)} → withdrawal ~${fmtk(Math.round(totalAnnualReerW))}/yr → total income ~${fmtk(Math.round(totalRetIncome))}/yr → <strong>marginal rate ${fmtPct(effTaxRate1k*100)}</strong>`)
+    +(warnTxt?`<br><span style="color:var(--amber)">${warnTxt}</span>`:'')
+
+  // Cards
+  function setCard(id,amt,note,show){
+    document.getElementById('card-'+id).classList.toggle('hidden',!show);
+    if(!show)return;
+    document.getElementById('card-'+id+'-amt').textContent=fmtk(amt);
+    document.getElementById('card-'+id+'-note').textContent=note;
+  }
+  setCard('celiapp',allocY1.celiapp,
+    allocY1.celiapp>0
+      ?`${t('econ_label')} ${fmtk(allocY1.celiapp*margNow)} (${fmtPct(margNow*100)}) · ${t('taxfree')}`
+      :t('note_celiapp_dbl'),ftb);
+  setCard('celi',allocY1.celi,t('note_celi_flex'),true);
+  const reerCardLabel=matchOn&&allocY1.match_emp>0
+    ?(lang==='fr'?'REER additionnel (hors match)':'Additional RRSP (excl. match)')
+    :(lang==='fr'?'REER':'RRSP');
+  document.querySelector('#card-reer .wf-card-badge').textContent=reerCardLabel;
+  setCard('reer',allocY1.reer,
+    allocY1.reer>0
+      ?`${t('econ_label')} ${fmtk(allocY1.reer*margNow)} · ${fmtPct(margNow*100)} ${t('ret_rate')} ${fmtPct(margRet*100)}`
+      :(preferRRSP?t('note_reer_good'):t('note_reer_neutral')),true);
+
+  // Career progression advisory
+  let careerAdvisory='';
+  const careerOn=document.getElementById('career-on').checked;
+  if(careerOn){
+    const careerIncome=parseFloat(document.getElementById('career-income').value);
+    const careerYrs=parseFloat(document.getElementById('career-yrs').value);
+    const margFuture=marginalRate(careerIncome);
+    if(margFuture>margNow+0.01){
+      const save1kNow=Math.round(1000*margNow);
+      const save1kFuture=Math.round(1000*margFuture);
+      careerAdvisory=lang==='fr'
+        ?`↑ Taux marginal dans ${careerYrs} ans : ${fmtPct(margFuture*100)} (${fmtPct(margNow*100)} auj.). Chaque 1 000 $ de REER = ${save1kNow}$ de déduction maintenant vs ${save1kFuture}$ dans ${careerYrs} ans. Prioriser le CELI à court terme pour maximiser le REER au palier supérieur.`
+        :`↑ Marginal rate in ${careerYrs} yrs: ${fmtPct(margFuture*100)} (${fmtPct(margNow*100)} today). Each $1,000 RRSP = $${save1kNow} tax saving now vs $${save1kFuture} in ${careerYrs} yrs. Consider prioritizing TFSA short-term to maximize RRSP at the higher bracket.`;
+    }
+  }
+  const reerNoteEl=document.getElementById('card-reer-note');
+  if(careerAdvisory&&reerNoteEl){
+    const base=allocY1.reer>0
+      ?`${t('econ_label')} ${fmtk(allocY1.reer*margNow)} · ${fmtPct(margNow*100)} ${t('ret_rate')} ${fmtPct(margRet*100)}`
+      :(preferRRSP?t('note_reer_good'):t('note_reer_neutral'));
+    reerNoteEl.innerHTML=base+'<br><span style="color:var(--amber-text);font-weight:500">'+careerAdvisory+'</span>';
+  }
+
+  setCard('nonreg',allocY1.nonreg,
+    allocY1.nonreg>0?`${t('gains_label')} ${fmtPct(0.5*margNow*100)}`:t('note_nonreg'),true);
+  const matchTot=(allocY1.match_emp||0)+(allocY1.match_bonus||0);
+  setCard('match',matchTot,
+    matchOn&&allocY1.match_bonus>0
+      ?(lang==='fr'
+        ?`Vous : ${fmtk(allocY1.match_emp)} + Employeur : +${fmtk(allocY1.match_bonus)} → ${fmtk(matchTot)} versés dans votre REER collectif`
+        :`You: ${fmtk(allocY1.match_emp)} + Employer: +${fmtk(allocY1.match_bonus)} → ${fmtk(matchTot)} deposited into your group RRSP`)
+      :'',
+    matchOn);
+
+  // Summary table
+  const rows=[];
+  if(ftb&&(solCeliapp>0||totalContrib.celiapp>0)){
+    rows.push(`<tr>
+      <td><span class="dot" style="background:var(--purple)"></span>CELIAPP</td>
+      <td>${fmtk(totalContrib.celiapp)}</td>
+      <td>${fmtk(celiappAtPurchase)} <span style="font-size:10px;color:var(--text4)">(${t('withdrawn')})</span></td>
+      <td style="color:var(--purple)">${fmtk(totalContrib.celiapp*margNow)}</td>
+      <td>${fmtk(celiappAtPurchase)}</td></tr>`);
+  }
+  if(celiB>0||solCeli>0){
+    rows.push(`<tr>
+      <td><span class="dot" style="background:var(--green)"></span>${lang==='fr'?'CELI':'TFSA'}</td>
+      <td>${fmtk(totalContrib.celi)}</td>
+      <td>${fmtk(celiB)}</td>
+      <td style="color:var(--text4)">—</td>
+      <td>${fmtk(celiB)}</td></tr>`);
+  }
+  if(reerB>0||solReer>0){
+    rows.push(`<tr>
+      <td><span class="dot" style="background:var(--blue)"></span>${lang==='fr'?'REER':'RRSP'}</td>
+      <td>${fmtk(totalContrib.reer)}</td>
+      <td>${fmtk(reerB)} <span style="font-size:10px;color:var(--text4)">(${t('gross')})</span></td>
+      <td style="color:var(--blue)">${fmtk(totalContrib.reer*margNow)}</td>
+      <td>${fmtk(reerNet)}</td></tr>`);
+  }
+  if(nonregB>0||solNonreg>0){
+    rows.push(`<tr>
+      <td><span class="dot" style="background:var(--amber)"></span>${lang==='fr'?'Non enregistré':'Non-registered'}</td>
+      <td>${fmtk(totalContrib.nonreg)}</td>
+      <td>${fmtk(nonregB)}</td>
+      <td style="color:var(--text4)">—</td>
+      <td>${fmtk(nonregNet)}</td></tr>`);
+  }
+  if(immoOn&&immoFV>0){
+    const immoPrimary=document.getElementById('immo-primary').checked;
+    const immoTaxAmt=immoNet<immoFV?immoFV-immoNet:0;
+    rows.push(`<tr>
+      <td><span class="dot" style="background:var(--red)"></span>${lang==='fr'?'Immobilier':'Real estate'}</td>
+      <td>—</td>
+      <td>${fmtk(immoFV)}</td>
+      <td style="color:var(--text4)">${immoPrimary?(lang==='fr'?'Exonéré':'Exempt'):'—'}</td>
+      <td>${fmtk(immoNet)}${immoTaxAmt>0?` <span style="font-size:10px;color:var(--text4)">(impôt ${fmtk(immoTaxAmt)})</span>`:''}</td></tr>`);
+  }
+  const totalContribAll=totalContrib.celiapp+totalContrib.celi+totalContrib.reer+totalContrib.nonreg;
+  rows.push(`<tr class="total-row">
+    <td>${t('lbl_total')}</td>
+    <td>${fmtk(totalContribAll)}</td>
+    <td>${fmtk(celiappAtPurchase+celiB+reerB+nonregB+(immoOn?immoFV:0))}</td>
+    <td>${fmtk((totalContrib.celiapp+totalContrib.reer)*margNow)}</td>
+    <td>${fmtk(celiappAtPurchase+celiB+reerNet+nonregNet+(immoOn?immoNet:0))}</td></tr>`);
+  document.getElementById('tbl-body').innerHTML=rows.join('');
+
+  // Hand off retirement balances to decaissement
+  gRet={
+    celi:celiB,reer:reerB,nonreg:nonregB,
+    nonregBasis:Math.min(nonregB,solNonreg+totalContrib.nonreg),
+    age:retAge,r,dbAnn:dbOnCalcEarly?dbMonthlyEarly*12:0
+  };
+  calcDec();
+  renderLifecycleChart(age,retAge,labels,dCeliapp,dCeli,dReer,dNonreg,gDecRows,ftb);
+}
+
+function renderLifecycleChart(curAge,retAge,accumLabels,celiapp,celi,reer,nonreg,decRows,ftb){
+  const dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  const grid=dark?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.06)';
+  const tick=dark?'#888780':'#888';
+
+  // Retirement portion: slice all but last row (last row's celiB is balance after lifeAge withdrawal)
+  const dec=decRows.length>1?decRows.slice(0,-1):[];
+  const retLabels=dec.map((_,i)=>retAge+i+1);
+  const retCeli  =dec.map(r=>Math.max(0,Math.round(r.celiB)));
+  const retReer  =dec.map(r=>Math.max(0,Math.round(r.reerB)));
+  const retNonreg=dec.map(r=>Math.max(0,Math.round(r.nonregB)));
+  const retZeros =dec.map(()=>0);
+
+  const allLabels=[...accumLabels,...retLabels];
+  const datasets=[];
+  if(ftb&&celiapp.some(v=>v>0)) datasets.push({
+    label:t('chart_celiapp'),data:[...celiapp,...retZeros],
+    backgroundColor:'rgba(123,79,200,0.65)',borderColor:'#7B4FC8',borderWidth:1.5,
+    fill:true,tension:0.3,stack:'p',pointRadius:0
+  });
+  datasets.push({
+    label:t('chart_celi'),data:[...celi,...retCeli],
+    backgroundColor:'rgba(15,110,86,0.65)',borderColor:'#0F6E56',borderWidth:1.5,
+    fill:true,tension:0.3,stack:'p',pointRadius:0
+  });
+  datasets.push({
+    label:t('chart_reer'),data:[...reer,...retReer],
+    backgroundColor:'rgba(24,95,165,0.65)',borderColor:'#185FA5',borderWidth:1.5,
+    fill:true,tension:0.3,stack:'p',pointRadius:0
+  });
+  datasets.push({
+    label:t('chart_nonreg'),data:[...nonreg,...retNonreg],
+    backgroundColor:'rgba(186,117,23,0.5)',borderColor:'#BA7517',borderWidth:1.5,
+    fill:true,tension:0.3,stack:'p',pointRadius:0
+  });
+
+  const ctx=document.getElementById('lifecycleChart').getContext('2d');
+  if(lifecycleChart){
+    lifecycleChart.data.labels=allLabels;
+    lifecycleChart.data.datasets=datasets;
+    lifecycleChart.update('none');
+    return;
+  }
+  lifecycleChart=new Chart(ctx,{
+    type:'line',data:{labels:allLabels,datasets},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{
+        legend:{position:'bottom',labels:{color:tick,font:{size:11},padding:16,usePointStyle:true,pointStyleWidth:10}},
+        tooltip:{callbacks:{
+          title:items=>{
+            const l=items[0]?.label;
+            return l>retAge
+              ?(lang==='fr'?`Retraite — ${l} ans`:`Retirement — age ${l}`)
+              :(lang==='fr'?`Accumulation — ${l} ans`:`Accumulation — age ${l}`);
+          },
+          label:c=>' '+c.dataset.label+': '+fmtk(c.parsed.y)
+        }}
+      },
+      scales:{
+        x:{grid:{color:grid},ticks:{color:tick,maxTicksLimit:15}},
+        y:{grid:{color:grid},ticks:{color:tick,callback:v=>fmtk(v)},stacked:true,min:0}
+      }
+    }
+  });
+}
+
+// Init — wire up all sliders
+document.querySelectorAll('input[type=range]').forEach(el=>{
+  fillSlider(el);
+  el.addEventListener('input',()=>fillSlider(el));
+});
+
+toggleFTB();
+toggleMatch();
+toggleImmo();
+toggleDB();
+// Init heritage display (log-scale slider doesn't use upd())
+document.getElementById('heritage-o').textContent=fmtk(heritageFromSlider(0));
+// Trigger display updates for all labelled sliders
+[['revenu','$'],['invest','$'],['age','ans'],['retraite','ans'],['rendement','%'],
+ ['sol-celi','$'],['sol-reer','$'],['sol-celiapp','$'],['sol-nonreg','$'],
+ ['celi-room','$'],['reer-room','$'],['celiapp-room','$'],['horizon','ans'],
+ ['match-emp','%'],['match-rate','%'],
+ ['career-income','$'],['career-yrs','ans'],
+ ['obj-income','$'],
+ ['immo-val','$'],['immo-rate','%'],
+ ['db-pension','$/mo'],
+ ['rrq','$/mo'],['psv','$/mo'],['esp-vie','ans']
+].forEach(([id,unit])=>upd(id,unit));
+calc();
+
+window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',()=>{
+  if(lifecycleChart){lifecycleChart.destroy();lifecycleChart=null;}
+  if(decChart){decChart.destroy();decChart=null;}
+  calc();
+});
+</script>
+</body>
+</html>
